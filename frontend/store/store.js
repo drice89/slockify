@@ -10,3 +10,5 @@ const configureStore = (preloadedState = {}) => {
     applyMiddleware(thunk, logger)
   );
 };
+
+export default configureStore;
