@@ -6,8 +6,8 @@ import LoginFormContainer from "./session/login_form_container";
 const App = () => (
   <div>
     something <img className="logo" src="/assets/logos/logo-75px.png" /><span className="logo-text">Slockify</span>
-    <Route exact path="/signup" component={SignupFormContainer} />
-    <Route exact path="login" component={LoginFormContainer} />
+    <Route path="/signup" component={SignupFormContainer} />
+    <Route path="/login" component={LoginFormContainer} />
     We are live
   </div>
 )

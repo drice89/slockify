@@ -17,11 +17,12 @@ const receiveErrors = (errors) => ({
   errors
 });
 
-export const signup = user => dispatch => (
-  APIUtil.signup(user)
+export const signup = user => dispatch => {
+  debugger
+  return APIUtil.signup(user)
     .then( res => dispatch(receiveCurrentUser(res)))
     .fail( res => dispatch(receiveErrors(res)))
-);
+};
 
 export const logout = () => dispatch => (
   APIUtil.logout()
