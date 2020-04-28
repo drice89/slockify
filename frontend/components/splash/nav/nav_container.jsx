@@ -2,6 +2,7 @@ import Logo from "../../headers/logo";
 import { connect } from "react-redux";
 import LaunchButton from "./launch_button";
 import SignupLoginButtons from "./signup_login_buttons";
+import React from "react";
 
 const Navbar = ({session}) => (
   <nav className="main-nav">
@@ -10,7 +11,7 @@ const Navbar = ({session}) => (
         <Logo />
       </div>
       <nav className="nav-list">
-        <ul>
+        <ul className="nav-ul">
           <li>Why Slockify?</li>
           <li><a href="https://www.linkedin.com/in/dillon-rice-48339a47/">Solutions</a></li>
           <li>Slack</li>
