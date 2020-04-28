@@ -18,21 +18,20 @@ const receiveErrors = (errors) => ({
 });
 
 export const signup = user => dispatch => {
-  debugger
   return APIUtil.signup(user)
     .then( res => dispatch(receiveCurrentUser(res)))
-    .fail( res => dispatch(receiveErrors(res)))
+    .fail(res => dispatch(receiveErrors(res.responseJSON)))
 };
 
 export const logout = () => dispatch => (
   APIUtil.logout()
     .then( res => dispatch(logoutCurrentUser()))
-    .fail( res => dispatch(receiveErrors(res)))
+    .fail(res => dispatch(receiveErrors(res.responseJSON)))
 );
 
 export const login = (user) => dispatch => (
   APIUtil.login(user)
     .then(res => dispatch(receiveCurrentUser(res)))
-    .fail(res => dispatch(receiveErrors(res)))
+    .fail(res => dispatch(receiveErrors(res.responseJSON)))
 );
   

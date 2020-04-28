@@ -4,6 +4,7 @@ import Logo from "../headers/logo";
 import EmailForm from "./email_form";
 import SignupStepTwo from "./signup_step_two";
 import LoginStepTwo from "./login_step_two";
+import LogoutContainer from "./logout_container";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -24,12 +25,10 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit() {
-    debugger
     this.props.action(this.state);
   }
 
   showErrors() {
-    //debugger
     return this.props.errors.map((error, idx) => <li key={`${idx}e`}>{error}</li>)
   }
 
@@ -38,6 +37,9 @@ class SessionForm extends React.Component {
     return (
       <div>
         <Logo />
+        {
+    
+        }
         <div>
           <Route exact path={`/${this.props.path}`} render={
             (props) => 
@@ -67,9 +69,10 @@ class SessionForm extends React.Component {
         </div>
         <ul>
           {
-            this.showErrors()
+            this.props.errors.length >= 1 ? this.showErrors() : ""
           }
         </ul>
+        <LogoutContainer />
       </div>
     )
   }
