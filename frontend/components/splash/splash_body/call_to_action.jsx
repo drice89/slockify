@@ -6,7 +6,7 @@ const CallToAction = () => (
     <div className="container-large">
       <div><h1>Choose a better way to share music</h1></div>
       <div>
-        <Link to="/signup"><button>TRY SLOCKIFY</button></Link>
+        <Link to="/signup"><button className="cta-button">TRY SLOCKIFY</button></Link>
         <a href="mailto:dillon.m.rice@gmail.com"><button>CONTACT US</button></a>
       </div>
     </div>
