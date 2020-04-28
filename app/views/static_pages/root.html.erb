@@ -1,0 +1,13 @@
+<!-- This script is supposed to set the current user to the window if the cookie indicates there is an active session
+it passes the current user defined in the application controller to the partial check the entry file for the rest of the
+script -->
+
+<% if logged_in? %>
+  <script type="text/javascript">
+    window.currentUser = <%= render(
+      "api/users/user.json.jbuilder",
+      user: current_user
+    ).html_safe %>
+  </script>
+<% end %>
+<div id="root">Something Went Wrong</div>

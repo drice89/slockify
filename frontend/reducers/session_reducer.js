@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_ac
 
 const _nullSession = { id: null };
 
-const sessionReducer = (state = _nullsession, action) => {
+const sessionReducer = (state = _nullSession, action) => {
   Object.freeze(state);
 
   switch(action.type) {
