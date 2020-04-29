@@ -35,8 +35,9 @@
 }
 
 .auth-form button {
-  width: 327px;
+  width: 329px;
   border-radius: 15px;
+  height: 45px; 
 }
 
 .auth-form input{

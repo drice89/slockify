@@ -13,7 +13,7 @@ const SplashMain = () => (
     <div className="main">
       <DescriptionComponent/>
       <ChannelsDescription />
-      <MarketingMessage />
+      {/* <MarketingMessage /> */}
       <CallToAction />
       <FooterComponent />
     </div>

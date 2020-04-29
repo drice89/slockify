@@ -53,24 +53,3 @@
   padding: 12px;
 }
 
-.cta-button, .main-nav button {
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 15px;
-    display: inline-flex;
-    align-items: center;
-    font-family: 'Prompt', sans-serif;
-    text-transform: uppercase;
-    background: #1DB954;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    border: .5px solid #1aa34a;
-    width: 110px;
-}
-
-button:hover {
-  background-color: #137736;
-  transition: 0.5s;
-  border: .5px solid #1aa34a
-}

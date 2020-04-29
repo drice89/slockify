@@ -26,18 +26,20 @@
 .description-container:first-child {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .container-med {
   display: block;
   margin: 40px 10px;
+  line-height: 1.3
 }
 
 .container-med div {
   padding: 12px; 
 }
 
-.hero-image {
+.img-hero {
   width: 100%;
 }
 
@@ -45,6 +47,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 40px auto;
 }
 
@@ -57,8 +60,30 @@
   box-shadow: 0px 0px 8px;
 }
 
-.cta-inverse {
-    background: white;
-    color: #1DB954;
-    margin: 0px 15px;
+.container-large, .container-med span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #191414;
+}
+
+
+section {
+  margin-bottom: 0px;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.cta-section {
+  background-color: #191414;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-section h1 {
+  color: white;
+  width: 500px;
+
 }

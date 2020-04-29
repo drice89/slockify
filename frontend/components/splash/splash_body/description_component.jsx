@@ -14,12 +14,12 @@ const DescriptionComponent = () => (
         </div>
       </div>
         <div className="container-med">
-        <img className="hero-image" src={window.imageHero} />
+        <img className="img-hero" src={window.imageHero} />
         </div>
     </div>
     <div className="container-large">
       <div><h1>Break out of Music Forums</h1></div>
-      <div>Collaborating and communicating in channels allows for real time distribution and discussion of new music</div>
+      <div><span>Collaborating and communicating in channels allows for real time distribution and discussion of new music</span></div>
       <div><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Hw30__NzVTc?controls=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
     </div>
   </section>
