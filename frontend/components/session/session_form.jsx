@@ -35,8 +35,10 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <Logo />
+      <div className="auth-container">
+        <div className="">
+          <Logo />
+        </div>
         {
     
         }

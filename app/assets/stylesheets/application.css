@@ -14,12 +14,3 @@
  *= require_self
  */
 
- .logo {
-   width: 30px;
-   height: 30px;
- }
-
- .logo-text {
-   font-family: 'Noto Sans JP', sans-serif;
-   font-size: large;
- }

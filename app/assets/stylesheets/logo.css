@@ -1,0 +1,21 @@
+ .logo {
+   width: 30px;
+   height: 30px;
+   margin: 15px 15px;
+ }
+
+ .logo-text {
+   font-family: 'Noto Sans JP', sans-serif;
+   font-size: larger;
+   color: white;
+   margin-right: 15px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+ }
+
+ .logo-div {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* width: 90%; */
+ }

@@ -4,7 +4,7 @@ const FooterComponent = () => (
   <footer>
     <div>
       <div>
-        <img src="/assets/logos/logo-100px.png"/>
+        <img src={window.logoUrl}/>
       </div>
       <ul>
         <li>About Us</li>
