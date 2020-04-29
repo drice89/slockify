@@ -6,7 +6,7 @@ const DescriptionComponent = () => (
     <div>
       <div className="container-med">
         <div className="small-caps">LISTEN, TOGETHER</div>
-        <div><strong><h1>Slockify brings the music lovers together through live community chat and collaborative playlists</h1></strong></div>
+        <div><strong><h1>Slockify brings music lovers together through live community chat and collaborative playlists</h1></strong></div>
         <div>Whether you are a musician or a music lover, collaborative playlist channels and live chat allow you to share your music.</div>
         <div>
           <a href="https://github.com/drice89"><button className="cta-button">LEARN MORE</button></a>

@@ -1,0 +1,32 @@
+.footer-container {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    justify-content: space-around;
+    border-top: 1px solid lightgray ;
+    background: #ffffff;
+    padding-top: 15px;
+    font-weight: 700;
+    font-family: 'Prompt', sans-serif;
+    text-transform: uppercase;
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin-left: 25px;
+}
+
+.footer-list img {
+  height: 50px;
+}
+
+footer > div {
+  display:flex;
+  justify-content: flex-start;
+  width: 75%;
+  align-items: center;
+}
+

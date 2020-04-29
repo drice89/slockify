@@ -18,3 +18,8 @@
    align-items: center;
    /* width: 90%; */
  }
+
+  .logo-footer {
+   height: 50px;
+   margin: 25px 25px;
+ }

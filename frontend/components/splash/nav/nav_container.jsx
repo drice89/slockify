@@ -14,8 +14,8 @@ const Navbar = ({session}) => (
         <ul className="nav-ul">
           <li>Why Slockify?</li>
           <li><a href="https://www.linkedin.com/in/dillon-rice-48339a47/">Solutions</a></li>
-          <li>Slack</li>
-          <li>Spotify</li>
+          <li><a href="https://www.slack.com">Slack</a></li>
+          <li><a href="https://www.spotify.com">Spotify</a></li>
           <li>It's Free</li>
         </ul>
         {
