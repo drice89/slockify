@@ -1,3 +1,6 @@
+//path is being passed as a string from the sign up and login containers. change this so it just references ownProps
+//formType and also be a reference to ownProps
+
 import React from "react";
 import { Route } from "react-router-dom";
 import Logo from "../headers/logo";
@@ -18,6 +21,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.loginDemoUser = this.loginDemoUser.bind(this);
   }
 
   update(field) {
@@ -30,6 +34,15 @@ class SessionForm extends React.Component {
 
   showErrors() {
     return this.props.errors.map((error, idx) => <li key={`${idx}e`}>{error}</li>)
+  }
+
+  loginDemoUser() {
+    const demoUser = { email: "demouser@slockify.io", password: "password123!" };
+    this.props.formType === "Sign Up" ? this.props.demo(demoUser) : this.props.action(demoUser);
+  }
+
+  componentWillUnmount () {
+    this.props.clearErrors();
   }
 
 
@@ -47,7 +60,8 @@ class SessionForm extends React.Component {
             (props) => 
             <EmailForm {...props} 
               update={this.update} 
-              email={this.state.email} 
+              email={this.state.email}
+              loginDemoUser={this.loginDemoUser} 
             />
           }/>
 

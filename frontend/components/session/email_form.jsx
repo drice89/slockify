@@ -7,7 +7,7 @@ const EmailForm = (props) => (
       <h1>First, enter your email</h1>
     </div>
     <div>
-      <input type="text" 
+      <input type="email" 
         placeholder="email@yourawesomedomain.io" 
         size="40"
         onChange={props.update("email")} 
@@ -18,6 +18,9 @@ const EmailForm = (props) => (
       <Link to={`${props.match.path}/2`}>
         <button className="cta-button">Confirm</button>
       </Link>
+    </div>
+    <div className="extra-spacing">
+      <button className="cta-button cta-inverse" onClick={props.loginDemoUser}>Login as Demo User</button>
     </div>
   </div>
 )
