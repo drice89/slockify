@@ -15,3 +15,7 @@ conversation1 = Conversation.new(name: "test convo", description: "Something som
 conversation1.save
 Membership.create(member_id: user1.id, conversation_id: conversation1.id, is_admin?: false)
 Membership.create(member_id: user2.id, conversation_id: conversation1.id, is_admin?: false)
+Message.create(body: "Wow this is so cool", author_id: user1.id, recipient_id: conversation1.id)
+Message.create(body: "yea bro totally", author_id: user2.id, recipient_id: conversation1.id)
+Message.create(body: "Did you hear this track by DJ Fresh", author_id: user1.id, recipient_id: conversation1.id)
+Message.create(body: "Bruh its so lit", author_id: user2.id, recipient_id: conversation1.id)

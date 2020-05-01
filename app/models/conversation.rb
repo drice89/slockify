@@ -3,7 +3,8 @@ class Conversation < ApplicationRecord
   validates :name, uniqueness: true
   validates :convo_type, inclusion: { in: %w(direct group channel)}
 
-  has_many :messages
+  has_many :messages,
+    foreign_key: :recipient_id
 
   has_many :memberships
 

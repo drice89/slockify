@@ -9,7 +9,8 @@ class Api::ConversationsController < ApplicationController
   end
 
   def show 
-    @conversation = conversation.find_by(id: params[:id])
+    @conversation = Conversation.find_by(id: params[:id])
+    @messages = @conversation.messages
     if @conversation
       render :show
     else
