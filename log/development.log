@@ -6318,3 +6318,71 @@ Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrad
 ChatChannel is transmitting the subscription confirmation
 ChatChannel is streaming from chat:chat_channel
 ChatChannel#speak({"message"=>{"body"=>"hello"}})
+  [1m[36mConversation Load (2.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mConversation Load (0.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."member_id" WHERE "memberships"."conversation_id" = $1[0m  [["conversation_id", 3]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMembership Load (1.3ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" = $1[0m  [["conversation_id", 3]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMessage Load (3.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  [1m[36mConversation Load (0.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Create (2.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "WOA DUDE THIS ALBUM IS LIT!!!!"], ["author_id", 8], ["recipient_id", 3], ["created_at", "2020-05-01 04:59:09.982111"], ["updated_at", "2020-05-01 04:59:09.982111"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" ORDER BY "messages"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" ORDER BY "messages"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" ORDER BY "messages"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."member_id" INNER JOIN "conversations" ON "memberships"."conversation_id" = "conversations"."id" WHERE "conversations"."id" = $1[0m  [["id", 3]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mMembership Load (0.6ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."member_id" = $1[0m  [["member_id", 8]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mConversation Load (1.0ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 8]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser1@slockify.io"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Update (100.9ms)[0m  [1m[33mUPDATE "users" SET "title" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["title", "WOWOWOWOW"], ["updated_at", "2020-05-01 06:14:39.806512"], ["id", 8]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser1@slockify.io"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "title" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["title", "1"], ["updated_at", "2020-05-01 06:15:20.153432"], ["id", 8]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser1@slockify.io"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "title" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["title", "f"], ["updated_at", "2020-05-01 06:15:33.517739"], ["id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser1@slockify.io"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Update (3.6ms)[0m  [1m[33mUPDATE "users" SET "id" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["id", 7], ["updated_at", "2020-05-01 06:16:15.153746"], ["id", 8]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mConversation Load (14.8ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" WHERE ("conversations"."is_private?" = $1 OR "conversations"."is_private?" IS NULL)[0m  [["is_private?", false]]
+WebSocket error occurred: Broken pipe
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"ChatChannel\"}", "data"=>"{\"message\":{\"body\":\"hello\"},\"action\":\"speak\"}"}) [SystemExit - exit]: (byebug):1:in `exit' | (byebug):1:in `speak' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/byebug-11.1.3/lib/byebug/helpers/eval.rb:61:in `eval' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/byebug-11.1.3/lib/byebug/helpers/eval.rb:61:in `safe_eval' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/byebug-11.1.3/lib/byebug/helpers/eval.rb:55:in `warning_eval'
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-01 11:12:50 -0700
+Started GET "/cable" for ::1 at 2020-05-01 11:12:50 -0700
+Started GET "/cable" for ::1 at 2020-05-01 11:12:50 -0700
+Started GET "/cable" for ::1 at 2020-05-01 11:12:51 -0700
+ChatChannel stopped streaming from chat:chat_channel

@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :messages,
     foreign_key: :author_id
 
-  has_many :memberships
+  has_many :memberships,
+    foreign_key: :member_id
 
   has_many :conversations,
     through: :memberships,

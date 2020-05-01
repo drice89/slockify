@@ -5,7 +5,6 @@ import LoginFormContainer from "./session/login_form_container";
 import SplashMain from "./splash/splash_main";
 import Conversation from "./conversation/conversation";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import InitializeClient from "./client/InitializeClient";
 import Client from "./client/client";
 
 const App = () => (

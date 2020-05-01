@@ -7,7 +7,7 @@ class Conversation < ApplicationRecord
 
   has_many :memberships
 
-  has_many :users,
+  has_many :members,
     through: :memberships
 
   belongs_to :owner,

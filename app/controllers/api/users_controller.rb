@@ -1,4 +1,9 @@
 class Api::UsersController < ApplicationController
+  #users index view has not yet been created 
+  def index
+    render :index
+  end
+
    def create
     @user = User.new(create_user_params)
     if @user.save

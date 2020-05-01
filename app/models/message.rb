@@ -5,8 +5,12 @@ class Message < ApplicationRecord
     foreign_key: :author_id,
     class_name: "User"
 
-    belongs_to :recipient,
-      foreign_key: :recipient_id,
-      class_name: "Conversation"
+  belongs_to :recipient,
+    foreign_key: :recipient_id,
+    class_name: "Conversation"
+
+  has_many :recipients,
+    through: :recipient,
+    source: :members
 
 end

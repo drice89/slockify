@@ -22,9 +22,10 @@ class Client extends React.Component {
 
   }
 
+  //right side panel rendered in conversations container
   render () {
     return( 
-      <div c>
+      <div className="client-container">
         <SearchBarContianer />
         <ChannelsContainer />
         <ConversationContainer />
