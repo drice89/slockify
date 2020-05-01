@@ -1,16 +1,17 @@
-import react from "react";
+import React from "react";
+import MessageForm from "./message_form"
 
 class Conversation extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {messages: []};
-    this.bottom = react.CreateRef();
+    this.bottom = React.createRef();
   }
 
   componentDidMount(){
     App.cable.subscriptions.create(
-      { channel: "ChatChannel"},
+      { channel: "ChatChannel", id: 1},
       { 
         received: data => { 
           this.setState({
@@ -18,7 +19,7 @@ class Conversation extends React.Component {
           });
         },
         speak: function(data) {
-          return this.perform(speak, data);
+          return this.perform('speak', data);
         }
       }
     );
@@ -31,7 +32,7 @@ class Conversation extends React.Component {
   }
 
   render () {
-    const messageList = this.state.messeges.map(message => {
+    const messageList = this.state.messages.map(message => {
       return (
         <li key={`${message.id}m`}>
           {message}
@@ -44,9 +45,12 @@ class Conversation extends React.Component {
       <div className="conversation-container" >
         <div>Conversation Title</div>
         <div className="message-list" >{messageList}</div>
+        <MessageForm />
       </div>
-    )
+    );
   }
 
 }
+
+export default Conversation
 

@@ -1,15 +1,17 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    debugger #what is coming from params?
-    #@converation = Conversation.find_by(id: param)
+    #debugger #what is coming from params?
+    #@conversation = Conversation.find_by(params["conversation_id"])
+    #stream_from @conversation
     stream_for 'chat_channel' #=> should be the conversation id
     #specific to messages within a channel
   end
 
   def speak(data)
-    message = Message.create(body: data['message'])
-    socket = { message : message.body }
+    debugger
+    message = Message.create(body: data['message'], author_id: data["authorId"])
+    socket = { message: message.body }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 

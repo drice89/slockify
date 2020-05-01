@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_215220) do
+ActiveRecord::Schema.define(version: 2020_04_30_190715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "owner_id", null: false
+    t.boolean "is_private?"
+    t.string "playlist_url"
+    t.boolean "restricted_playlist?"
+    t.string "convo_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_conversations_on_name", unique: true
+    t.index ["owner_id"], name: "index_conversations_on_owner_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "conversation_id", null: false
+    t.boolean "is_admin?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_memberships_on_conversation_id"
+    t.index ["member_id"], name: "index_memberships_on_member_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "body", null: false

@@ -5257,3 +5257,1064 @@ Migrating to CreateMessages (20200429215220)
   ↳ bin/rails:9
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateConversations (20200430045203)
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "conversations" ("id" bigserial primary key, "name" character varying NOT NULL, "description" text, "owner_id" integer NOT NULL, "is_private?" boolean NOT NULL, "playlist_url" character varying, "restricted_playlist?" boolean, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200430045203_create_conversations.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_conversations_on_owner_id" ON "conversations"  ("owner_id")[0m
+  ↳ db/migrate/20200430045203_create_conversations.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_conversations_on_name" ON "conversations"  ("name")[0m
+  ↳ db/migrate/20200430045203_create_conversations.rb:14
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200430045203"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateMemberships (20200430052257)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "memberships" ("id" bigserial primary key, "member_id" integer NOT NULL, "conversation_id" integer NOT NULL, "is_admin?" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200430052257_create_memberships.rb:3
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_memberships_on_member_id" ON "memberships"  ("member_id")[0m
+  ↳ db/migrate/20200430052257_create_memberships.rb:9
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_memberships_on_conversation_id" ON "memberships"  ("conversation_id")[0m
+  ↳ db/migrate/20200430052257_create_memberships.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200430052257"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (3.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeConversationTypeColumn (20200430185431)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.9ms)[0m  [1m[35mALTER TABLE "conversation" RENAME COLUMN "type" TO "convo_type"[0m
+  ↳ db/migrate/20200430185431_change_conversation_type_column.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeConversationTypeColumn (20200430185431)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "conversations" RENAME COLUMN "type" TO "convo_type"[0m
+  ↳ db/migrate/20200430185431_change_conversation_type_column.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200430185431"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mConversation Create (1.9ms)[0m  [1m[32mINSERT INTO "conversations" ("name", "description", "owner_id", "is_private?", "convo_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "test convo"], ["description", "Something something"], ["owner_id", 5], ["is_private?", true], ["convo_type", "direct"], ["created_at", "2020-04-30 19:04:57.297928"], ["updated_at", "2020-04-30 19:04:57.297928"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeColumnNullCoversations (20200430190715)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "conversations" ALTER COLUMN "is_private?" DROP NOT NULL[0m
+  ↳ db/migrate/20200430190715_change_column_null_coversations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200430190715"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1589938997483975880)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo2"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mConversation Create (0.7ms)[0m  [1m[32mINSERT INTO "conversations" ("name", "description", "owner_id", "is_private?", "convo_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "test convo2"], ["description", "Something something"], ["owner_id", 5], ["is_private?", false], ["convo_type", "direct"], ["created_at", "2020-04-30 19:09:04.593781"], ["updated_at", "2020-04-30 19:09:04.593781"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations"[0m
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (1.0ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMembership Create (1.9ms)[0m  [1m[32mINSERT INTO "memberships" ("member_id", "conversation_id", "is_admin?", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["member_id", 5], ["conversation_id", 1], ["is_admin?", false], ["created_at", "2020-04-30 20:48:53.132961"], ["updated_at", "2020-04-30 20:48:53.132961"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "R-_TQ7sjw-PNxPteZIIogw"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seededuser2@slockify.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "R-_TQ7sjw-PNxPteZIIogw"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "session_token", "email", "full_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["password_digest", "$2a$12$IjidccGPKqklShcxYZCnyO.oSZAr2WhRhU1hy53WiQ/QWQmbGKLAe"], ["session_token", "R-_TQ7sjw-PNxPteZIIogw"], ["email", "seededuser2@slockify.io"], ["full_name", "Seed User 2"], ["created_at", "2020-04-30 20:50:56.267812"], ["updated_at", "2020-04-30 20:50:56.267812"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seededuser1@slockify.io"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("password_digest", "session_token", "email", "full_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["password_digest", "$2a$12$FA/q4zooLe1DNJlCY1ZsEuDwtu02BoLmpiCWPR.4rveY6ChflHQmW"], ["session_token", "FDpnaMmzPlk3UlVGW9U4yw"], ["email", "seededuser1@slockify.io"], ["full_name", "Seed User 1"], ["created_at", "2020-04-30 20:51:03.180952"], ["updated_at", "2020-04-30 20:51:03.180952"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mConversation Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "conversations" WHERE "conversations"."name" = $1 LIMIT $2[0m  [["name", "test convo 2"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mConversation Create (0.4ms)[0m  [1m[32mINSERT INTO "conversations" ("name", "description", "owner_id", "is_private?", "convo_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "test convo 2"], ["description", "Something something"], ["owner_id", 7], ["is_private?", false], ["convo_type", "direct"], ["created_at", "2020-04-30 20:51:40.647344"], ["updated_at", "2020-04-30 20:51:40.647344"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mConversation Load (0.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMembership Create (0.3ms)[0m  [1m[32mINSERT INTO "memberships" ("member_id", "conversation_id", "is_admin?", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["member_id", 7], ["conversation_id", 3], ["is_admin?", false], ["created_at", "2020-04-30 20:52:12.180187"], ["updated_at", "2020-04-30 20:52:12.180187"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMembership Create (0.3ms)[0m  [1m[32mINSERT INTO "memberships" ("member_id", "conversation_id", "is_admin?", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["member_id", 8], ["conversation_id", 3], ["is_admin?", false], ["created_at", "2020-04-30 20:52:19.352191"], ["updated_at", "2020-04-30 20:52:19.352191"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mConversation Load (0.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMembership Load (0.3ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" = $1[0m  [["conversation_id", 3]]
+  [1m[36mConversation Load (0.4ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" ORDER BY "conversations"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "memberships" ON "users"."id" = "memberships"."member_id" WHERE "memberships"."conversation_id" = $1[0m  [["conversation_id", 3]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMembership Load (0.3ms)[0m  [1m[34mSELECT  "memberships".* FROM "memberships" ORDER BY "memberships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMembership Load (0.6ms)[0m  [1m[34mSELECT  "memberships".* FROM "memberships" ORDER BY "memberships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMembership Load (0.4ms)[0m  [1m[34mSELECT  "memberships".* FROM "memberships" ORDER BY "memberships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2020-04-30 14:16:20 -0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 854ms (Views: 853.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mMembership Load (0.5ms)[0m  [1m[34mSELECT  "memberships".* FROM "memberships" ORDER BY "memberships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mMembership Load (0.6ms)[0m  [1m[34mSELECT  "memberships".* FROM "memberships" ORDER BY "memberships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mConversation Load (3.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/chat" for ::1 at 2020-04-30 15:12:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/chat"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/chat" for ::1 at 2020-04-30 15:13:55 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/chat"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-04-30 15:14:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2578ms (Views: 2577.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:15:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 433ms (Views: 433.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:15:56 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 431ms (Views: 430.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:17:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 422ms (Views: 421.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for ::1 at 2020-04-30 15:17:03 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 15:17:03 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"ChatChannel\"}"}) [SyntaxError - /Users/galactus/Documents/aA_git/fullstack-project/fullstack/slockify/app/channels/chat_channel.rb:13: syntax error, unexpected ':', expecting =>
+    socket = { message : message.body }
+                       ^
+/Users/galactus/Documents/aA_git/fullstack-project/fullstack/slockify/app/channels/chat_channel.rb:13: syntax error, unexpected '}', expecting keyword_end
+...et = { message : message.body }
+...                              ^]: /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.4.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:55:in `load' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.4.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:55:in `load' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:476:in `block in load_file' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:661:in `new_constants_in' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:475:in `load_file'
+Started GET "/" for ::1 at 2020-04-30 15:17:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 431ms (Views: 431.0ms | ActiveRecord: 0.0ms)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 15:17:41 -0700
+Started GET "/cable" for ::1 at 2020-04-30 15:17:41 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 15:17:41 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Could not execute command from ({"command"=>"subscribe", "identifier"=>"{\"channel\":\"ChatChannel\"}"}) [SyntaxError - /Users/galactus/Documents/aA_git/fullstack-project/fullstack/slockify/app/channels/chat_channel.rb:13: syntax error, unexpected ':', expecting =>
+    socket = { message : message.body }
+                       ^
+/Users/galactus/Documents/aA_git/fullstack-project/fullstack/slockify/app/channels/chat_channel.rb:13: syntax error, unexpected '}', expecting keyword_end
+...et = { message : message.body }
+...                              ^]: /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.4.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:55:in `load' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/bootsnap-1.4.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:55:in `load' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:476:in `block in load_file' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:661:in `new_constants_in' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activesupport-5.2.4.2/lib/active_support/dependencies.rb:475:in `load_file'
+Could not execute command from ({"command"=>"message", "identifier"=>"{\"channel\":\"ChatChannel\"}", "data"=>"{\"message\":{\"body\":\"something\"},\"action\":\"speak\"}"}) [RuntimeError - Unable to find subscription with identifier: {"channel":"ChatChannel"}]: /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.2/lib/action_cable/connection/subscriptions.rb:78:in `find' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.2/lib/action_cable/connection/subscriptions.rb:55:in `perform_action' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.2/lib/action_cable/connection/subscriptions.rb:19:in `execute_command' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.2/lib/action_cable/connection/base.rb:87:in `dispatch_websocket_message' | /Users/galactus/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.2/lib/action_cable/server/worker.rb:60:in `block in invoke'
+Started GET "/" for ::1 at 2020-04-30 15:18:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 57ms (Views: 56.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for ::1 at 2020-04-30 15:18:47 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 15:18:47 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Ignoring message processed after the WebSocket was closed: "{\"command\":\"message\",\"identifier\":\"{\\\"channel\\\":\\\"ChatChannel\\\"}\",\"data\":\"{\\\"message\\\":{\\\"body\\\":\\\"twest\\\\n\\\"},\\\"action\\\":\\\"speak\\\"}\"}")
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:13 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:13 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:13 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel stopped streaming from chat:chat_channel
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:14 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-04-30 16:09:23 -0700
+ChatChannel is transmitting the subscription confirmation
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+ChatChannel is streaming from chat:chat_channel
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel stopped streaming from chat:chat_channel
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:23 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:23 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is streaming from chat:chat_channel
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:34 -0700
+ChatChannel stopped streaming from chat:chat_channel
+ChatChannel is transmitting the subscription confirmation
+Started GET "/cable" for ::1 at 2020-04-30 16:09:35 -0700
+Started GET "/cable" for ::1 at 2020-04-30 16:09:36 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:36 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+WebSocket error occurred: Broken pipe
+Finished "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:36 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-04-30 16:09:36 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+ChatChannel#speak({"message"=>{"body"=>"hello"}})
