@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  sessionId: state.session.id
+  sessionId: state.session.id,
+  subs: state.users[state.session.id].conversation_ids,
+  conversations: state.conversations
 });
 
 //needs sessionId from state
@@ -20,6 +22,22 @@ class Client extends React.Component {
       this.props.history.replace(newUrl);
     }
 
+    this.props.subs.forEach((id) => {
+      App.cable.subscriptions.create(
+        { channel: `${id}` },
+        {
+          received: data => {
+            this.setState({
+              messages: this.state.messages.concat(data.message)
+            });
+          },
+          speak: function (data) {
+            return this.perform("speak", data);
+          }
+        }
+      );
+    });
+
   }
 
   //right side panel rendered in conversations container
@@ -27,7 +45,7 @@ class Client extends React.Component {
     return( 
       <div className="client-container">
         <SearchBarContianer />
-        <ChannelsContainer />
+        <ChannelsContainer conversations={this.props.conversations} currentUserId={this.props.sessionId}/>
         <ConversationContainer />
       </div>
     )

@@ -6,7 +6,6 @@ class Api::ConversationsController < ApplicationController
 
   def show 
     @conversation = Conversation.find_by(id: params[:id])
-    @messages = @conversation.messages
     if @conversation
       render :show
     else
