@@ -1,10 +1,6 @@
 class Api::ConversationsController < ApplicationController
   def index
-    if (params[user_id])
-      @conversations = User.find_by(id: params[user_id]).conversations
-    else
-      @conversations = Conversation.where({is_private?: [false, nil]})
-    end
+    @conversations = Conversation.where({is_private?: [false, nil]})
     render :index
   end
 

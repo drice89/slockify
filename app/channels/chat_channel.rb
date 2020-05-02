@@ -9,8 +9,8 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    debugger
-    message = Message.create(body: data['message'], author_id: data["authorId"])
+    data = data.deep_transform_keys! { |key| key.underscore }
+    message = Message.create(data["message"])
     socket = { message: message.body }
     ChatChannel.broadcast_to('chat_channel', socket)
   end

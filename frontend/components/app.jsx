@@ -10,7 +10,8 @@ import Client from "./client/client";
 const App = () => (
   <div>
     <Switch>
-      <ProtectedRoute path ="/client" component={Client} />
+      <Route path ="/client" component={Client} />
+      
     </Switch>
     <Route exact path="/" component={SplashMain} />
     <Route path="/signup" component={SignupFormContainer} />

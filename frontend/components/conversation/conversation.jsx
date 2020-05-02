@@ -1,56 +1,53 @@
 import React from "react";
-import MessageForm from "./message_form"
+import MessageForm from "./message_form";
+import { Link } from "react-router-dom";
 
-class Conversation extends React.Component {
+class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {messages: []};
+    this.state = { messages: [] };
     this.bottom = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     App.cable.subscriptions.create(
-      { channel: "ChatChannel", id: 1},
-      { 
-        received: data => { 
+      { channel: "ChatChannel" },
+      {
+        received: data => {
           this.setState({
-            messages: this.messages.concat(data.message)
+            messages: this.state.messages.concat(data.message)
           });
         },
-        speak: function(data) {
-          return this.perform('speak', data);
+        speak: function (data) {
+          return this.perform("speak", data);
         }
       }
     );
   }
 
-  componentDidUpdate () {
-    debugger
-    //what is .current?
-    this.bottom.current.scrollIntoView()
+  componentDidUpdate() {
+    this.bottom.current.scrollIntoView();
   }
 
-  render () {
+  render() {
     const messageList = this.state.messages.map(message => {
       return (
-        <li key={`${message.id}m`}>
+        <li key={message.id}>
           {message}
           <div ref={this.bottom} />
         </li>
-      )
+      );
     });
-
     return (
-      <div className="conversation-container" >
-        <div>Conversation Title</div>
-        <div className="message-list" >{messageList}</div>
+      <div className="chatroom-container">
+        <div>ChatRoom</div>
+        <Link to="/">home</Link>
+        <Link to="/chat/1">HIP hop</Link>
+        <div className="message-list">{messageList}</div>
         <MessageForm />
       </div>
     );
   }
-
 }
 
-export default Conversation
-
+export default ChatRoom;

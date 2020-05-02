@@ -3,7 +3,9 @@ import React from "react";
 class MessageForm extends React.Component {
   constructor(props) {
     super(props);
-    //DO NOT LEAVE HARD CODED
+    //DO NOT LEAVE HARD CODED!!!!!!!!!!!
+    //!!!!!!!
+    //IM MR MEESEEKS LOOK AT ME 
     this.state = {
       body: "",
       authorId: 1,
