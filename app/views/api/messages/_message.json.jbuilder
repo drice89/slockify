@@ -1,0 +1,1 @@
+json.extract! message, :body, :author_id, :recipient_id, :updated_at, :created_at

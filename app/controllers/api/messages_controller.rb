@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Messages.find_by(recipient_id: params[:recipient_id])
+    @messages = Conversation.find_by(recipient_id: params[:recipient_id]).messages
     render :show
   end
 

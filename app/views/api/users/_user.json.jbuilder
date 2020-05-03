@@ -19,17 +19,16 @@ conversations.each do |conversation|
   end
 
 
-  json.set! "conversation" do
+  json.set! "conversations" do
     json.set! conversation.id do
-      json.extract! conversation, 
-        :id, :name, :description, :owner_id, :is_private?, :playlist_url, :restricted_playlist?, :convo_type, :message_ids
+      json.partial! "api/conversations/conversation", conversation: conversation
     end
   end
 
   json.set! "messages" do
     conversation.messages.each do |message|
       json.set! message.id do
-        json.extract! message, :body, :author_id, :recipient_id
+        json.partial! '/api/messages/message', message: message
       end
     end
   end

@@ -1,5 +1,5 @@
 conversations.each do |conversation|
   josn.set! conversation.id do
-    json.extract! conversation, :id, :name, :is_private, :convo_type
+    json.partial! "api/conversations/conversation", conversation: conversation
   end
 end

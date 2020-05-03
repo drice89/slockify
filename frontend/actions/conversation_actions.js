@@ -5,31 +5,33 @@ export const RECEIVE_CONVERSATION = "RECEIVE_CONVERSATION";
 export const REMOVE_CONVERSATION = "REMOVE_CONVERSATION";
 export const RECEIVE_CONVERSATION_ERRORS = "RECEIVE_CONVERSATION_ERRORS";
 
-const receiveConversation = (conversation) => ({
+export const receiveConversation = (conversation) => ({
   type: RECEIVE_CONVERSATION,
   conversation
 })
+
 
 const receiveConversations = (conversations) => ({
   type: RECEIVE_CONVERSATIONS,
   conversations
 });
 
-const removeConversation = (conversationId) => ({
+export const removeConversation = (conversationId) => ({
   type: REMOVE_CONVERSATION,
   conversationId
 });
 
-const receiveConversationErrors = (errors) => ({
+export const receiveConversationErrors = (errors) => ({
   type: RECEIVE_CONVERSATION_ERRORS,
   errors
 });
 
-export const getAllConversationsForUser = (userId) => dispatch => (
-  ConversationAPIUtil.getUserConversations(userId)
-    .then(conversations => dispatch(receiveConversations(conversations)))
-    .fail(errors => dispatch(receiveConversationErrors(errors)))
-);
+//This action is now performed by the login function
+// export const getAllConversationsForUser = (userId) => dispatch => (
+//   ConversationAPIUtil.getUserConversations(userId)
+//     .then(conversations => dispatch(receiveConversations(conversations)))
+//     .fail(errors => dispatch(receiveConversationErrors(errors)))
+// );
 
 export const getAllConversations = () => dispatch => (
   ConversationAPIUtil.getAllConversations()
