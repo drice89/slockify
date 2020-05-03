@@ -11196,3 +11196,115 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 246ms (Views: 18.3ms | ActiveRecord: 5.9ms)
 
 
+Started POST "/api/session" for ::1 at 2020-05-02 16:48:18 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"seededuser2@slockify.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seededuser2@slockify.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "q6FcQcrmpH2aPNOwLJbA-Q"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser2@slockify.io"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "q6FcQcrmpH2aPNOwLJbA-Q"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "q6FcQcrmpH2aPNOwLJbA-Q"], ["updated_at", "2020-05-02 23:48:18.455992"], ["id", 3]]
+  ↳ app/models/user.rb:37
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+  Rendering api/users/show.json.jbuilder
+  [1m[36mConversation Load (1.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:5
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2)[0m  [["recipient_id", 1], ["recipient_id", 6]]
+  ↳ app/views/api/users/show.json.jbuilder:5
+  [1m[36mMembership Load (0.3ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2)[0m  [["conversation_id", 1], ["conversation_id", 6]]
+  ↳ app/views/api/users/show.json.jbuilder:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 2], ["id", 3], ["id", 1], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["id", 8], ["id", 9], ["id", 10]]
+  ↳ app/views/api/users/show.json.jbuilder:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (14.0ms)
+Completed 200 OK in 263ms (Views: 18.4ms | ActiveRecord: 7.5ms)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-02 18:22:18 -0700
+ChatChannel stopped streaming from chat:chat_channel
+Finished "/cable/" [WebSocket] for 127.0.0.1 at 2020-05-02 18:22:18 -0700
+ChatChannel stopped streaming from chat:chat_channel
+Started GET "/cable" for ::1 at 2020-05-02 18:22:26 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-02 18:22:26 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+Started GET "/cable" for ::1 at 2020-05-02 18:22:26 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-02 18:22:26 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+Started POST "/api/session" for ::1 at 2020-05-02 20:16:42 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"seededuser2@slockify.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seededuser2@slockify.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "P1E0OrNw3fn_8Gn5p1Q1dQ"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser2@slockify.io"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "P1E0OrNw3fn_8Gn5p1Q1dQ"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "P1E0OrNw3fn_8Gn5p1Q1dQ"], ["updated_at", "2020-05-03 03:16:42.739811"], ["id", 3]]
+  ↳ app/models/user.rb:37
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+  Rendering api/users/show.json.jbuilder
+  [1m[36mConversation Load (1.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[36mMessage Load (1.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2)[0m  [["recipient_id", 1], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[36mMembership Load (0.3ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2)[0m  [["conversation_id", 1], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 2], ["id", 3], ["id", 1], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["id", 8], ["id", 9], ["id", 10]]
+  ↳ app/views/api/users/_user.json.jbuilder:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/_user.json.jbuilder:8
+  Rendered api/users/_user.json.jbuilder (13.2ms)
+  Rendered api/users/show.json.jbuilder (15.6ms)
+Completed 200 OK in 244ms (Views: 20.6ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-02 20:40:27 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"seededuser2@slockify.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "seededuser2@slockify.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uAa_VRbq80foQV8oTQQ6QA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "seededuser2@slockify.io"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "uAa_VRbq80foQV8oTQQ6QA"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "uAa_VRbq80foQV8oTQQ6QA"], ["updated_at", "2020-05-03 03:40:27.520938"], ["id", 3]]
+  ↳ app/models/user.rb:37
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+  Rendering api/users/show.json.jbuilder
+  [1m[36mConversation Load (1.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/_user.json.jbuilder:6
+  [1m[36mMessage Load (0.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2)[0m  [["recipient_id", 1], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:6
+  [1m[36mMembership Load (0.4ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2)[0m  [["conversation_id", 1], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 2], ["id", 3], ["id", 1], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["id", 8], ["id", 9], ["id", 10]]
+  ↳ app/views/api/users/_user.json.jbuilder:6
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 3]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  Rendered api/users/_user.json.jbuilder (13.2ms)
+  Rendered api/users/show.json.jbuilder (15.3ms)
+Completed 200 OK in 248ms (Views: 20.6ms | ActiveRecord: 8.3ms)
+
+
