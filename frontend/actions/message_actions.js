@@ -1,7 +1,6 @@
 
 
 import * as MessageAPIUtil from "../util/message_api_util";
-import { RECEIVE_CONVERSATION_ERRORS } from "./conversation_actions";
 
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const REMOVE_MESSAGE = "REMOVE_MESSAGE";

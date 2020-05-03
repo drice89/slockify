@@ -44,9 +44,22 @@ class Client extends React.Component {
   render () {
     return( 
       <div className="client-container">
-        <SearchBarContianer />
+        <div className="search-bar">
+            Search Bar
+        </div>
+        <div className="channel-container">
+          <ul>
+            <li>Convo1</li>
+            <li>Convo2</li>
+            <li>convo 3</li>
+          </ul>
+        </div>
+        <div className="message-container">
+            messages go here
+        </div>
+        {/* <SearchBarContianer />
         <ChannelsContainer conversations={this.props.conversations} currentUserId={this.props.sessionId}/>
-        <ConversationContainer />
+        <ConversationContainer /> */}
       </div>
     )
   }

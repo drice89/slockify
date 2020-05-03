@@ -14,7 +14,7 @@ export const receiveConversation = (conversation) => ({
 const receiveConversations = (conversations) => ({
   type: RECEIVE_CONVERSATIONS,
   conversations
-});
+})
 
 export const removeConversation = (conversationId) => ({
   type: REMOVE_CONVERSATION,

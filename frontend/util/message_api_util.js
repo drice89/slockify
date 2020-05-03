@@ -1,13 +1,13 @@
-export const getMessage = (messageId) = (
+export const getMessage = (messageId) => (
   $.ajax({
     method: "GET",
-    url: `api/messeges/${messegeId}`
+    url: `api/messeges/${messageId}`
   })
 );
 
-export const deleteMessage = (messageId) = (
+export const deleteMessage = (messageId) => (
   $.ajax({
     method: "DELETE",
-    url: `api/messeges/${messegeId}`
+    url: `api/messeges/${messageId}`
   })
 );
