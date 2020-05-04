@@ -13682,3 +13682,156 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 521ms (Views: 515.9ms | ActiveRecord: 4.5ms)
 
 
+Started GET "/" for ::1 at 2020-05-04 00:40:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "heAroO320rtLYtaNro9iPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (1.9ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (0.7ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:12
+  Rendered api/users/_user.json.jbuilder (20.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 485ms (Views: 478.6ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/cable" for ::1 at 2020-05-04 00:40:24 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-04 00:40:24 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+ChatChannel#speak({"message"=>{"body"=>"hellow", "authorId"=>1, "recipientId"=>1}})
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mConversation Load (1.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mMessage Create (2.1ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "hellow"], ["author_id", 1], ["recipient_id", 1], ["created_at", "2020-05-04 07:40:39.566894"], ["updated_at", "2020-05-04 07:40:39.566894"]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:13
+[ActionCable] Broadcasting to chat:chat_channel: {:message=>"hellow"}
+ChatChannel transmitting {"message"=>"hellow"} (via streamed from chat:chat_channel)
+ChatChannel#speak({"message"=>{"body"=>"sdasd", "authorId"=>1, "recipientId"=>1}})
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mConversation Load (0.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "sdasd"], ["author_id", 1], ["recipient_id", 1], ["created_at", "2020-05-04 07:40:41.664593"], ["updated_at", "2020-05-04 07:40:41.664593"]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:13
+[ActionCable] Broadcasting to chat:chat_channel: {:message=>"sdasd"}
+ChatChannel transmitting {"message"=>"sdasd"} (via streamed from chat:chat_channel)
+ChatChannel#speak({"message"=>{"body"=>"asdasd", "authorId"=>1, "recipientId"=>1}})
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mConversation Load (0.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "asdasd"], ["author_id", 1], ["recipient_id", 1], ["created_at", "2020-05-04 07:40:43.347677"], ["updated_at", "2020-05-04 07:40:43.347677"]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:13
+[ActionCable] Broadcasting to chat:chat_channel: {:message=>"asdasd"}
+ChatChannel transmitting {"message"=>"asdasd"} (via streamed from chat:chat_channel)
+Started GET "/" for ::1 at 2020-05-04 00:43:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 84ms (Views: 83.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-04 00:43:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 79ms (Views: 78.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-04 00:43:59 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 82ms (Views: 82.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-04 00:44:05 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@slockify.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@slockify.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S56rOCCNJyMhbAPI9CBAcA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@slockify.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "S56rOCCNJyMhbAPI9CBAcA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "S56rOCCNJyMhbAPI9CBAcA"], ["updated_at", "2020-05-04 07:44:05.320739"], ["id", 1]]
+  ↳ app/models/user.rb:37
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+  Rendering api/users/show.json.jbuilder
+  [1m[36mConversation Load (1.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (0.5ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:12
+  Rendered api/users/_user.json.jbuilder (18.9ms)
+  Rendered api/users/show.json.jbuilder (22.8ms)
+Completed 200 OK in 345ms (Views: 29.4ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/cable" for ::1 at 2020-05-04 00:44:14 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-04 00:44:14 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:chat_channel
+ChatChannel#speak({"message"=>{"body"=>"asdkjd", "authorId"=>1, "recipientId"=>1}})
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mConversation Load (0.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mMessage Create (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "asdkjd"], ["author_id", 1], ["recipient_id", 1], ["created_at", "2020-05-04 07:44:19.260072"], ["updated_at", "2020-05-04 07:44:19.260072"]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:13
+[ActionCable] Broadcasting to chat:chat_channel: {:message=>"asdkjd"}
+ChatChannel transmitting {"message"=>"asdkjd"} (via streamed from chat:chat_channel)
+ChatChannel transmitting {"message"=>"asdkjd"} (via streamed from chat:chat_channel)
+ChatChannel#speak({"message"=>{"body"=>"sdsd", "authorId"=>1, "recipientId"=>1}})
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mConversation Load (0.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "sdsd"], ["author_id", 1], ["recipient_id", 1], ["created_at", "2020-05-04 07:44:25.717344"], ["updated_at", "2020-05-04 07:44:25.717344"]]
+  ↳ app/channels/chat_channel.rb:13
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:13
+[ActionCable] Broadcasting to chat:chat_channel: {:message=>"sdsd"}
+ChatChannel transmitting {"message"=>"sdsd"} (via streamed from chat:chat_channel)
+ChatChannel transmitting {"message"=>"sdsd"} (via streamed from chat:chat_channel)
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-04 00:44:40 -0700
+ChatChannel stopped streaming from chat:chat_channel

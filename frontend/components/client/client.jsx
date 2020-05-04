@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
+import Conversation from "./conversation/conversation";
 
 const mapStateToProps = (state) => {
   return {
@@ -11,8 +12,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-//needs sessionId from state
-//needs getUserChannels from dispatch
 
 class Client extends React.Component {
 
@@ -55,11 +54,8 @@ class Client extends React.Component {
           <ChannelsContainer conversations={this.props.conversations} currentUserId={this.props.sessionId} />
         </div>
         <div className="message-container">
-          <ConversationContainer />
+          <Conversation />
         </div>
-        {/* 
-        <ChannelsContainer conversations={this.props.conversations} currentUserId={this.props.sessionId}/>
-         */}
       </div>
     )
   }
