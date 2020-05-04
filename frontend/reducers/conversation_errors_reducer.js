@@ -1,6 +1,6 @@
 import { RECEIVE_CONVERSATION_ERRORS, RECEIVE_CONVERSATION, RECEIVE_CONVERSATIONS, REMOVE_CONVERSATION } from "../actions/conversation_actions";
 
-const conversationErrorsReducer = (state = {}, action) => {
+const conversationErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CONVERSATION_ERRORS:

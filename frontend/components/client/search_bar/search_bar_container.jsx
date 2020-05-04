@@ -1,8 +1,8 @@
 import React from "react";
 
 const SearchBar = (props) => (
-  <div className="search-bar">
-    <input placeholder="Search"/>
+  <div className="inner-search">
+    <input className="search-bar" placeholder="Search"/>
   </div>
 ) 
 
