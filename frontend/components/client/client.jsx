@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
-import Conversation from "./conversation/conversation";
+import ConversationContainer from "./conversation/conversations_container";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -45,6 +46,7 @@ class Client extends React.Component {
 
   //right side panel rendered in conversations container
   render () {
+    const ConversationsContainer = withRouter(ConversationContainer)
     return( 
       <div className="client-container">
         <div className="search-bar-container">
@@ -54,7 +56,9 @@ class Client extends React.Component {
           <ChannelsContainer conversations={this.props.conversations} currentUserId={this.props.sessionId} />
         </div>
         <div className="message-container">
-          <Conversation />
+          {
+            <ConversationsContainer />
+          }
         </div>
       </div>
     )

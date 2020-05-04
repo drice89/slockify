@@ -2,10 +2,13 @@ import React from "react";
 import MessageForm from "./message_form";
 import { Link } from "react-router-dom";
 
-class ChatRoom extends React.Component {
+class Conversation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
+    this.state = {
+      messages: this.props.messages
+    }
+    debugger
     this.bottom = React.createRef();
   }
 
@@ -33,7 +36,7 @@ class ChatRoom extends React.Component {
     const messageList = this.state.messages.map(message => {
       return (
         <li key={message.id}>
-          {message}
+          {message.body}
           <div ref={this.bottom} />
         </li>
       );
@@ -50,4 +53,4 @@ class ChatRoom extends React.Component {
   }
 }
 
-export default ChatRoom;
+export default Conversation;

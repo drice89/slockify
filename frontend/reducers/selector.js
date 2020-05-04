@@ -1,12 +1,12 @@
 
 
-export const messageSelector = (messageSliceOfState, conversationId) => {
-  let res = []
-  for (let k in messageSliceOfState) {
-    if (messageSliceOfState[k].recipientId === conversationId )
-      res.push(messageSliceOfState[k]);
-  }
-  return res;
+export const messageSelector = (messages, conversation) => {
+  debugger
+  return conversation.messageIds.map(messageId => messages[messageId] );
+}; 
+
+export const userSelector = (users, conversation) => {
+  return conversation.memberIds.map(memberId => users[memberId]);
 }; 
 
 export const channelConversationsSort = (conversations) => {
