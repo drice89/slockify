@@ -81,7 +81,7 @@ class Client extends React.Component {
         <div className="channel-container">
           <ChannelsContainer conversations={this.props.conversations} />
         </div>
-        <div className="message-container">
+        <div className="conversation-container">
           {
             <ConversationContainer />
           }

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import MessageForm from "./message_form";
 import ConversationHeader from "./conversation_header";
 import MessageContainer from "./message_container";
+import { receiveMessage, removeMessage } from "../../../actions/message_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,11 +13,15 @@ const mapStateToProps = (state, ownProps) => {
   return {
     messages: messageSelector(state.entities.messages, state.entities.conversations[conversationId]),
     users: state.entities.users,
-    currentUser: state.entities.users[state.session.id],
-    conversationId: conversationId,
+    currentUserId: state.session.id,
     conversation: state.entities.conversations[conversationId]
     };
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  editMessage: message => dispatch(receiveMessage(message)),
+  deleteMessage: messageId => dispatch(removeMessage(messageId))
+});
 
 
 class Conversation extends React.Component {
@@ -34,7 +39,14 @@ class Conversation extends React.Component {
     const messageList = this.props.messages.map(message => {
       return (
         <li key={`${message.id}message`}>
-          <MessageContainer message={message} conversationUsers={this.props.users}/>
+          <MessageContainer 
+              message={message} 
+              conversationUsers={this.props.users} 
+              currentUserId={this.props.currentUserId}
+              editMessage={this.props.editMessage}
+              deleteMessage={this.props.deleteMessage}
+              conversationId={this.props.conversation.id}
+          />
           <div ref={this.bottom} />
         </li>
       );
@@ -48,11 +60,11 @@ class Conversation extends React.Component {
           {messageList}
         </div>
         <div className="message-list">{messageList}</div>
-        <MessageForm currentUserId={this.props.currentUser.id} conversationId={this.props.conversationId} />
+        <MessageForm currentUserId={this.props.currentUserId} conversationId={this.props.conversation.id} />
       </div>
     );
   }
 }
 
 
-export default connect(mapStateToProps)(Conversation);
+export default connect(mapStateToProps, mapDispatchToProps)(Conversation);
