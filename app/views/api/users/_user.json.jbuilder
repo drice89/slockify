@@ -1,12 +1,13 @@
 ##curently the this is sending back the id and the preloaded state session is getting picked up there. You can refactor to the store
 #and the login (entry.js) to ensure that the session id is DRY - will optimize late
 
-user = user
+
 conversations = user.conversations.includes(:messages, :members)
 
 json.extract! user, :id 
 
 conversations.each do |conversation|
+  
   json.set! "users" do
     json.set! user.id do
       json.extract! user, :id, :email, :full_name, :display_name, :status, :avatar_url, :title, :description, :conversation_ids
@@ -21,16 +22,14 @@ conversations.each do |conversation|
 
   json.set! "conversations" do
     json.set! conversation.id do
-      #json.partial! "api/conversations/conversation", conversation: conversation
-      json.extract! conversation, :id, :name, :description, :owner_id, :is_private?, :playlist_url, :restricted_playlist?, :convo_type, :message_ids, :member_ids
+      json.partial! "api/conversations/conversation.json.jbuilder", conversation: conversation
     end
   end
 
   json.set! "messages" do
     conversation.messages.each do |message|
       json.set! message.id do
-        #json.partial! '/api/messages/message', message: message
-        json.extract! message, :body, :author_id, :recipient_id, :updated_at, :created_at
+        json.partial! '/api/messages/message.json.jbuilder', message: message
       end
     end
   end

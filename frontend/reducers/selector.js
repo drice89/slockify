@@ -1,7 +1,6 @@
 
 
 export const messageSelector = (messages, conversation) => {
-  debugger
   return conversation.messageIds.map(messageId => messages[messageId] );
 }; 
 

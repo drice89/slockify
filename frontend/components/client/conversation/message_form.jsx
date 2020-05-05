@@ -8,8 +8,8 @@ class MessageForm extends React.Component {
     //IM MR MEESEEKS LOOK AT ME 
     this.state = {
       body: "",
-      authorId: 1,
-      recipientId: 1
+      authorId: this.props.currentUserId,
+      recipientId: this.props.conversationId
     };
   }
   update(field) {
@@ -19,7 +19,7 @@ class MessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //debugger //look at subscriptions array when there are multiple subscriptions
+     //look at subscriptions array when there are multiple subscriptions
     App.cable.subscriptions.subscriptions[0].speak({ message: this.state });
     this.setState({ body: "" });
   }
