@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
-import ConversationContainer from "./conversation/conversations_container";
 import { withRouter } from "react-router-dom";
 import { receiveMessage, removeMessage } from "../../actions/message_actions";
+import ConversationsContainer from "./conversation/conversations_container.jsx";
+
 
 const mapStateToProps = (state) => {
   return {
@@ -28,8 +29,6 @@ class Client extends React.Component {
   constructor(props) {
     super(props);
     this.enforceLocation();
-    window.receiveMessage = this.props.receiveMessage;
-    //this.props.receiveMessage = this.props.receiveMessage.bind(this);
   }
 
   enforceLocation() {
@@ -38,9 +37,6 @@ class Client extends React.Component {
     const sessionId = this.props.sessionId;     
     if (urlSessionId !== sessionId) {
       this.props.history.push(`/client/${sessionId}/6`);
-      //option to update props when this happens...
-      //this.props.match.params.sessionId = this.props.sessionId;
-      //this.props.match.params.conversationId = 6;
     }
   }
 
@@ -76,7 +72,7 @@ class Client extends React.Component {
 
   //right side panel rendered in conversations container
   render () {
-    const ConversationsContainer = withRouter(ConversationContainer);
+    const ConversationContainer = withRouter(ConversationsContainer);
     return( 
       <div className="client-container">
         <div className="search-bar-container">
@@ -87,7 +83,7 @@ class Client extends React.Component {
         </div>
         <div className="message-container">
           {
-            <ConversationsContainer />
+            <ConversationContainer />
           }
         </div>
       </div>

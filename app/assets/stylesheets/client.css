@@ -28,16 +28,35 @@
 
 }
 
+.message-container {
+  grid-area: messages;
+  width: auto;
+}
+/* channels */
 .conversation-section {
   box-shadow: 0 .5px 0 0 rgba(2,15,7,0.4);
   
 }
 
-.message-container {
-  grid-area: messages;
-  display: flex;
-}
-
+/* search section */
 .search-bar {
   border-radius: 20px;
 }
+
+
+/* conversation/message */
+
+.message-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 .5px 0 0 rgba(2,15,7,0.4);
+  border-bottom: .5px solid rgba(0,0,0,.5);
+  height: 65px;
+}
+
+.message-header > div {
+  padding: 0 25px;
+}
+

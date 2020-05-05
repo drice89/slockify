@@ -364,3 +364,12 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
+
+h3 {
+    font-weight: 700;
+    font-size: larger;
+}
+
+li {
+    list-style: none;
+}
