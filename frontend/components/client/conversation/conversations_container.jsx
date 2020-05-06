@@ -37,9 +37,9 @@ class Conversation extends React.Component {
   }
 
   render() {
-    const messageList = this.props.messages.map(message => {
+    const messageList = this.props.messages.map((message, i) => {
       return (
-        <li key={`${message.id}message`}>
+        <li key={`${i}message`}>
           <MessageContainer 
               message={message} 
               conversationUsers={this.props.users} 

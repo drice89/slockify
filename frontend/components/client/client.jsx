@@ -1,9 +1,13 @@
+//Contains all components related to the messages in the conversation
+//constructs the message_container which then contains the read, edit, delete actions
+//constructs the message_form containse the create message action
+
 import React from "react";
 import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
 import { withRouter } from "react-router-dom";
-import { receiveMessage, removeMessage } from "../../actions/message_actions";
+import { receiveMessage, removeMessage, receiveEditedMessage } from "../../actions/message_actions";
 import ConversationsContainer from "./conversation/conversations_container.jsx";
 
 
@@ -19,7 +23,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     receiveMessage: message => dispatch(receiveMessage(message)),
-    removeMessage: messageId => dispatch(removeMessage(messageId))
+    removeMessage: message => dispatch(removeMessage(message)),
+    receiveEditedMessage: message => dispatch(receiveEditedMessage(message))
   };
 };
 
@@ -50,9 +55,11 @@ class Client extends React.Component {
         {
           received: data => {
             switch(data.action) {
-              case "UPDATE": 
+              case "new":
                 return this.props.receiveMessage(data.message);
-              case "REMOVE":
+              case "update": 
+                return this.props.receiveEditedMessage(data.message);
+              case "remove":
                 return this.props.removeMessage(data.message);
             }
           },

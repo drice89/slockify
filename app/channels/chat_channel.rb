@@ -7,27 +7,28 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    data = data.deep_transform_keys! { |key| key.underscore }
+    data.deep_transform_keys! { |key| key.underscore }
     message = Message.create(data["message"])
-    socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "UPDATE" }
+    socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "update" }
     ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
   end
   
   def update(data)
-    data = data.deep_transform_keys! { |key| key.underscore }
+    #deeply transform camel case to snake case
+    data.deep_transform_keys! { |key| key.underscore }
     target_message = find_message(data["message"]["id"]) 
     message = target_message.update(data["message"])
-    debugger
+    #deeply transfrom snake case back into camel
+    data.deep_transform_keys! { |key| key.camelize(:lower) }
     if message
-      socket = { message: data.deep_transform_keys! { |key| key.camelize(:lower) }, action: "UPDATE" }
+      socket = data 
     else
-      socket = { message: "update was not saved", action: "ERROR"}
+      socket = { message: "update was not saved", action: "error"}
     end
-    ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
+    ChatChannel.broadcast_to(find_convo(data["message"]["recipientId"]), socket)
   end
 
   def remove(data)
-    data = data.deep_transform_keys! { |key| key.underscore }
     target_message = find_message(data["message"]["id"]) 
     target_message.destroy
     #you had to change the structure of remove message to take the entire message
@@ -35,8 +36,7 @@ class ChatChannel < ApplicationCable::Channel
     #this selector iterates through the messages Id array in the conversation object pushes the corresponding messages into
     #an array. In order to remove an object from that array we need to know which conversation its from and then which message
     #to delete
-    socket = { message: data, action: "REMOVE" }
-    ChatChannel.broadcast_to(find_convo(data.recipient_id), socket)
+    ChatChannel.broadcast_to(find_convo(data["message"]["recipientId"]), data)
   end
 
   def unsubscribed

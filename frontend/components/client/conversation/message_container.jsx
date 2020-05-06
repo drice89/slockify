@@ -21,11 +21,10 @@ class MessageContainer extends React.Component {
 
   remove() {
     App.cable.subscriptions.subscriptions[0].remove({ message: this.props.message });
-    this.props.deleteMessage(this.props.message);
   }
 
   edit() {
-    this.setState({ edit: true})
+    this.setState({ edit: true});
   }
 
   submitEdit() {
@@ -36,7 +35,7 @@ class MessageContainer extends React.Component {
       recipientId: this.props.conversationId
     };
     App.cable.subscriptions.subscriptions[0].update({ message: m });
-    this.props.editMessage(m);
+    this.setState({ edit: false });
   }
 
 
