@@ -50918,3 +50918,9 @@ ChatChannel#speak({"message"=>{"body"=>"wow\n", "authorId"=>1, "recipientId"=>6}
 [ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:35:49 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:35:49 UTC +00:00}, :action=>"new"}
 ChatChannel transmitting {"message"=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:49.632Z", "updatedAt"=>"2020-05-06T06:35:49.632Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
 ChatChannel transmitting {"message"=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:49.632Z", "updatedAt"=>"2020-05-06T06:35:49.632Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-05 23:39:26 -0700
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
