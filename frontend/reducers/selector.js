@@ -1,7 +1,9 @@
 
 
 export const messageSelector = (messages, conversation) => {
-  return conversation.messageIds.map(messageId => messages[messageId] );
+  return conversation.messageIds.map(messageId => {
+    return messages[messageId]; 
+  });
 }; 
 
 export const userSelector = (users, conversation) => {

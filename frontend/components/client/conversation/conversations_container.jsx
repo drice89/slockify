@@ -1,5 +1,5 @@
 import React from "react"
-import { messageSelector, userSelector } from "../../../reducers/selector";
+import { messageSelector } from "../../../reducers/selector";
 import { connect } from "react-redux";
 import MessageForm from "./message_form";
 import ConversationHeader from "./conversation_header";
@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   editMessage: message => dispatch(receiveMessage(message)),
-  deleteMessage: messageId => dispatch(removeMessage(messageId))
+  deleteMessage: message => dispatch(removeMessage(message))
 });
 
 
@@ -28,6 +28,7 @@ class Conversation extends React.Component {
   constructor(props) {
     super(props);
     this.bottom = React.createRef();
+    console.log(this.props.messages);
   }
 
 

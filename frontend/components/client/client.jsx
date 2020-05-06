@@ -53,7 +53,7 @@ class Client extends React.Component {
               case "UPDATE": 
                 return this.props.receiveMessage(data.message);
               case "REMOVE":
-                return this.props.removeMessage(data.messageId);
+                return this.props.removeMessage(data.message);
             }
           },
           speak: function (data) {

@@ -1,5 +1,6 @@
 import React from "react";
 import DisplayMessage from "./display_message";
+import EditMessage from "./edit_message";
 
 
 class MessageContainer extends React.Component {
@@ -9,35 +10,38 @@ class MessageContainer extends React.Component {
       edit: false,
       body: this.props.message.body
     };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
+    this.edit = this.edit.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
-  onChange(field) {
-    e => this.setState({ [field]: e.currentTarget });
+  update() {
+    return e => this.setState({ body: e.currentTarget.value });
   }
 
-  delete(messageId) {
-    this.props.deleteMessage(this.props.message.id);
+  remove() {
+    App.cable.subscriptions.subscriptions[0].remove({ message: this.props.message });
+    this.props.deleteMessage(this.props.message);
   }
 
   edit() {
-    this.setState({ edit: true })
+    this.setState({ edit: true})
   }
 
   submitEdit() {
     const m = { 
       id: this.props.message.id,
       body: this.state.body,
-      authorId: this.props.currentUser,
+      authorId: this.props.currentUserId,
       recipientId: this.props.conversationId
     };
+    App.cable.subscriptions.subscriptions[0].update({ message: m });
     this.props.editMessage(m);
   }
 
 
   render () {
-    const author = this.props.conversationUsers[currentUserId];
+    const author = this.props.conversationUsers[this.props.message.authorId];
     const avatar = author.avatarUrl || window.defaultAvatarUrl;
     const name = author.displayName || author.fullName;
     return (
@@ -57,9 +61,9 @@ class MessageContainer extends React.Component {
         {
           this.state.edit 
           ? 
-            <EditMessage onChange={this.onChange} submitEdit={this.submitEdit} messageText={this.state.body} /> 
+            <EditMessage update={this.update.bind(this)} submitEdit={this.submitEdit} messageText={this.state.body} /> 
           :
-            <DisplayMessage edit={this.edit} delete={this.delete} messageText={this.state.body}/>
+            <DisplayMessage edit={this.edit} remove={this.remove} message={this.props.message} currentUserId={this.props.currentUserId} />
           }
           
       </div>

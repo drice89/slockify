@@ -1,1 +1,1 @@
-json.extract! message, :body, :author_id, :recipient_id, :updated_at, :created_at
+json.extract! message, :id, :body, :author_id, :recipient_id, :updated_at, :created_at

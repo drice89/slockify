@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_CONVERSATION, RECEIVE_CONVERSATIONS, REMOVE_CONVERSATION } from "../actions/conversation_actions";
-import { RECEIVE_MESSAGE } from "../actions/message_actions"
+import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";
 
 const conversationsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -19,6 +19,11 @@ const conversationsReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_MESSAGE:
       nextState[action.message.recipientId].messageIds.push(action.message.id);
+      return nextState;
+    case REMOVE_MESSAGE:
+      //questionable efficacy here
+      let targetIndex = nextState[action.message.recipientId].messageIds.indexOf(action.message.id);
+      nextState[action.message.recipientId].messageIds.splice(targetIndex,1);
       return nextState;
     default:
       return state;

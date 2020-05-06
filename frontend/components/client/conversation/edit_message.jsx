@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
-const EditMessage = (props) => (
+const EditMessage = ({update, submitEdit, messageText}) => (
   <div>
-    <textarea value={this.props.messageText} onChange={() => this.props.onChange} ></textarea>
-    <button>Cancel</button> <button onSubmit={this.onSubmit()}>Save Changes</button>
+    <textarea value={messageText} onChange={update()} ></textarea>
+    <button>Cancel</button> <button onClick={() => submitEdit()}>Save Changes</button>
   </div>
 )
 
