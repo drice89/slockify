@@ -2,11 +2,11 @@
 #and the login (entry.js) to ensure that the session id is DRY - will optimize late
 
 
-conversations = user.conversations.includes(:messages, :members)
 
 json.extract! user, :id 
 
-conversations.each do |conversation|
+subbed_conversations = user.conversations.includes(:messages, :members)
+subbed_conversations.each do |conversation|
   
   json.set! "users" do
     json.set! user.id do
