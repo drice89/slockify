@@ -50069,3 +50069,852 @@ ChatChannel is transmitting the subscription confirmation
 ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
 ChatChannel is transmitting the subscription confirmation
 ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-05 23:14:19 -0700
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+Started GET "/" for ::1 at 2020-05-05 23:30:18 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "3fobqvu2U56FFX2w09AAbg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (3.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (3.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (27.4ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (16.5ms)
+  Rendered api/conversations/_conversation.json.jbuilder (14.1ms)
+  Rendered api/messages/_message.json.jbuilder (13.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/messages/_message.json.jbuilder (4.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/conversations/_conversation.json.jbuilder (12.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/conversations/_conversation.json.jbuilder (7.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/conversations/_conversation.json.jbuilder (48.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (11.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (4.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (4.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (4.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/users/_user.json.jbuilder (2813.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (2888.8ms)
+Completed 200 OK in 5164ms (Views: 5116.5ms | ActiveRecord: 42.5ms)
+
+
+Started GET "/cable" for ::1 at 2020-05-05 23:30:24 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-05 23:30:24 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mConversation Load (11.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+  [1m[36mConversation Load (50.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+  [1m[36mConversation Load (10.0ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (16.0ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mConversation Load (7.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+ChatChannel is transmitting the subscription confirmation
+  ↳ app/channels/chat_channel.rb:48
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+ChatChannel#speak({"message"=>{"body"=>"test", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (1.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (3.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "test"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:30:32.926532"], ["updated_at", "2020-05-06 06:30:32.926532"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>77, "body"=>"test", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:30:32 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:30:32 UTC +00:00}, :action=>"update"}
+ChatChannel transmitting {"message"=>{"id"=>77, "body"=>"test", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:30:32.926Z", "updatedAt"=>"2020-05-06T06:30:32.926Z"}, "action"=>"update"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel#update({"message"=>{"id"=>65, "body"=>"sdfsd another testwsdsad", "authorId"=>1, "recipientId"=>6}})
+  [1m[36mMessage Load (2.8ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 65], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:52
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:20
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:20
+  [1m[36mConversation Load (1.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:20
+  [1m[36mMessage Update (6.7ms)[0m  [1m[33mUPDATE "messages" SET "body" = $1, "updated_at" = $2 WHERE "messages"."id" = $3[0m  [["body", "sdfsd another testwsdsad"], ["updated_at", "2020-05-06 06:30:41.459949"], ["id", 65]]
+  ↳ app/channels/chat_channel.rb:20
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:20
+  [1m[36mConversation Load (6.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {"message"=>{"id"=>65, "body"=>"sdfsd another testwsdsad", "authorId"=>1, "recipientId"=>6}, "action"=>"update"}
+ChatChannel transmitting {"message"=>{"id"=>65, "body"=>"sdfsd another testwsdsad", "authorId"=>1, "recipientId"=>6}, "action"=>"update"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel#speak({"message"=>{"body"=>"dsvsdfvdsv", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.0ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (2.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "dsvsdfvdsv"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:30:58.926945"], ["updated_at", "2020-05-06 06:30:58.926945"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (1.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>78, "body"=>"dsvsdfvdsv", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:30:58 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:30:58 UTC +00:00}, :action=>"update"}
+ChatChannel transmitting {"message"=>{"id"=>78, "body"=>"dsvsdfvdsv", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:30:58.926Z", "updatedAt"=>"2020-05-06T06:30:58.926Z"}, "action"=>"update"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+Started GET "/" for ::1 at 2020-05-05 23:31:00 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "3fobqvu2U56FFX2w09AAbg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (2.8ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (2.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (13.2ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (17.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (21.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (14.3ms)
+  Rendered api/messages/_message.json.jbuilder (14.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/conversations/_conversation.json.jbuilder (13.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (12.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/conversations/_conversation.json.jbuilder (58.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (6.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (9.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (6.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (6.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (9.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/users/_user.json.jbuilder (2981.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (3046.6ms)
+Completed 200 OK in 5784ms (Views: 5728.9ms | ActiveRecord: 44.9ms)
+
+
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-05 23:31:06 -0700
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel stopped streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+Started GET "/cable" for ::1 at 2020-05-05 23:31:06 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-05 23:31:06 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mConversation Load (18.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (85.5ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+  [1m[36mConversation Load (15.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mConversation Load (74.6ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+  [1m[36mConversation Load (76.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel#speak({"message"=>{"body"=>"ZXCXsa", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (3.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (1.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (2.1ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "ZXCXsa"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:31:31.152972"], ["updated_at", "2020-05-06 06:31:31.152972"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (1.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>79, "body"=>"ZXCXsa", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:31:31 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:31:31 UTC +00:00}, :action=>"update"}
+ChatChannel transmitting {"message"=>{"id"=>79, "body"=>"ZXCXsa", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:31:31.152Z", "updatedAt"=>"2020-05-06T06:31:31.152Z"}, "action"=>"update"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+Started GET "/" for ::1 at 2020-05-05 23:32:24 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "3fobqvu2U56FFX2w09AAbg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (2.1ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (2.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (1.7ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (14.3ms)
+  Rendered api/conversations/_conversation.json.jbuilder (7.2ms)
+  Rendered api/messages/_message.json.jbuilder (12.0ms)
+  Rendered api/messages/_message.json.jbuilder (8.5ms)
+  Rendered api/messages/_message.json.jbuilder (8.5ms)
+  Rendered api/messages/_message.json.jbuilder (4.5ms)
+  Rendered api/conversations/_conversation.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/conversations/_conversation.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (4.2ms)
+  Rendered api/conversations/_conversation.json.jbuilder (41.0ms)
+  Rendered api/messages/_message.json.jbuilder (9.4ms)
+  Rendered api/messages/_message.json.jbuilder (9.2ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/messages/_message.json.jbuilder (9.7ms)
+  Rendered api/messages/_message.json.jbuilder (12.6ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.6ms)
+  Rendered api/messages/_message.json.jbuilder (4.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.5ms)
+  Rendered api/messages/_message.json.jbuilder (9.4ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.1ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.0ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.2ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.5ms)
+  Rendered api/messages/_message.json.jbuilder (4.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.4ms)
+  Rendered api/messages/_message.json.jbuilder (4.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.5ms)
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+  Rendered api/messages/_message.json.jbuilder (9.5ms)
+  Rendered api/messages/_message.json.jbuilder (9.9ms)
+  Rendered api/messages/_message.json.jbuilder (9.5ms)
+  Rendered api/messages/_message.json.jbuilder (9.8ms)
+  Rendered api/messages/_message.json.jbuilder (9.4ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (9.3ms)
+  Rendered api/messages/_message.json.jbuilder (4.5ms)
+  Rendered api/messages/_message.json.jbuilder (4.5ms)
+  Rendered api/users/_user.json.jbuilder (3292.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3809.0ms)
+Started GET "/cable" for ::1 at 2020-05-05 23:32:30 -0700
+Completed 200 OK in 5924ms (Views: 5857.6ms | ActiveRecord: 62.1ms)
+
+
+Started GET "/cable" for ::1 at 2020-05-05 23:32:33 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-05 23:32:34 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-05 23:32:34 -0700
+WebSocket error occurred: Broken pipe
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for ::1 at 2020-05-05 23:32:34 -0700
+  [1m[36mConversation Load (9.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (7.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (14.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (212.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+ChatChannel is transmitting the subscription confirmation
+  [1m[36mConversation Load (35.2ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+ChatChannel#speak({"message"=>{"body"=>"this works", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (5.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (2.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "this works"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:32:40.655040"], ["updated_at", "2020-05-06 06:32:40.655040"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (6.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>80, "body"=>"this works", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:32:40 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:32:40 UTC +00:00}, :action=>"new"}
+ChatChannel transmitting {"message"=>{"id"=>80, "body"=>"this works", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:32:40.655Z", "updatedAt"=>"2020-05-06T06:32:40.655Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+Started GET "/" for ::1 at 2020-05-05 23:33:36 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 2765ms (Views: 2753.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-05-05 23:33:50 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 2964ms (Views: 2958.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-05 23:34:03 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demouser@slockify.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demouser@slockify.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demouser@slockify.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Exists (2.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37
+  [1m[36mUser Update (2.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["updated_at", "2020-05-06 06:34:04.361800"], ["id", 1]]
+  ↳ app/models/user.rb:37
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+  Rendering api/users/show.json.jbuilder
+  [1m[36mConversation Load (2.2ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (2.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (1.9ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (15.9ms)
+  Rendered api/conversations/_conversation.json.jbuilder (13.3ms)
+  Rendered api/messages/_message.json.jbuilder (14.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (7.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/conversations/_conversation.json.jbuilder (11.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.0ms)
+  Rendered api/conversations/_conversation.json.jbuilder (50.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (6.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (6.0ms)
+  Rendered api/messages/_message.json.jbuilder (11.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (11.1ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/users/_user.json.jbuilder (3106.9ms)
+  Rendered api/users/show.json.jbuilder (3525.5ms)
+Completed 200 OK in 4092ms (Views: 3553.4ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/" for ::1 at 2020-05-05 23:34:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (7.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (3.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (2.6ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (17.4ms)
+  Rendered api/conversations/_conversation.json.jbuilder (18.5ms)
+  Rendered api/messages/_message.json.jbuilder (13.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/conversations/_conversation.json.jbuilder (12.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (13.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (60.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (6.3ms)
+  Rendered api/messages/_message.json.jbuilder (11.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (11.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/users/_user.json.jbuilder (3104.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3168.1ms)
+Completed 200 OK in 5918ms (Views: 5887.6ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/" for ::1 at 2020-05-05 23:34:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (2.3ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (2.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMembership Load (2.5ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+  Rendered api/conversations/_conversation.json.jbuilder (17.6ms)
+  Rendered api/conversations/_conversation.json.jbuilder (14.5ms)
+  Rendered api/messages/_message.json.jbuilder (14.0ms)
+  Rendered api/messages/_message.json.jbuilder (6.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/conversations/_conversation.json.jbuilder (8.2ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/conversations/_conversation.json.jbuilder (13.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/conversations/_conversation.json.jbuilder (56.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (6.4ms)
+  Rendered api/messages/_message.json.jbuilder (11.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (13.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (11.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (6.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (11.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.0ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (5.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/users/_user.json.jbuilder (2937.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3038.3ms)
+Completed 200 OK in 5685ms (Views: 5666.1ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/" for ::1 at 2020-05-05 23:34:56 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Lj1rXPLN5T2FU4BkrwzRUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  [1m[36mConversation Load (7.4ms)[0m  [1m[34mSELECT "conversations".* FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mMessage Load (2.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" IN ($1, $2, $3, $4, $5)[0m  [["recipient_id", 2], ["recipient_id", 3], ["recipient_id", 4], ["recipient_id", 5], ["recipient_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+Started GET "/cable" for ::1 at 2020-05-05 23:34:57 -0700
+Started GET "/cable/" [WebSocket] for ::1 at 2020-05-05 23:34:57 -0700
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mConversation Load (113.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mMembership Load (78.7ms)[0m  [1m[34mSELECT "memberships".* FROM "memberships" WHERE "memberships"."conversation_id" IN ($1, $2, $3, $4, $5)[0m  [["conversation_id", 2], ["conversation_id", 3], ["conversation_id", 4], ["conversation_id", 5], ["conversation_id", 6]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mConversation Load (102.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzQ
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzU
+  [1m[36mConversation Load (120.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+  [1m[36mUser Load (39.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)[0m  [["id", 1], ["id", 4], ["id", 6], ["id", 8], ["id", 10], ["id", 2], ["id", 3], ["id", 5], ["id", 7], ["id", 9]]
+  ↳ app/views/api/users/_user.json.jbuilder:9
+  [1m[36mConversation Load (88.8ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzM
+  [1m[35m (44.7ms)[0m  [1m[34mSELECT "conversations"."id" FROM "conversations" INNER JOIN "memberships" ON "conversations"."id" = "memberships"."conversation_id" WHERE "memberships"."member_id" = $1[0m  [["member_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:13
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzI
+  [1m[36mConversation Load (3.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered api/conversations/_conversation.json.jbuilder (18.0ms)
+  Rendered api/conversations/_conversation.json.jbuilder (14.0ms)
+  ↳ app/channels/chat_channel.rb:48
+  Rendered api/messages/_message.json.jbuilder (9.6ms)
+ChatChannel is transmitting the subscription confirmation
+ChatChannel is streaming from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (11.1ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/conversations/_conversation.json.jbuilder (7.9ms)
+  Rendered api/messages/_message.json.jbuilder (9.9ms)
+  Rendered api/conversations/_conversation.json.jbuilder (13.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/conversations/_conversation.json.jbuilder (56.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.1ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.3ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (6.4ms)
+  Rendered api/messages/_message.json.jbuilder (11.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (11.2ms)
+  Rendered api/messages/_message.json.jbuilder (6.2ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.7ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.6ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.4ms)
+  Rendered api/messages/_message.json.jbuilder (10.2ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.8ms)
+  Rendered api/messages/_message.json.jbuilder (10.5ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.9ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (11.4ms)
+  Rendered api/messages/_message.json.jbuilder (5.7ms)
+  Rendered api/messages/_message.json.jbuilder (11.0ms)
+  Rendered api/messages/_message.json.jbuilder (5.9ms)
+  Rendered api/messages/_message.json.jbuilder (10.4ms)
+  Rendered api/messages/_message.json.jbuilder (6.0ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.6ms)
+  Rendered api/messages/_message.json.jbuilder (10.8ms)
+  Rendered api/messages/_message.json.jbuilder (5.5ms)
+  Rendered api/users/_user.json.jbuilder (3811.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (3870.5ms)
+Completed 200 OK in 6571ms (Views: 6387.6ms | ActiveRecord: 174.1ms)
+
+
+ChatChannel#speak({"message"=>{"body"=>"test", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.5ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (18.6ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "test"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:35:16.291336"], ["updated_at", "2020-05-06 06:35:16.291336"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.3ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>81, "body"=>"test", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:35:16 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:35:16 UTC +00:00}, :action=>"new"}
+ChatChannel transmitting {"message"=>{"id"=>81, "body"=>"test", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:16.291Z", "updatedAt"=>"2020-05-06T06:35:16.291Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel transmitting {"message"=>{"id"=>81, "body"=>"test", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:16.291Z", "updatedAt"=>"2020-05-06T06:35:16.291Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel#speak({"message"=>{"body"=>"dillon", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (6.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (6.7ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (4.0ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "dillon"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:35:37.248397"], ["updated_at", "2020-05-06 06:35:37.248397"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (2.0ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>82, "body"=>"dillon", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:35:37 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:35:37 UTC +00:00}, :action=>"new"}
+ChatChannel transmitting {"message"=>{"id"=>82, "body"=>"dillon", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:37.248Z", "updatedAt"=>"2020-05-06T06:35:37.248Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel transmitting {"message"=>{"id"=>82, "body"=>"dillon", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:37.248Z", "updatedAt"=>"2020-05-06T06:35:37.248Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel#speak({"message"=>{"body"=>"wow\n", "authorId"=>1, "recipientId"=>6}})
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (34.1ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mMessage Create (2.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "author_id", "recipient_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "wow\n"], ["author_id", 1], ["recipient_id", 6], ["created_at", "2020-05-06 06:35:49.632953"], ["updated_at", "2020-05-06 06:35:49.632953"]]
+  ↳ app/channels/chat_channel.rb:11
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/chat_channel.rb:11
+  [1m[36mConversation Load (1.9ms)[0m  [1m[34mSELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/channels/chat_channel.rb:48
+[ActionCable] Broadcasting to chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY: {:message=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>Wed, 06 May 2020 06:35:49 UTC +00:00, "updatedAt"=>Wed, 06 May 2020 06:35:49 UTC +00:00}, :action=>"new"}
+ChatChannel transmitting {"message"=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:49.632Z", "updatedAt"=>"2020-05-06T06:35:49.632Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)
+ChatChannel transmitting {"message"=>{"id"=>83, "body"=>"wow\n", "authorId"=>1, "recipientId"=>6, "createdAt"=>"2020-05-06T06:35:49.632Z", "updatedAt"=>"2020-05-06T06:35:49.632Z"}, "action"=>"new"} (via streamed from chat:Z2lkOi8vc2xvY2tpZnkvQ29udmVyc2F0aW9uLzY)

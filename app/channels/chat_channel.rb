@@ -9,7 +9,7 @@ class ChatChannel < ApplicationCable::Channel
   def speak(data)
     data.deep_transform_keys! { |key| key.underscore }
     message = Message.create(data["message"])
-    socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "update" }
+    socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
     ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
   end
   
