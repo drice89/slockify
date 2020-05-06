@@ -47,6 +47,7 @@ class Client extends React.Component {
 
 
   componentDidMount () {
+    //subscribe to all channels
     this.props.subs.forEach((id) => {
       App.cable.subscriptions.create(
         { 
