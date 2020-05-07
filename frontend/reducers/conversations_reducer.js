@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_CONVERSATION, RECEIVE_CONVERSATIONS, REMOVE_CONVERSATION } from "../actions/conversation_actions";
+import { RECEIVE_CONVERSATION, RECEIVE_CONVERSATIONS, REMOVE_CONVERSATION, RECEIVE_EDITED_CONVERSATION } from "../actions/conversation_actions";
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";
 
 const conversationsReducer = (state = {}, action) => {
@@ -10,7 +10,10 @@ const conversationsReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return action.user.conversations;
     case RECEIVE_CONVERSATION:
-      nextState[action.conversation.id] = action.conversation;
+      nextState[action.payload.conversation.id] = action.conversation;
+      return nextState;
+    case RECEIVE_EDITED_CONVERSATION:
+      nextState[action.payload.conversation.id] = action.conversation;
       return nextState;
     case RECEIVE_CONVERSATIONS:
       return action.conversations;

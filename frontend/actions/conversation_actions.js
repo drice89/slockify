@@ -2,13 +2,19 @@ import * as ConversationAPIUtil from "../util/conversation_api_util";
 
 export const RECEIVE_CONVERSATIONS = "RECEIVE_CONVERSATIONS";
 export const RECEIVE_CONVERSATION = "RECEIVE_CONVERSATION";
+export const RECEIVE_EDITED_CONVERSATION = "RECEIVE_EDITED_CONVERSATION";
 export const REMOVE_CONVERSATION = "REMOVE_CONVERSATION";
 export const RECEIVE_CONVERSATION_ERRORS = "RECEIVE_CONVERSATION_ERRORS";
 
-export const receiveConversation = (conversation) => ({
+export const receiveConversation = (payload) => ({
   type: RECEIVE_CONVERSATION,
+  payload
+});
+
+export const receiveEditedConversation = (conversation) => ({
+  type: RECEIVE_EDITED_CONVERSATION,
   conversation
-})
+});
 
 
 const receiveConversations = (conversations) => ({

@@ -1,5 +1,9 @@
-##curently the this is sending back the id and the preloaded state session is getting picked up there. You can refactor to the store
-#and the login (entry.js) to ensure that the session id is DRY - will optimize late
+##NOTES FOR REFACTOR -they live here because the initial store state (this file) - is driving the need for refactor
+#1. Get rid of members call for initial query - members should be sent up with the messages when the conversation view page is loaded
+#  - if you get rid of the messages you can get rid of the ID that was a hacky way of associating the session with the user and get rid of that error
+# - check where you set the current user to the window if you do this root.html.erb, root.jsx
+#2. Dont call messages until the conversation initializes on the page. Messages should be sent up with a conversation show fetch
+#3. Subscriptions to a channel need to then be closed when the component unmounts - very important
 
 
 
@@ -33,12 +37,4 @@ subbed_conversations.each do |conversation|
       end
     end
   end
-
-  json.set! "users" do
-    conversation.members.each do |member|
-      json.set! member.id do
-        json.extract! member, :full_name, :avatar_url, :display_name
-      end
-    end
-  end
-end 
+end

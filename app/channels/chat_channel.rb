@@ -44,9 +44,6 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   private
-    def find_convo(convo_id)
-      Conversation.find_by(id: convo_id)
-    end
 
     def find_message(message_id)
       Message.find_by(id: message_id)
