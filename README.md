@@ -10,6 +10,7 @@ Authentication is handled by a combination of rails and react without and additi
 
 The app runs on a pub/sub pattern where the users will subscribe to conversations and have live changes pushed to them directly by the server through websockets. The workflow is illustrated below.
 
+![Slockify dataflow](https://imgur.com/eKRUWpr)
 
 Currently, all user data (including messages for all subscribed channels) is pushed to the user on login. The user is subsequently subscribed to all channels when they initialize the client. This negates the need for additional AJAX requests because all changes are pushed through the subscribed channels. This presents a problem with scalability, especially where the messages are concerned so there is a planned refactor to pull messages on demand (when the user clicks on a conversation) vs on login. 
 
