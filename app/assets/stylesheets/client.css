@@ -136,3 +136,7 @@
   color: #191414;
 }
 
+.conversation-wrapper {
+  overflow-y: auto;
+}
+

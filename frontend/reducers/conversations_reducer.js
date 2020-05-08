@@ -1,3 +1,4 @@
+ 
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_CONVERSATION, RECEIVE_CONVERSATIONS, REMOVE_CONVERSATION, RECEIVE_EDITED_CONVERSATION } from "../actions/conversation_actions";
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_actions";

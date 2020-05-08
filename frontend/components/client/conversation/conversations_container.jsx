@@ -53,7 +53,7 @@ class Conversation extends React.Component {
       );
     });
     return (
-      <div className="chatroom-container">
+      <div className="conversation-wrapper">
         <div>
           <ConversationHeader conversation={this.props.conversation} />
         </div>

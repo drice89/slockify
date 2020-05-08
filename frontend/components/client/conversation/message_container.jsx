@@ -20,7 +20,7 @@ class MessageContainer extends React.Component {
   }
 
   remove() {
-    App.cable.subscriptions.subscriptions[0].remove({ message: this.props.message });
+    App.cable.subscriptions.subscriptions[1].remove({ message: this.props.message });
   }
 
   edit() {
@@ -34,7 +34,7 @@ class MessageContainer extends React.Component {
       authorId: this.props.currentUserId,
       recipientId: this.props.conversationId
     };
-    App.cable.subscriptions.subscriptions[0].update({ message: m });
+    App.cable.subscriptions.subscriptions[1].update({ message: m });
     this.setState({ edit: false });
   }
 

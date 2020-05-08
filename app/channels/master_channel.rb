@@ -2,10 +2,9 @@ class MasterChannel < ApplicationCable::Channel
 
   def subscribed
     # stream_from "some_channel"
-    debugger
     stream_for "master"
-    User.find(params[:user][:id]).update(status: "active")
-    broadcast_to("master", format_user(params[:user]))
+    User.find(params["user"][:id]).update(status: "active")
+    MasterChannel.broadcast_to("master", format_user(params["user"]))
   end
 
   # t.string "name", null: false
@@ -22,7 +21,7 @@ class MasterChannel < ApplicationCable::Channel
       self.new_membership(member["user_id"], convsersation.id, member["admin"])
     end
     socket = { message: conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
-    ChatChannel.broadcast_to("master", socket)
+    MasterChannel.broadcast_to("master", socket)
 
   end
   
@@ -51,7 +50,7 @@ class MasterChannel < ApplicationCable::Channel
     
   def unsubscribed
     User.find(params[:user][:id]).update(status: "offline")
-    broadcast_to("master", format_user(params[:user]))
+    MasterChannel.broadcast_to("master", format_user(params[:user]))
     # Any cleanup needed when channel is unsubscribe
   end
   
@@ -84,7 +83,7 @@ class MasterChannel < ApplicationCable::Channel
   end
 
   def format_user(hash)
-    { user => {id: hash[:id], status: hash[:status]}, action: "status" }
+    { user: {id: hash[:id], status: hash[:status]}, action: "status" }
   end
 
 end

@@ -11,8 +11,8 @@ class Api::MembershipsController < ApplicationController
   end
 
   def update
-    debugger
-    #chaeck the params in the statement below- its probably not correct
+    #this never got tested
+    #check the params in the statement below- its probably not correct
     @membership = membership_res
     if @membership.update(membership_params)
       render "/api/conversations/show"

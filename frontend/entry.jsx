@@ -1,3 +1,5 @@
+//NOTES FOR FUTURE DILLON - most important component is client.jsx go there
+
 import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";

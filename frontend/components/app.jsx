@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
 import SplashMain from "./splash/splash_main";
@@ -9,13 +9,13 @@ import Client from "./client/client";
 const App = () => (
   <div>
     <Switch>
-      <Route path="/client/:userId/:conversationId" component={Client} />
-      <Route path ="/client" component={Client} />
-      
+      <ProtectedRoute path="/client/:userId/:conversationId" component={Client} />
+      <ProtectedRoute path ="/client" component={Client} />
+      <AuthRoute path="/signup" component={SignupFormContainer} />
+      <AuthRoute path="/login" component={LoginFormContainer} />
+      <Route exact path="/" component={SplashMain} />
+      <Redirect to="/" />
     </Switch>
-    <Route exact path="/" component={SplashMain} />
-    <Route path="/signup" component={SignupFormContainer} />
-    <Route path="/login" component={LoginFormContainer} />
   </div>
 )
 

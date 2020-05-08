@@ -20,7 +20,10 @@ class MessageForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
      //look at subscriptions array when there are multiple subscriptions
-    App.cable.subscriptions.subscriptions[0].speak({ message: this.state });
+     //the first subscription is to master and that DOES NOT have the speak function
+     //so we index into the second subscription and it makes things work.
+     //this may need to be refactored when we have the subscriptions on demand
+    App.cable.subscriptions.subscriptions[1].speak({ message: this.state });
     this.setState({ body: "" });
   }
 
