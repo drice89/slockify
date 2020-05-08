@@ -84,7 +84,7 @@ class Client extends React.Component {
                 return null;
               }
             } else if (data.action === 'remove' && this.props.conversations[data.conversation.id]) {
-              this.props.removeMembership({ conversation: data.conversation, sessionId: this.props.sessionId });
+              this.props.removeConversation({ conversation: data.conversation, sessionId: this.props.sessionId });
             }
         },
         createConversation: function (data) {
