@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
   #users index view has not yet been created 
   def index
+    @users = User.all
     render :index
   end
 

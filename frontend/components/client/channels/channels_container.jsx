@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { channelConversationsSort, directConversationsSort } from "../../../reducers/selector";
 
 
-
-
 const ChannelsContainer = ({conversations}) => {
   const conversationsArray = Object.values(conversations);
   const channels = channelConversationsSort(conversationsArray);
@@ -15,6 +13,7 @@ const ChannelsContainer = ({conversations}) => {
       <div className="conversation-section">
         <ul>
           <li><h4>Channels</h4></li>
+          <li><button className="add-channel-button">+</button> Add Channel</li>
           {
             channels.map((channel) => {
               return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button>{channel.name}</button></Link></li>

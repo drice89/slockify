@@ -27,10 +27,16 @@ const mapDispatchToProps = (dispatch) => ({
 class Conversation extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      details: false
+    }
     this.bottom = React.createRef();
     console.log(this.props.messages);
   }
 
+  activateSidebar() {
+    
+  }
 
   componentDidUpdate() {
     this.bottom.current.scrollIntoView();
@@ -53,15 +59,26 @@ class Conversation extends React.Component {
       );
     });
     return (
-      <div className="conversation-wrapper">
-        <div>
-          <ConversationHeader conversation={this.props.conversation} />
+      <div className="conversation-wrapper-grid">
+        <div className="messages-window-grid-area">
+          <div>
+            <ConversationHeader conversation={this.props.conversation} />
+          </div>
+          <div>{messageList}</div>
         </div>
-        <div>
-          {messageList}
+
+        <div className="hide-side-bar">
+          <div>
+            sidebar place holder
+          </div>
         </div>
-        <div className="message-list">{messageList}</div>
-        <MessageForm currentUserId={this.props.currentUserId} conversationId={this.props.conversation.id} />
+
+        <div className="message-form-grid-area">
+          <MessageForm
+            currentUserId={this.props.currentUserId}
+            conversationId={this.props.conversation.id}
+          />
+        </div>
       </div>
     );
   }

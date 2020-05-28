@@ -8,6 +8,7 @@
   grid-template-areas: 
     "header header"
     "channels messages";
+  overflow: auto;
 }
 
 .search-bar-container {
@@ -46,6 +47,46 @@
 
 
 /* conversation/message */
+
+.conversation-wrapper-grid-with-side-bar {
+  display: grid;
+  grid-template-columns: auto 480px;
+  grid-template-rows: calc(100vh - 158px) 120px;
+  grid-template-areas: 
+    "messages-container sidebar"
+    "message-form sidebar" ;
+   
+}
+
+.hide-side-bar {
+  display: none;
+}
+
+.conversation-wrapper-grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: calc(100vh - 158px) 120px;
+  grid-template-areas: 
+    "messages-container"
+    "message-form" ;
+   
+}
+
+.messages-window-grid-area {
+  grid-area: messages-container;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.side-bar-grid-area {
+  display: hidden;
+  grid-area: side-bar;
+}
+
+.message-form-grid-area {
+  grid-area: message-form;
+  z-index: 6;
+}
 
 .message-header {
   width: 100%;
@@ -122,6 +163,7 @@
   border-radius: 5px;
   font-family: 'Prompt', sans-serif;
   font-size: small;
+  z-index: 10;
 }
 
 .message-options li {
@@ -136,7 +178,4 @@
   color: #191414;
 }
 
-.conversation-wrapper {
-  overflow-y: auto;
-}
 

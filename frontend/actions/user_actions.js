@@ -4,3 +4,7 @@ export const changeUserStatus = (user) => ({
   type: CHANGE_USER_STATUS,
   user
 });
+
+export const getAllUsers = () => dispatch => (
+  use
+)
