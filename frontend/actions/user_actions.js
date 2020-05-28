@@ -1,4 +1,4 @@
-import * as userAPIUtils from "../util"
+import * as userAPIUtils from "../util/user_api_util"
 
 export const CHANGE_USER_STATUS = "CHANGE_USER_STATUS";
 export const RECEIVE_USERS = "RECEIVE_USERS"

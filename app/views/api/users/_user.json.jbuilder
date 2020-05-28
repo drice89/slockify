@@ -6,35 +6,62 @@
 #3. Subscriptions to a channel need to then be closed when the component unmounts - very important
 
 
+json.set! "session" do
+  json.extract! user, :id
+end
 
-json.extract! user, :id 
-
-subbed_conversations = user.conversations.includes(:messages, :members)
-subbed_conversations.each do |conversation|
-  
-  json.set! "users" do
-    json.set! user.id do
-      json.extract! user, :id, :email, :full_name, :display_name, :status, :avatar_url, :title, :description, :conversation_ids
-    end
-    conversation.members.each do |member|
-      json.set! member.id do
-        json.extract! member, :id, :full_name, :display_name, :status, :avatar_url, :title, :description
-      end
+json.set! "users" do
+  User.all.each do |other_user|
+    json.set! other_user.id do
+      json.extract! other_user, :id, :full_name, :display_name, :status, :avatar_url
     end
   end
+  json.set! user.id do
+    json.extract! user, :id, :email, :full_name, :display_name, :status, :avatar_url, :title, :description, :conversation_ids
+  end
+end
 
-
-  json.set! "conversations" do
+json.set! "conversations" do
+  user.conversations.each do |conversation|
     json.set! conversation.id do
       json.partial! "api/conversations/conversation.json.jbuilder", conversation: conversation
     end
   end
-
-  json.set! "messages" do
-    conversation.messages.each do |message|
-      json.set! message.id do
-        json.partial! '/api/messages/message.json.jbuilder', message: message
-      end
-    end
-  end
 end
+
+
+
+
+#old code
+
+# json.extract! user, :id 
+
+# subbed_conversations = user.conversations.includes(:messages, :members)
+# subbed_conversations.each do |conversation|
+  
+#   json.set! "users" do
+#     json.set! user.id do
+#       json.extract! user, :id, :email, :full_name, :display_name, :status, :avatar_url, :title, :description, :conversation_ids
+#     end
+#     conversation.members.each do |member|
+#       json.set! member.id do
+#         json.extract! member, :id, :full_name, :display_name, :status, :avatar_url, :title, :description
+#       end
+#     end
+#   end
+
+
+#   json.set! "conversations" do
+#     json.set! conversation.id do
+#       json.partial! "api/conversations/conversation.json.jbuilder", conversation: conversation
+#     end
+#   end
+
+#   json.set! "messages" do
+#     conversation.messages.each do |message|
+#       json.set! message.id do
+#         json.partial! '/api/messages/message.json.jbuilder', message: message
+#       end
+#     end
+#   end
+# end

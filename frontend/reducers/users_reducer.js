@@ -16,6 +16,7 @@ const usersReducer = (state = {}, action) => {
       }
         return nextState;
     case RECEIVE_CONVERSATION:
+      //were adding a user to a conversation
       //this is bad - see line 75 of client jsx. Im adding a session id so i can index the current user
       nextState[action.payload.sessionId].conversationIds.push(action.payload.conversation.id);
       return nextState;

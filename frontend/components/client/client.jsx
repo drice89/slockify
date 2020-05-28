@@ -53,33 +53,15 @@ import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
 import { withRouter } from "react-router-dom";
-import { receiveMessage, removeMessage, receiveEditedMessage } from "../../actions/message_actions";
-import { receiveConversation, receiveEditedConversation, removeConversation} from "../../actions/conversation_actions";
-import { changeUserStatus } from "../../actions/user_actions";
+
+
+
 import ConversationsContainer from "./conversation/conversations_container.jsx";
 
 
 const mapStateToProps = (state) => {
   return {
     sessionId: state.session.id,
-    subs: state.entities.users[state.session.id].conversationIds,
-    conversations: state.entities.conversations,
-    currentUser: state.entities.users[state.session.id]
-  };
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    receiveMessage: message => dispatch(receiveMessage(message)),
-    removeMessage: message => dispatch(removeMessage(message)),
-    receiveEditedMessage: message => dispatch(receiveEditedMessage(message)),
-
-    receiveConversation: conversation => dispatch(receiveConversation(conversation)),
-    removeConversation: conversation => dispatch(removeConversation(conversation)),
-    receiveEditedConversation: conversation => dispatch(receiveEditedConversation(conversation)),
-    changeUserStatus: user => dispatch(changeUserStatus(user)),
-
   };
 };
 
@@ -100,80 +82,6 @@ class Client extends React.Component {
     }
   }
 
-//this is all the code that controls the subscriptions to the 
-//cables - remember that cables are basically the same thing as controllers
-//If you can refactor them to mimic the controllers down the road that would
-//probably clean your code up a lot. Move the subs.forEach function into conversation.jsx
-//and only sub one at a time.
-  componentDidMount () {
-    App.cable.subscriptions.create(
-      {
-        channel: `MasterChannel`, 
-        user: this.props.currentUser
-      },
-      {
-        received: data => {
-          if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
-            switch (data.action) {
-              case "new":
-                return this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
-              case "edit":
-                return this.props.receiveEditedConversation(data.conversation);
-              case "remove":
-                return this.props.receiveEditedConversation(data.conversation);
-              case "status":
-                return this.props.changeUserStatus(data.user);
-              default:
-                return null;
-              }
-            } else if (data.action === 'remove' && this.props.conversations[data.conversation.id]) {
-              this.props.removeConversation({ conversation: data.conversation, sessionId: this.props.sessionId });
-            }
-        },
-        createConversation: function (data) {
-          return this.perform("create_conversation", data);
-        },
-        editConversation: function (data) {
-          return this.perform("edit_conversation", data);
-        }
-      }
-    );
-    //this needs to be moved into the conversations component
-
-    //subscribe to all channels
-    this.props.subs.forEach((id) => {
-      App.cable.subscriptions.create(
-        { 
-          channel: `ChatChannel`, 
-          room: id 
-        },
-        {
-          received: data => {
-            switch(data.action) {
-              case "new":
-                return this.props.receiveMessage(data.message);
-              case "update": 
-                return this.props.receiveEditedMessage(data.message);
-              case "remove":
-                return this.props.removeMessage(data.message);
-            }
-          },
-          speak: function (data) {
-            return this.perform("speak", data);
-          },
-          update: function(data) {
-            return this.perform("update", data);
-          },
-          remove: function (data) {
-            return this.perform("remove", data);
-          }
-        });
-    });
-
-    //code for the master cable that all active users are subscribed to
-
-
-  }
 
   //right side panel rendered in conversations container
   render () {
@@ -184,7 +92,7 @@ class Client extends React.Component {
           <SearchBarContianer />
         </div>
         <div className="channel-container">
-          <ChannelsContainer conversations={this.props.conversations} />
+          <ChannelsContainer />
         </div>
         <div className="conversation-container">
           {
@@ -196,4 +104,4 @@ class Client extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Client)
+export default connect(mapStateToProps)(Client)

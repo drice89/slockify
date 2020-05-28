@@ -1,14 +1,16 @@
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_MESSAGE, REMOVE_MESSAGE, RECEIVE_EDIT } from "../actions/message_actions";
+
+import { RECEIVE_MESSAGES, RECEIVE_MESSAGE, REMOVE_MESSAGE, RECEIVE_EDIT } from "../actions/message_actions";
 
 const messagesReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState = Object.assign({}, state );
   
   switch(action.type) {
-    case RECEIVE_CURRENT_USER:
-      return action.user.messages;
+    // case RECEIVE_CURRENT_USER:
+    //   return action.user.messages;
 //I tried to have "RECEIVE_MESSAGE || RECEIVE_EDIT" and it wasnt hitting the RECEIVE_EDIT CONDITION so I broke it out
+    case RECEIVE_MESSAGES:
+      return action.messages;
     case RECEIVE_MESSAGE:
       nextState[action.message.id] = action.message;
       return nextState;
