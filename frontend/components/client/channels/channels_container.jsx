@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { channelConversationsSort, directConversationsSort } from "../../../reducers/selector";
-import { receiveConversation, receiveEditedConversation, removeConversation} from "../../actions/conversation_actions";
-import { changeUserStatus } from "../../actions/user_actions";
+import { receiveConversation, receiveEditedConversation, removeConversation} from "../../../actions/conversation_actions";
+import { changeUserStatus } from "../../../actions/user_actions";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -58,6 +58,8 @@ class ChannelsContainer extends React.Component {
       }
     );
   }
+
+ 
   render(){
     debugger
     const conversationsArray = Object.values(this.props.conversations);
