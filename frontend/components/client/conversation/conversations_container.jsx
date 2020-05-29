@@ -40,7 +40,7 @@ class Conversation extends React.Component {
   }
 
   componentDidUpdate() {
-    this.bottom.current.scrollIntoView();
+   if (this.bottom.current) this.bottom.current.scrollIntoView();
   }
 
   componentDidMount() {
@@ -73,6 +73,7 @@ class Conversation extends React.Component {
             return this.perform("remove", data);
           }
         });
+
   }
 
    componentWillUnmount() {
