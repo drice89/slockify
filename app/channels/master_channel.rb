@@ -18,7 +18,7 @@ class MasterChannel < ApplicationCable::Channel
     data.deep_transform_keys! { |key| key.underscore }
     conversation = Conversation.create(data["conversation"])
     data["members"].each do |member|
-      self.new_membership(member["user_id"], convsersation.id, member["admin"])
+      self.new_membership(member["id"], convsersation.id, member["admin"] ||= false)
     end
     socket = { message: conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
     MasterChannel.broadcast_to("master", socket)

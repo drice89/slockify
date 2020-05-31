@@ -178,4 +178,9 @@
   color: #191414;
 }
 
+.direct-messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: cente;r
+}
 

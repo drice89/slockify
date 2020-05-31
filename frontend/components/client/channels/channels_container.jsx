@@ -4,6 +4,8 @@ import { channelConversationsSort, directConversationsSort } from "../../../redu
 import { receiveConversation, receiveEditedConversation, removeConversation} from "../../../actions/conversation_actions";
 import { changeUserStatus } from "../../../actions/user_actions";
 import { connect } from "react-redux";
+import Modal from "../modals/modal";
+import { openModal } from "../../../actions/ui_actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -19,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     removeConversation: conversation => dispatch(removeConversation(conversation)),
     receiveEditedConversation: conversation => dispatch(receiveEditedConversation(conversation)),
     changeUserStatus: user => dispatch(changeUserStatus(user)),
+    openModal: component => dispatch(openModal(component))
 
   };
 };
@@ -61,17 +64,16 @@ class ChannelsContainer extends React.Component {
 
  
   render(){
-    debugger
     const conversationsArray = Object.values(this.props.conversations);
     const channels = channelConversationsSort(conversationsArray);
     //possibly lump group and direct into one type
     const direct = directConversationsSort(conversationsArray);
     return (
       <div>
+        <Modal />
         <div className="conversation-section">
           <ul>
             <li><h4>Channels</h4></li>
-            <li><button className="add-channel-button">+</button> Add Channel</li>
             {
               channels.map((channel) => {
                 return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button>{channel.name}</button></Link></li>
@@ -81,7 +83,11 @@ class ChannelsContainer extends React.Component {
         </div>
         <div className="conversation-section">
           <ul>
-            <li><h4>Direct</h4></li>
+            <li className="direct-messages-header">
+              <h4>Direct</h4>
+              <button className="add-channel-button" onClick={() => this.props.openModal("dm")}>+</button>
+            </li>
+             
             {
               direct.map((direct) => {
                 return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button>{direct.name}</button></Link></li>
