@@ -34,13 +34,14 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
       </li>
     )
   });
-  const createMessage = (channelName, selectedUsers) => {
+  const createNewConversation = (channelName, selectedUsers) => {
     const members = {...selectedUsers}
     members[currentUser.id] = currentUser
     const conversation = {
       name: channelName, 
       ownerId: currentUser.id, 
       convoType: Object.keys(selectedUsers).length > 2 ? "group" : "direct",
+      "isPrivate?": true,
 
     }
     App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
@@ -62,7 +63,7 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
             </input>
           </li>
           <li>
-            <button onClick={() => createMessage(channelName, selectedUsers)}>
+            <button onClick={() => createNewConversation(channelName, selectedUsers)}>
               Go
             </button>
           </li>

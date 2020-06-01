@@ -35,12 +35,14 @@ class ChannelsContainer extends React.Component {
       },
       {
         received: data => {
+          debugger
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
               case "new":
-                return this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
+                  return this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
               case "edit":
                 return this.props.receiveEditedConversation(data.conversation);
+              //weve got two here
               case "remove":
                 return this.props.receiveEditedConversation(data.conversation);
               case "status":

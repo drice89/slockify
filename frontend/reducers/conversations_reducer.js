@@ -11,7 +11,8 @@ const conversationsReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return action.user.conversations;
     case RECEIVE_CONVERSATION:
-      nextState[action.payload.conversation.id] = action.conversation;
+      debugger
+      nextState[action.payload.conversation.id] = action.payload.conversation;
       return nextState;
     case RECEIVE_EDITED_CONVERSATION:
       nextState[action.payload.conversation.id] = action.conversation;

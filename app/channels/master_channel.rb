@@ -17,10 +17,16 @@ class MasterChannel < ApplicationCable::Channel
   def create_conversation(data)
     data.deep_transform_keys! { |key| key.underscore }
     conversation = Conversation.create(data["conversation"])
-    data["members"].each do |member|
-      self.new_membership(member["id"], convsersation.id, member["admin"] ||= false)
+
+    members = []
+    data["members"].each_value do |value|
+      membership = new_membership(value["id"], conversation.id)
+      members.push(membership) if membership
     end
-    socket = { message: conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
+    members = members.map { |member| member.member_id}
+    conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+    conversation["memberIds"] = members
+    socket = { conversation: conversation, action: "new" }
     MasterChannel.broadcast_to("master", socket)
 
   end
@@ -61,7 +67,7 @@ class MasterChannel < ApplicationCable::Channel
   private
   #member_id, conversation_id
   def new_membership(user_id, conversation_id, admin=false)
-    Membership.create({member_id: user_id, conversation_id: conversation_id, admin: admin})
+    Membership.create({member_id: user_id, conversation_id: conversation_id, is_admin?: admin})
   end
 
   def delete_membership(user_id, conversation_id)
