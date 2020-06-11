@@ -1,3 +1,4 @@
+require 'set'
 class MasterChannel < ApplicationCable::Channel
 
   def subscribed
@@ -15,12 +16,15 @@ class MasterChannel < ApplicationCable::Channel
   #   t.boolean "restricted_playlist?"
   #   t.string "convo_type", null: false
   def create_conversation(data)
+    
     data.deep_transform_keys! { |key| key.underscore }
+    data["conversation"]["name"] = generate_dm_name(data["members"])
     conversation = Conversation.create(data["conversation"])
 
     members = []
     data["members"].each_value do |value|
       membership = new_membership(value["id"], conversation.id)
+      #this needs to capture any errors 
       members.push(membership) if membership
     end
     members = members.map { |member| member.member_id}
@@ -92,4 +96,20 @@ class MasterChannel < ApplicationCable::Channel
     { user: {id: hash[:id], status: hash[:status]}, action: "status" }
   end
 
+  def generate_dm_name(members)
+    s1 = Set.new()
+    user_ids = []
+    members.each_value do |value| 
+      id = value["id"]
+      s1.add(id)
+      user_ids << id
+    end
+    hashed_ids = s1.hash
+    s2 = Set.new()
+    members.each_value { |value| s2.add(value["full_name"]) }
+    hashed_names = s2.hash
+    name = "#{hashed_ids}#{hashed_names},#{user_ids.join(',')}"
+    debugger
+    return name
+  end
 end

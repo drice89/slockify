@@ -1,3 +1,4 @@
+require 'set'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,18 +7,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+def generate_name(ids, names)
+  return "#{Set.new(ids).hash}#{Set.new(names).hash},#{ids.join(",")}"
+end
+
 demoUser = User.create({email: "demouser@slockify.io", password: "password123!", full_name: "Demo User"})
 user1 = User.new({email: "seededuser1@slockify.io", password: "password123!", full_name: "Seed User 1"})
 user1.save
 user2 = User.new({email: "seededuser2@slockify.io", password: "password123!", full_name: "Seed User 2"})
 user2.save
-conversation1 = Conversation.new(name: "test convo", description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "direct")
+conversation1 = Conversation.new(name: generate_name([demoUser.id, user2.id], [demoUser.full_name, user2.full_name]), description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "direct")
 conversation1.save
-Membership.create(member_id: user1.id, conversation_id: conversation1.id, is_admin?: false)
+Membership.create(member_id: demoUser.id, conversation_id: conversation1.id, is_admin?: false)
 Membership.create(member_id: user2.id, conversation_id: conversation1.id, is_admin?: false)
-Message.create(body: "Wow this is so cool", author_id: user1.id, recipient_id: conversation1.id)
+Message.create(body: "Wow this is so cool", author_id: demoUser.id, recipient_id: conversation1.id)
 Message.create(body: "yea bro totally", author_id: user2.id, recipient_id: conversation1.id)
-Message.create(body: "Did you hear this track by DJ Fresh", author_id: user1.id, recipient_id: conversation1.id)
+Message.create(body: "Did you hear this track by DJ Fresh", author_id: demoUser.id, recipient_id: conversation1.id)
 Message.create(body: "Bruh its so lit", author_id: user2.id, recipient_id: conversation1.id)
 axl = User.create(email: "arose@slockify.io" , password: "password123!", full_name: "Axl Rose", display_name: "Axl")
 beck = User.create(email: "user1@slockify.io" , password: "password123!", full_name: "Jeff Beck", display_name: "Beck")
@@ -26,10 +31,10 @@ jack = User.create(email: "user3@slockify.io" , password: "password123!", full_n
 cardi = User.create(email: "user4@slockify.io" , password: "password123!", full_name: "Cardi B", display_name: "Cardi")
 shania = User.create(email: "user5@slockify.io" , password: "password123!", full_name: "Shania Twain", display_name: "nflQueen")
 paul = User.create(email: "user6@slockify.io" , password: "password123!", full_name: "Paul M", display_name: "TheBestBeatle")
-axlDemoDm = Conversation.create(name: "Axl/Beck", description: "Something something", owner_id: axl.id, is_private?: true, convo_type: "direct")
-kanyeDemoDm = Conversation.create(name: "Ye/Demo", description: "Something something", owner_id: kanye.id, is_private?: true, convo_type: "direct")
-demoCardiDm = Conversation.create(name: "Demo/Cardi", description: "Something something", owner_id: demoUser.id, is_private?: true, convo_type: "direct")
-paulDemoDm = Conversation.create(name: "Paul/Demo", description: "Something something", owner_id: paul.id, is_private?: true, convo_type: "direct")
+axlDemoDm = Conversation.create(name: generate_name([demoUser.id, axl.id], [demoUser.full_name, axl.full_name]), description: "Something something", owner_id: axl.id, is_private?: true, convo_type: "direct")
+kanyeDemoDm = Conversation.create(name: generate_name([demoUser.id, kanye.id], [demoUser.full_name, kanye.full_name]), description: "Something something", owner_id: kanye.id, is_private?: true, convo_type: "direct")
+demoCardiDm = Conversation.create(name: generate_name([demoUser.id, cardi.id], [demoUser.full_name, cardi.full_name]) "Demo/Cardi", description: "Something something", owner_id: demoUser.id, is_private?: true, convo_type: "direct")
+paulDemoDm = Conversation.create(name: generate_name([demoUser.id, paul.id], [demoUser.full_name, paul.full_name]) "Paul/Demo", description: "Something something", owner_id: paul.id, is_private?: true, convo_type: "direct")
 general = Conversation.create(name: "General", description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "channel")
 
 Membership.create(member_id: demoUser.id , conversation_id: axlDemoDm.id)
