@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
   return {
     sessionId: state.session.id,
     conversations: state.entities.conversations,
+    users: state.entities.users
   };
 };
 
@@ -27,6 +28,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class ChannelsContainer extends React.Component {
+  
+
   componentDidMount() {
     App.cable.subscriptions.create(
       {

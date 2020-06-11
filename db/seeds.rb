@@ -33,8 +33,8 @@ shania = User.create(email: "user5@slockify.io" , password: "password123!", full
 paul = User.create(email: "user6@slockify.io" , password: "password123!", full_name: "Paul M", display_name: "TheBestBeatle")
 axlDemoDm = Conversation.create(name: generate_name([demoUser.id, axl.id], [demoUser.full_name, axl.full_name]), description: "Something something", owner_id: axl.id, is_private?: true, convo_type: "direct")
 kanyeDemoDm = Conversation.create(name: generate_name([demoUser.id, kanye.id], [demoUser.full_name, kanye.full_name]), description: "Something something", owner_id: kanye.id, is_private?: true, convo_type: "direct")
-demoCardiDm = Conversation.create(name: generate_name([demoUser.id, cardi.id], [demoUser.full_name, cardi.full_name]) "Demo/Cardi", description: "Something something", owner_id: demoUser.id, is_private?: true, convo_type: "direct")
-paulDemoDm = Conversation.create(name: generate_name([demoUser.id, paul.id], [demoUser.full_name, paul.full_name]) "Paul/Demo", description: "Something something", owner_id: paul.id, is_private?: true, convo_type: "direct")
+demoCardiDm = Conversation.create(name: generate_name([demoUser.id, cardi.id], [demoUser.full_name, cardi.full_name]), description: "Something something", owner_id: demoUser.id, is_private?: true, convo_type: "direct")
+paulDemoDm = Conversation.create(name: generate_name([demoUser.id, paul.id], [demoUser.full_name, paul.full_name]), description: "Something something", owner_id: paul.id, is_private?: true, convo_type: "direct")
 general = Conversation.create(name: "General", description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "channel")
 
 Membership.create(member_id: demoUser.id , conversation_id: axlDemoDm.id)
