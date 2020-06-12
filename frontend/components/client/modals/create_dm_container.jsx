@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import { closeModal } from "../../../actions/ui_actions"
 import { connect } from "react-redux"
 import UserListItem from "./user_list_item"
+import { transformConversationNames, transformUserNames } from "../../../reducers/selector"
 
 
 const mapStateToProps = (state) => ({
-  users: state.entities.users,
-  currentUser: state.entities.users[state.session.id]
+  users: transformUserNames(state.entities.users),
+  currentUser: state.entities.users[state.session.id],
+  conversations: transformConversationNames(state.entities.conversations, state.entities.users, state.session.id)
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,6 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 const CreateDmContainer = ({closeModal, users, currentUser}) => {
   const [channelName, setName] = useState("")
   const [selectedUsers, selectUsers] = useState({})
+  const [displayConversations, setDisplayConversations] = useState({})
   const addUser = (userId) => {
     return e => {
       if(e.currentTarget.checked) {
@@ -47,6 +50,11 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
     App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
     closeModal(); 
   }
+
+  
+  // useEffect(() = {
+
+  // })
 
   return (
     <div className="modal-body">
