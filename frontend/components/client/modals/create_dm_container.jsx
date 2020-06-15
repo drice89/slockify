@@ -15,10 +15,31 @@ const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
 })
 
-const CreateDmContainer = ({closeModal, users, currentUser}) => {
+const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
+  //debugger
   const [channelName, setName] = useState("")
   const [selectedUsers, selectUsers] = useState({})
-  const [displayConversations, setDisplayConversations] = useState({})
+  //const [displayConversations, setDisplayConversations] = useState({})
+
+  // useEffect(() => {
+  //   setDisplayConversations(displayedConvos())
+  // }, [])
+
+  const displayedConvos = () => {
+    let temp = {}
+    Object.keys(conversations).forEach((convo) => {
+      temp[convo.toString()] = conversations[convo]
+    })
+
+    Object.keys(users).forEach((user) => {
+      if (!temp[user.toString()]) {
+        temp[user.toString()] = users[user]
+      }
+    })
+    debugger
+    return temp
+  }
+
   const addUser = (userId) => {
     return e => {
       if(e.currentTarget.checked) {
@@ -30,10 +51,10 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
       }
     }
   }
-  const userList = Object.values(users).map((user) => {
+  const list = Object.keys(displayedConvos()).map((convo) => {
     return (
-      <li key={`${user.id}user`}>
-        <UserListItem user = {user} addUser={addUser} key={`${user.id}userItem`}/>
+      <li key={`${convo}`}>
+        <UserListItem conversation={convo} name={convo} addUser={addUser} key={`${convo}userItem`}/>
       </li>
     )
   });
@@ -52,10 +73,6 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
   }
 
   
-  // useEffect(() = {
-
-  // })
-
   return (
     <div className="modal-body">
       <div>
@@ -79,7 +96,8 @@ const CreateDmContainer = ({closeModal, users, currentUser}) => {
       </div>
       <div className = "modal-user-list">
         <h3>Users</h3>
-        {userList}
+        { list }
+        {/* { !Object.keys(displayConversations).length ? null : list } */}
       </div>
       <div>
         
