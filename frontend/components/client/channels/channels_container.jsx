@@ -67,6 +67,13 @@ class ChannelsContainer extends React.Component {
     );
   }
 
+  limitConvoLength(string) {
+    if(string.length > 27) {
+      string = string.substring(0,26) + "..."
+    }
+    return string
+  }
+
  
   render(){
     const conversationsArray = Object.values(this.props.conversations);
@@ -95,7 +102,7 @@ class ChannelsContainer extends React.Component {
              
             {
               direct.map((direct) => {
-                return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button>{direct.name}</button></Link></li>
+                return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button>{this.limitConvoLength(direct.name)}</button></Link></li>
               })
             }
           </ul>

@@ -1,12 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { closeModal } from "../../../actions/ui_actions"
 import { connect } from "react-redux"
 import UserListItem from "./user_list_item"
-import { transformConversationNames, transformUserNames } from "../../../reducers/selector"
+import { transformConversationNames } from "../../../reducers/selector"
 
 
 const mapStateToProps = (state) => ({
-  users: transformUserNames(state.entities.users),
+  users: state.entities.users,
   currentUser: state.entities.users[state.session.id],
   conversations: transformConversationNames(state.entities.conversations, state.entities.users, state.session.id)
 })
@@ -16,14 +16,13 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
-  //debugger
   const [channelName, setName] = useState("")
   const [selectedUsers, selectUsers] = useState({})
-  //const [displayConversations, setDisplayConversations] = useState({})
+  const [displayConversations, setDisplayConversations] = useState({})
 
-  // useEffect(() => {
-  //   setDisplayConversations(displayedConvos())
-  // }, [])
+  useEffect(() => {
+    setDisplayConversations(displayedConvos())
+  }, [setName, selectedUsers])
 
   const displayedConvos = () => {
     let temp = {}
@@ -31,33 +30,49 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       temp[convo.toString()] = conversations[convo]
     })
 
-    Object.keys(users).forEach((user) => {
-      if (!temp[user.toString()]) {
-        temp[user.toString()] = users[user]
+    Object.values(users).forEach((user) => {
+      const name = user.displayName || user.fullName
+      if (!temp[name]) {
+        temp[name] = user
       }
     })
-    debugger
     return temp
   }
 
-  const addUser = (userId) => {
+  const addUser = (ids) => {
     return e => {
       if(e.currentTarget.checked) {
-        selectUsers({...selectedUsers, [userId]: users[userId]})
+        let usersForLocalState = {}
+        ids.forEach((id)=>{
+          usersForLocalState[id] = users[id]
+        })
+        selectUsers({...selectedUsers, ...usersForLocalState})
       } else {
         let newState = {...selectedUsers}
-        delete newState[userId]
+        ids.forEach((id)=>{
+          delete newState[id]
+        })
         selectUsers({...newState})
       }
     }
   }
-  const list = Object.keys(displayedConvos()).map((convo) => {
+
+  const list = Object.keys(displayConversations).map((convo) => {
     return (
       <li key={`${convo}`}>
-        <UserListItem conversation={convo} name={convo} addUser={addUser} key={`${convo}userItem`}/>
+        <UserListItem conversation={displayConversations[convo]} users={users} name={convo} addUser={addUser} key={`${convo}userItem`}/>
       </li>
     )
   });
+
+  const renderSelectedUsers = Object.values(selectedUsers).map((user) => {
+    return (
+      <span key={user.id}>
+       {`${user.displayName || user.fullName} `}
+      </span>
+    )
+  });
+
   const createNewConversation = (channelName, selectedUsers) => {
     const members = {...selectedUsers}
     members[currentUser.id] = currentUser
@@ -73,6 +88,8 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
   }
 
   
+
+  
   return (
     <div className="modal-body">
       <div>
@@ -81,11 +98,16 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       <div>
         <ul className="modal-user-search">
           <li>
-            <input placeholder="Find or start a conversation" 
-            onChange={(e) => setName(e.currentTarget.value)} 
-            value={channelName}
-            size="52" >
-            </input>
+            <div>
+              <ul>
+                { renderSelectedUsers }
+              </ul>
+              <input placeholder="Find or start a conversation" 
+              onChange={(e) => setName(e.currentTarget.value)} 
+              value={channelName}
+              size="52" >
+              </input>
+            </div>
           </li>
           <li>
             <button onClick={() => createNewConversation(channelName, selectedUsers)}>
@@ -97,7 +119,6 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       <div className = "modal-user-list">
         <h3>Users</h3>
         { list }
-        {/* { !Object.keys(displayConversations).length ? null : list } */}
       </div>
       <div>
         

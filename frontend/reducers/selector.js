@@ -36,7 +36,7 @@ export const transformConversationNames = (conversations, users, currentUserId) 
     if (conversation.convoType !== "channel") {
       let newName = []
       let avatarUrls = [] 
-      conversation.memberIds.forEach((id) => {
+      conversation.memberIds.forEach((id) =>{ 
         if(id !== currentUserId) {
           const name = users[id].displayName || users[id].fullName
           newName.push(name)
@@ -50,14 +50,3 @@ export const transformConversationNames = (conversations, users, currentUserId) 
   })
   return temp
 }
-
-export const transformUserNames = (users) => {
-  let temp = {}
-
-  Object.values(users).forEach((user) => {
-    const name = user.displayName || user.fullName
-    temp[name] = user
-  })
-  return temp
-}
-

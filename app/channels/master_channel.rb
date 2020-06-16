@@ -109,7 +109,6 @@ class MasterChannel < ApplicationCable::Channel
     members.each_value { |value| s2.add(value["full_name"]) }
     hashed_names = s2.hash
     name = "#{hashed_ids}#{hashed_names},#{user_ids.join(',')}"
-    debugger
     return name
   end
 end
