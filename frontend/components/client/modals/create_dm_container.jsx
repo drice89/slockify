@@ -81,8 +81,8 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       ownerId: currentUser.id, 
       convoType: Object.keys(selectedUsers).length > 2 ? "group" : "direct",
       "isPrivate?": true,
-
     }
+
     App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
     closeModal(); 
   }

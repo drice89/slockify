@@ -28,9 +28,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class ChannelsContainer extends React.Component {
-  
 
   componentDidMount() {
+    debugger
     App.cable.subscriptions.create(
       {
         channel: `MasterChannel`, 
@@ -42,7 +42,11 @@ class ChannelsContainer extends React.Component {
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
               case "new":
-                  return this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
+                  if (!data.error) {
+                    this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
+                  }
+                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  break
               case "edit":
                 return this.props.receiveEditedConversation(data.conversation);
               //weve got two here
@@ -67,6 +71,10 @@ class ChannelsContainer extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+     App.cable.subscriptions.remove(App.cable.subscriptions.subscriptions[0])
+  }
+
   limitConvoLength(string) {
     if(string.length > 27) {
       string = string.substring(0,26) + "..."
@@ -79,7 +87,7 @@ class ChannelsContainer extends React.Component {
     const conversationsArray = Object.values(this.props.conversations);
     const channels = channelConversationsSort(conversationsArray);
     //possibly lump group and direct into one type
-    const direct = directConversationsSort(conversationsArray);
+    const direct = directConversationsSort(conversationsArray, this.props.users, this.props.sessionId);
     return (
       <div>
         <Modal />
@@ -102,7 +110,7 @@ class ChannelsContainer extends React.Component {
              
             {
               direct.map((direct) => {
-                return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button>{this.limitConvoLength(direct.name)}</button></Link></li>
+                return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button>{this.limitConvoLength(direct.displayName)}</button></Link></li>
               })
             }
           </ul>

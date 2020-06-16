@@ -86,13 +86,14 @@ class Client extends React.Component {
   //right side panel rendered in conversations container
   render () {
     const ConversationContainer = withRouter(ConversationsContainer);
+    const ChannelContainer = withRouter(ChannelsContainer)
     return( 
       <div className="client-container">
         <div className="search-bar-container">
           <SearchBarContianer />
         </div>
         <div className="channel-container">
-          <ChannelsContainer />
+          <ChannelContainer />
         </div>
         <div className="conversation-container">
           {

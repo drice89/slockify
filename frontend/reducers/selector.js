@@ -20,10 +20,18 @@ export const channelConversationsSort = (conversations) => {
   return res;
 }; 
 
-export const directConversationsSort = (conversations) => {
+export const directConversationsSort = (conversations, users, currentUserId) => {
   let res = [];
   conversations.forEach(conversation => {
     if (conversation.convoType !== "channel") {
+      let newName = []
+      conversation.memberIds.forEach((id) =>{ 
+        if(id !== currentUserId) {
+          const name = users[id].displayName || users[id].fullName
+          newName.push(name)
+        }
+      })
+      conversation.displayName = newName.join(", ")
       res.push(conversation);
     }
   });

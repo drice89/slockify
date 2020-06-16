@@ -19,19 +19,24 @@ class MasterChannel < ApplicationCable::Channel
     
     data.deep_transform_keys! { |key| key.underscore }
     data["conversation"]["name"] = generate_dm_name(data["members"])
-    conversation = Conversation.create(data["conversation"])
-
-    members = []
-    data["members"].each_value do |value|
-      membership = new_membership(value["id"], conversation.id)
-      #this needs to capture any errors 
-      members.push(membership) if membership
+    conversation = Conversation.new(data["conversation"])
+    if conversation.save
+      members = []
+      data["members"].each_value do |value|
+        membership = new_membership(value["id"], conversation.id)
+        #this needs to capture any errors 
+        members.push(membership) if membership
+      end
+      members = members.map { |member| member.member_id}
+      conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
+      conversation["memberIds"] = members
+      socket = { conversation: conversation, action: "new" }
+      MasterChannel.broadcast_to("master", socket)
+    else
+      existing_id = Conversation.find_by(name: conversation.name)
+      socket = { error: "conversation already exists", conversation: { id: existing_id.id, memberIds: [conversation.owner_id] }, action: "new"}
+      MasterChannel.broadcast_to("master", socket)
     end
-    members = members.map { |member| member.member_id}
-    conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
-    conversation["memberIds"] = members
-    socket = { conversation: conversation, action: "new" }
-    MasterChannel.broadcast_to("master", socket)
 
   end
   
@@ -97,18 +102,10 @@ class MasterChannel < ApplicationCable::Channel
   end
 
   def generate_dm_name(members)
-    s1 = Set.new()
-    user_ids = []
+    ids = []
     members.each_value do |value| 
-      id = value["id"]
-      s1.add(id)
-      user_ids << id
+      ids << value["id"]
     end
-    hashed_ids = s1.hash
-    s2 = Set.new()
-    members.each_value { |value| s2.add(value["full_name"]) }
-    hashed_names = s2.hash
-    name = "#{hashed_ids}#{hashed_names},#{user_ids.join(',')}"
-    return name
+    ids.sort
   end
 end
