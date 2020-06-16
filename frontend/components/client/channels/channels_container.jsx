@@ -30,7 +30,6 @@ const mapDispatchToProps = (dispatch) => {
 class ChannelsContainer extends React.Component {
 
   componentDidMount() {
-    debugger
     App.cable.subscriptions.create(
       {
         channel: `MasterChannel`, 
@@ -38,14 +37,15 @@ class ChannelsContainer extends React.Component {
       },
       {
         received: data => {
-          debugger
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
               case "new":
                   if (!data.error) {
                     this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
                   }
-                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  if (data.conversation.ownerId === this.props.sessionId) {
+                    this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  }
                   break
               case "edit":
                 return this.props.receiveEditedConversation(data.conversation);

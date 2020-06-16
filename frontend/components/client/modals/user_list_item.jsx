@@ -12,7 +12,7 @@ const UserListItem = ({conversation, addUser, name}) => {
   return(
   <div className="user-list-item">
     <div><input type="checkbox" onChange={addUser(memberships(conversation))}/></div>
-    <div><img src={conversation.avatarUrls || window.defaultAvatarUrl} alt=""/></div>
+    <div><img src={window.defaultAvatarUrl} alt=""/></div>
     <div>
       <div>
         {name}

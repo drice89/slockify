@@ -107,7 +107,7 @@ class Conversation extends React.Component {
       <div className="conversation-wrapper-grid">
         <div className="messages-window-grid-area">
           <div>
-            <ConversationHeader conversation={this.props.conversation} />
+            <ConversationHeader currentUserId={this.props.currentUserId} conversation={this.props.conversation} users={this.props.users} />
           </div>
           <div>{messageList}</div>
         </div>
