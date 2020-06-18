@@ -5,7 +5,7 @@ export const getUserConversations = (userId) => (
   })
 );
 
-export const getAllConversations = () => (
+export const getAllChannels = () => (
   $.ajax({
     method: "GET",
     url: `/api/conversations`

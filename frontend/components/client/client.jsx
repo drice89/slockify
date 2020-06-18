@@ -53,6 +53,7 @@ import { connect } from "react-redux";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
 import { withRouter } from "react-router-dom";
+import ChannelsListContainer from "./channels/channels_list_container"
 
 
 
@@ -82,9 +83,14 @@ class Client extends React.Component {
     }
   }
 
+  componentDidMount() {
+
+  }
+
 
   //right side panel rendered in conversations container
   render () {
+    const location = this.props.match.params.conversationId
     const ConversationContainer = withRouter(ConversationsContainer);
     const ChannelContainer = withRouter(ChannelsContainer)
     return( 
@@ -97,7 +103,7 @@ class Client extends React.Component {
         </div>
         <div className="conversation-container">
           {
-            <ConversationContainer />
+            location === "channels" ? <ChannelsListContainer/> : <ConversationContainer />
           }
         </div>
       </div>

@@ -1,6 +1,6 @@
 class Api::ConversationsController < ApplicationController
   def index
-    @conversations = Conversation.where({is_private?: [false, nil]})
+    @conversations = Conversation.where({convo_type: "channel"})
     render :index
   end
 

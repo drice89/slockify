@@ -2,6 +2,7 @@ import React from "react"
 import { closeModal } from "../../../actions/ui_actions"
 import { connect } from "react-redux"
 import CreateDmContainer from "./create_dm_container"
+import CreateChannelContainer from "./create_channel_container"
 
 const mapStateToProps = (state) => ({
   modal: state.ui.modal
@@ -17,6 +18,9 @@ const Modal = ({modal, closeModal}) => {
   switch(modal) {
     case "dm":
       component = <CreateDmContainer />
+      break;
+    case "channel":
+      component = <CreateChannelContainer />
       break;
     default:
       return null;

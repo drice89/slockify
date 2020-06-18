@@ -23,7 +23,6 @@ const mapDispatchToProps = (dispatch) => {
     receiveEditedConversation: conversation => dispatch(receiveEditedConversation(conversation)),
     changeUserStatus: user => dispatch(changeUserStatus(user)),
     openModal: component => dispatch(openModal(component))
-
   };
 };
 
@@ -93,7 +92,10 @@ class ChannelsContainer extends React.Component {
         <Modal />
         <div className="conversation-section">
           <ul>
-            <li><h4>Channels</h4></li>
+            <li>
+              <h4>Channels</h4>
+              <button className="add-channel-button"><Link to="channels">+</Link></button>
+            </li>
             {
               channels.map((channel) => {
                 return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button>{channel.name}</button></Link></li>
