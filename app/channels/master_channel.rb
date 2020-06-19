@@ -108,4 +108,11 @@ class MasterChannel < ApplicationCable::Channel
     end
     ids.sort
   end
+
+  def createPlaylist()
+    url = 'https://api.spotify.com/v1/search?type=artist&q=tycho'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    JSON.parse(response)
+  end
 end
