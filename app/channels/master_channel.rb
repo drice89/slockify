@@ -18,7 +18,7 @@ class MasterChannel < ApplicationCable::Channel
   def create_conversation(data)
     
     data.deep_transform_keys! { |key| key.underscore }
-    data["conversation"]["name"] = generate_dm_name(data["members"])
+    data["conversation"]["name"] = generate_dm_name(data["members"]) if data["conversation"]["convo_type"] != "channel"
     conversation = Conversation.new(data["conversation"])
     if conversation.save
       members = []

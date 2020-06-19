@@ -4,39 +4,93 @@ import { connect } from "react-redux"
 
 const mapStateToProps = (state) => ({
   channels: state.entities.channels,
+  currentUser: state.entities.users[state.session.id]
 })
 
 const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),
 })
 
-const CreateChannelModal = ({channels, closeModal}) => {
+const CreateChannelModal = ({channels, closeModal, currentUser}) => {
+  const [channelName, setChannelName] = useState("")
+  const [warning, setWarning] = useState("")
+  const [channelDescription, setDescription] = useState("")
+  const [isPrivate, setPrivate] = useState(false)
+
+  useEffect(() => {
+    if (transformedChannels[channelName.toLowerCase()]) setWarning("Channel already exists")
+    return () => {
+      setWarning("")
+    }
+  }, [channelName])
+
+  const handleClick = () => {
+    if(channelName === "") {
+      return setWarning("Channel name can't be blank")
+    } else if (warning === "Channel already exists") {
+      return setWarning ("Cannot create channel with that name")
+    } 
+
+    const conversation = {
+      name: channelName, 
+      ownerId: currentUser.id, 
+      convoType: "channel",
+      "isPrivate?": setPrivate,
+      description: channelDescription
+    }
+
+     const members = { [currentUser.id]: currentUser}
+
+    App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
+    closeModal(); 
+  }
+
+  const handleChange = (event) => {
+    setChannelName(event.currentTarget.value)
+  }
+
+  const togglePrivate = () => {
+    if (isPrivate) {
+      setPrivate(false)
+    } else {
+      setPrivate(true)
+    }
+  }
+   
+  const transformChannels = () => {
+    const res = {}
+    Object.values(channels).forEach((channel) => {
+     res[channel.name.toLowerCase()] = true
+    })
+    return res
+  }
+
+  const transformedChannels = transformChannels()
   return (
-    <div>
+    <div className="modal-body">
+      <div><h2>Create a channel</h2></div>
+      <div><span>Channels are where your team communicates. They’re best when organized around a topic — #marketing, for example.</span></div>
       <ul>
-        <li>Create a channel</li>
+        <li> Name <span>{warning}</span> </li>
         <li>
-          <span>
-            Channels are where your team communicates. They’re best when organized around a topic — #marketing, for example.
-          </span>
+          <div><input type="text" placeholder="# e.g. heavy-metal" onChange={(e) => handleChange(e)} value={channelName} /></div>
+          <div><button>Go</button></div>
+        </li>
+        <li> Description <span>(optional)</span> </li>
+        <li>
+          <div><input type="text" value={channelDescription} onChange={(e) => setDescription(e.currentTarget.value)}/></div>
+          <div><span>What's this channel about?</span></div>
         </li>
         <li>
           <div>
-            Name
+            <div><h3>Make channel private?</h3></div>
+            <div>When a channel is set to private, it can only be viewed or joined by invitation.</div>
           </div>
           <div>
-            <input type="text" placeholder="# e.g. heavy-metal"/>
-          </div>
-        </li>
-        <li>
-          <div>
-            Description <span>(optional)</span>
+            <input type="checkbox" onChange={() => togglePrivate()} />
           </div>
           <div>
-            <input type="text" />
-          </div>
-          <div>
-            <span>What's this channel about?</span>
+            <button onClick={handleClick}>Create</button>
           </div>
         </li>
       </ul>
