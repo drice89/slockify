@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:create, :update, :destroy]
 
   end
-
+  get '/auth/spotify/callback', to: 'api/users#spotify'
   mount ActionCable.server, at: '/cable'
 
   

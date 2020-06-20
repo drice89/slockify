@@ -9,6 +9,7 @@ import SignupStepTwo from "./signup_step_two";
 import LoginStepTwo from "./login_step_two";
 import LogoutContainer from "./logout_container";
 
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -28,8 +29,16 @@ class SessionForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
+  loginToSpotify() {
+    if (this.props.path === 'signup') {
+      spotifyLogin().then((res) => {
+        console.log(res)
+      })
+    } 
+  }
+
   handleSubmit() {
-    this.props.action(this.state);
+    this.props.action(this.state)
   }
 
   showErrors() {
@@ -62,6 +71,7 @@ class SessionForm extends React.Component {
               update={this.update} 
               email={this.state.email}
               loginDemoUser={this.loginDemoUser} 
+              clearErrors={this.props.clearErrors} 
             />
           }/>
 
@@ -71,7 +81,8 @@ class SessionForm extends React.Component {
                   update={this.update} 
                   password={this.state.password} 
                   fullName={this.state.fullName}
-                  handleSubmit={this.handleSubmit} 
+                  handleSubmit={this.handleSubmit}
+                  clearErrors={this.props.clearErrors}  
                 />
           }/>
           <Route path="/login/2" render={
@@ -79,7 +90,8 @@ class SessionForm extends React.Component {
               <LoginStepTwo {...props} 
                 handleSubmit={this.handleSubmit}
                 update={this.update} 
-                password={this.state.password} 
+                password={this.state.password}
+                clearErrors={this.props.clearErrors} 
               />
           }/>
         </div>

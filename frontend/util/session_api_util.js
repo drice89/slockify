@@ -20,3 +20,10 @@ export const logout = () => (
     url: "api/session"
   })
 );
+
+export const spotifyLogin = () => (
+  $.ajax({
+    method: "GET",
+    url: "auth/spotify"
+  })
+)
