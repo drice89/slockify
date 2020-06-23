@@ -47,6 +47,8 @@ In the root directory, run
 To create and seed the database run
 `rails db:create`
 
+Create MasterUser prior to seeding. Login with spotify. You want the user with user_id 1 to be your master user. This is the user the system will use to create all playlists. Look at MasterChannel::create_playlist for more information.
+
 If you want to reset the database, run
 `rails db:reset`
 

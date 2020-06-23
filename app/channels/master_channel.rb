@@ -1,4 +1,4 @@
-require 'set'
+require 'RSpotify'
 class MasterChannel < ApplicationCable::Channel
 
   def subscribed
@@ -16,7 +16,6 @@ class MasterChannel < ApplicationCable::Channel
   #   t.boolean "restricted_playlist?"
   #   t.string "convo_type", null: false
   def create_conversation(data)
-    
     data.deep_transform_keys! { |key| key.underscore }
     data["conversation"]["name"] = generate_dm_name(data["members"]) if data["conversation"]["convo_type"] != "channel"
     conversation = Conversation.new(data["conversation"])
@@ -27,6 +26,8 @@ class MasterChannel < ApplicationCable::Channel
         #this needs to capture any errors 
         members.push(membership) if membership
       end
+      playlist = create_playlist(data["conversation"])
+      conversation.playlist_url = playlist.id
       members = members.map { |member| member.member_id}
       conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
       conversation["memberIds"] = members
@@ -109,10 +110,10 @@ class MasterChannel < ApplicationCable::Channel
     ids.sort
   end
 
-  def createPlaylist()
-    url = 'https://api.spotify.com/v1/search?type=artist&q=tycho'
-    uri = URI(url)
-    response = Net::HTTP.get(uri)
-    JSON.parse(response)
+  def create_playlist(conversation)
+    @credentials = User.find(1).spotify_user_info
+    @master_spotify_user = RSpotify::User.new(JSON.parse(@credentials))
+    #create_playlist_with_options! is monkey patched in config/initializers/overrides.rb
+    @master_spotify_user.create_playlist_two!(conversation["name"], conversation["description"])
   end
 end

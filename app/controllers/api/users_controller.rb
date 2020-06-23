@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     @user = User.find_by(email: spotify_user.email)
-    hash = spotify_user.to_hash
+    hash = spotify_user.to_json
     if !@user
       user_data = { 
         email: spotify_user.email, 
