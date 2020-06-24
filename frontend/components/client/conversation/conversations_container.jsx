@@ -5,6 +5,7 @@ import MessageForm from "./message_form";
 import ConversationHeader from "./conversation_header";
 import MessageContainer from "./message_container";
 import { receiveMessage, removeMessage, getMessages } from "../../../actions/message_actions";
+import { toggleSidebar } from "../../../actions/ui_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,14 +16,16 @@ const mapStateToProps = (state, ownProps) => {
     users: state.entities.users,
     messages: Object.values(state.entities.messages),
     currentUserId: state.session.id,
-    conversation: state.entities.conversations[conversationId]
+    conversation: state.entities.conversations[conversationId],
+    sidebar: state.ui.sidebar
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getMessages: conversationId => dispatch(getMessages(conversationId)),
   editMessage: message => dispatch(receiveMessage(message)),
-  deleteMessage: message => dispatch(removeMessage(message))
+  deleteMessage: message => dispatch(removeMessage(message)),
+  toggleSidebar: () => dispatch(toggleSidebar())
 });
 
 
@@ -107,7 +110,12 @@ class Conversation extends React.Component {
       <div className="conversation-wrapper-grid">
         <div className="messages-window-grid-area">
           <div>
-            <ConversationHeader currentUserId={this.props.currentUserId} conversation={this.props.conversation} users={this.props.users} />
+            <ConversationHeader 
+              currentUserId={this.props.currentUserId} 
+              conversation={this.props.conversation} 
+              users={this.props.users}
+              toggleSidebar={this.props.toggleSidebar}
+            />
           </div>
           <div>{messageList}</div>
         </div>

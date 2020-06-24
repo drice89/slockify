@@ -1,6 +1,6 @@
 import React from "react"
 
-const ConversationHeader = ({conversation, users, currentUserId}) => (
+const ConversationHeader = ({conversation, users, currentUserId, toggleSidebar}) => (
   <div className="message-header">
     <div>
         <h3>
@@ -22,7 +22,7 @@ const ConversationHeader = ({conversation, users, currentUserId}) => (
         </h3>
     </div>
     <div>
-      Details
+      <button onClick={() => toggleSidebar()}>Details</button>
     </div>
   </div>
 )
