@@ -6,6 +6,7 @@ import ConversationHeader from "./conversation_header";
 import MessageContainer from "./message_container";
 import { receiveMessage, removeMessage, getMessages } from "../../../actions/message_actions";
 import { toggleSidebar } from "../../../actions/ui_actions";
+import Sidebar from "../sidebar/sidebar"
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,14 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
 class Conversation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      details: false
-    }
     this.bottom = React.createRef();
-  }
-
-  activateSidebar() {
-    
   }
 
   componentDidUpdate() {
@@ -120,9 +114,12 @@ class Conversation extends React.Component {
           <div>{messageList}</div>
         </div>
 
-        <div className="hide-side-bar">
+        <div className={this.props.sidebar ? "" :"hide-side-bar"}>
           <div>
-            sidebar place holder
+            <Sidebar 
+              conversation={this.props.conversation}
+              users={this.props.users}
+            />
           </div>
         </div>
 
