@@ -64,23 +64,23 @@
 
 .conversation-wrapper-grid {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
   grid-template-rows: calc(100vh - 158px) 120px;
   grid-template-areas: 
-    "messages-container"
-    "message-form" ;
-   
+    "messages-container side-bar"
+    "message-form side-bar" ;
 }
 
 .messages-window-grid-area {
   grid-area: messages-container;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .side-bar-grid-area {
-  display: hidden;
   grid-area: side-bar;
+  width: 400px;
 }
 
 .message-form-grid-area {
@@ -181,6 +181,5 @@
 .direct-messages-header {
   display: flex;
   justify-content: space-between;
-  align-items: cente;r
-}
-
+  align-items: center
+};

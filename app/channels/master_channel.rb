@@ -8,35 +8,42 @@ class MasterChannel < ApplicationCable::Channel
     MasterChannel.broadcast_to("master", format_user(params["user"]))
   end
 
-  # t.string "name", null: false
-  #   t.text "description"
-  #   t.integer "owner_id", null: false
-  #   t.boolean "is_private?"
-  #   t.string "playlist_url"
-  #   t.boolean "restricted_playlist?"
-  #   t.string "convo_type", null: false
   def create_conversation(data)
     data.deep_transform_keys! { |key| key.underscore }
+    
+    
     data["conversation"]["name"] = generate_dm_name(data["members"]) if data["conversation"]["convo_type"] != "channel"
     conversation = Conversation.new(data["conversation"])
-    if conversation.save
+    existing_id = Conversation.find_by(name: conversation.name)
+
+    if conversation.valid?
+      if conversation.convo_type == "channel"
+        playlist = create_playlist(data["conversation"])
+        conversation.playlist_url = playlist.id 
+      end
+      conversation.save
+
+      #refactor this code
       members = []
       data["members"].each_value do |value|
         membership = new_membership(value["id"], conversation.id)
         #this needs to capture any errors 
         members.push(membership) if membership
       end
-      playlist = create_playlist(data["conversation"])
-      conversation.playlist_url = playlist.id
       members = members.map { |member| member.member_id}
+      
       conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
       conversation["memberIds"] = members
+
       socket = { conversation: conversation, action: "new" }
       MasterChannel.broadcast_to("master", socket)
-    else
-      existing_id = Conversation.find_by(name: conversation.name)
+
+    elsif existing_id
       socket = { error: "conversation already exists", conversation: { id: existing_id.id, memberIds: [conversation.owner_id] }, action: "new"}
       MasterChannel.broadcast_to("master", socket)
+
+    else
+      socket = { error: "Invalid parameters", action: "error"}
     end
 
   end
@@ -62,7 +69,6 @@ class MasterChannel < ApplicationCable::Channel
 
    broadcast_to("master", create_socket(conversation_id, action) ) if did_update
   end
-  
     
   def unsubscribed
     User.find(params[:user][:id]).update(status: "offline")
@@ -70,10 +76,6 @@ class MasterChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribe
   end
   
-
-
-
-
   private
   #member_id, conversation_id
   def new_membership(user_id, conversation_id, admin=false)
@@ -117,3 +119,11 @@ class MasterChannel < ApplicationCable::Channel
     @master_spotify_user.create_playlist_two!(conversation["name"], conversation["description"])
   end
 end
+
+# t.string "name", null: false
+  #   t.text "description"
+  #   t.integer "owner_id", null: false
+  #   t.boolean "is_private?"
+  #   t.string "playlist_url"
+  #   t.boolean "restricted_playlist?"
+  #   t.string "convo_type", null: false

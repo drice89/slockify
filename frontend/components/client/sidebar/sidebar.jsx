@@ -1,12 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Playlist from './playlist'
 import Members from './members'
 import About from './about'
 
-const Sidebar = ({conversation, users}) => {
-  const playlist = { name: "Playlist", component: <Playlist playlistUrl={conversation.playlistUrl}/> }
-  const members = { name: "Members", compnent: <Members users={users}/>}
-  const about = { name: "About", component: <About descrption={conversation.description || null }/> }
+const Sidebar = ({conversation, users, currentUserId}) => {
+  const convoType = conversation.convoType
+  const [activeTab, setActiveTab] = useState("")
+  useEffect(() => {
+    setActiveTab(convoType)
+  }, [])
+  const descriptionOrUser = (usersList) => {
+    if (convoType === "channel") {
+      return conversation
+    }
+
+    let dmUser = {} 
+    conversation.memberIds.forEach(id => {
+      if(id !== currentUserId && convoType === "direct") dmUser = {...usersList[id]}
+    })
+    return dmUser
+  }
+  const playlist = { name: "Playlist", component: <Playlist playlistUrl={conversation.playlistUrl} activeTab={activeTab}/> }
+  const members = { name: "Members", component: <Members users={users} activeTab={activeTab}/>}
+  const about = { name: "About", component: <About description={ descriptionOrUser(users) } activeTab={activeTab} /> }
   const sect = (obj) => (
     <div>
       <div>
@@ -20,9 +36,9 @@ const Sidebar = ({conversation, users}) => {
   return (
     <div>
       <ul>
-        <li>{ sect(playlist) }</li>
-        <li>{ sect(about) }</li>
-        <li>{ sect(members) }</li>
+        { convoType !== "channel" ? "" : (<li>{sect(playlist)}</li>) }
+        { convoType === "group" ? "" : (<li>{ sect(about) }</li>) }
+        { convoType === "direct" ? "" : (<li>{ sect(members) }</li>) }
       </ul>
     </div>
   )

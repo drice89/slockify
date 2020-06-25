@@ -53,6 +53,9 @@ class ChannelsContainer extends React.Component {
                 return this.props.receiveEditedConversation(data.conversation);
               case "status":
                 return this.props.changeUserStatus(data.user);
+              case "error":
+                //should be dispatched to store
+                return console.log(data.error)
               default:
                 return null;
               }

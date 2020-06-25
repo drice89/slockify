@@ -1,8 +1,8 @@
 import React from "react"
 
-const Playlist = (props) => (
+const Playlist = ({playlistUrl, activeTab}) => (
   <div>
-    content goes here
+    <iframe src={`https://open.spotify.com/embed/playlist/${playlistUrl}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
 )
 

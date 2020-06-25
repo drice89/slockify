@@ -114,11 +114,12 @@ class Conversation extends React.Component {
           <div>{messageList}</div>
         </div>
 
-        <div className={this.props.sidebar ? "" :"hide-side-bar"}>
+        <div className={this.props.sidebar ? "side-bar-grid-area" :"hide-side-bar"}>
           <div>
             <Sidebar 
               conversation={this.props.conversation}
               users={this.props.users}
+              currentUserId={this.props.currentUserId}
             />
           </div>
         </div>
