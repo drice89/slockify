@@ -65,3 +65,14 @@
   height: 500px;
 }
 
+.select-members-dropdown {
+  display: block;
+  position: absolute;
+  border: black;
+  background-color: cornsilk;
+}
+
+.select-members-dropdown li {
+  border: 1px solid black;
+}
+

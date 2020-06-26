@@ -2,7 +2,6 @@ import React from "react"
 
 const About = ({description, activeTab}) => {
   const processDescription = () => {
-    debugger
     if (description.fullName) {
       return { "Name": description.fullName, "Display Name": description.displayName, "User Status": description.status }
     } else if (description.description) {
@@ -12,12 +11,13 @@ const About = ({description, activeTab}) => {
 
   const processedDescription = processDescription()
   return (
-    <div>
+    <div className={activeTab === "about" || activeTab === "direct" ? "" : "hidden"}>
       {
         Object.keys(processedDescription).map(k => {
           return (
             <div key={k}>
               <span>{k}</span><span>{processedDescription[k]}</span>
+              {processedDescription["Channel Name"] ? (<button>Edit Channel</button>): ""}
             </div>
           )
         })
