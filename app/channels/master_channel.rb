@@ -4,8 +4,9 @@ class MasterChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     stream_for "master"
-    User.find(params["user"][:id]).update(status: "active")
-    MasterChannel.broadcast_to("master", format_user(params["user"]))
+    @user = User.find(params["user"])
+    @user.update(status: "active")
+    MasterChannel.broadcast_to("master", format_user(@user))
   end
 
   def create_conversation(data)
@@ -53,37 +54,35 @@ class MasterChannel < ApplicationCable::Channel
   def edit_conversation(data)
     data.deep_transform_keys! { |key| key.underscore }
     conversation_id = data["conversation"]["id"]
-    did_update? = nil
+    did_update = nil
     action = "edit"
-
     case data["request_type"]
       when "edit conversation"
-        did_update? = find_convo(conversation_id).update(data["conversation"])
+        did_update = find_convo(conversation_id).update(data["conversation"])
       when "add member"
         updated_members = []
         member_count = 0
-        data["members"].each do |member|
+        data["members"].each do |member_id, member|
           member_count += 1
           if new_membership(member_id, conversation_id)
-            updated_members << member["id"]
+            updated_members << member_id
           end
         end
-        if updated_members.length == members.length
-          did_update? = true
+        if updated_members.length == member_count
+          did_update = true
         end
       when "toggle admin"
-        did_update? = toggle_admin(member_id, conversation_id)
+        did_update = toggle_admin(member_id, conversation_id)
       when "leave conversation"
-        did_update? = delete_membership(member_id, conversation_id)
+        did_update = delete_membership(member_id, conversation_id)
         action = "remove"
     end
-   conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
-   MasterChannel.broadcast_to("master", create_socket(conversation_id, action) ) if did_update?
+   MasterChannel.broadcast_to("master", create_socket(conversation_id, action) )
   end
     
   def unsubscribed
-    User.find(params[:user][:id]).update(status: "offline")
-    MasterChannel.broadcast_to("master", format_user(params[:user]))
+    # User.find(params["user"]).update(status: "offline")
+    # MasterChannel.broadcast_to("master", format_user(params[:user]))
     # Any cleanup needed when channel is unsubscribe
   end
   
@@ -105,14 +104,23 @@ class MasterChannel < ApplicationCable::Channel
     
   def create_socket(conversation_id, action)
     conversation = find_convo(conversation_id);
+    member_ids = conversation.member_ids
     socket = { 
                 conversation: conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, 
                 action: action 
               }
+    socket[:conversation]["memberIds"] = member_ids
+    return socket
   end
 
   def format_user(hash)
-    { user: {id: hash[:id], status: hash[:status]}, action: "status" }
+    { 
+      user: 
+      {
+        id: hash["id"], status: hash["status"]
+      }, 
+      action: "status" 
+    }
   end
 
   def generate_dm_name(members)

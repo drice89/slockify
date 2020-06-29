@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import App from "../../app";
 import { closeModal } from "../../../actions/ui_actions";
 import { withRouter } from "react-router-dom"
-import { filter } from "lodash";
+
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,7 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal())
 })
 
-const AddMembers = ({users, conversation, match}) => {
+
+const AddMembers = ({users, conversation, closeModal}) => {
   const [members, setMembers] = useState({})
   const [user, setUser] = useState("")
   const [filteredUsers, setFilteredUsers] = useState({})
@@ -54,7 +54,7 @@ const AddMembers = ({users, conversation, match}) => {
   const addNewMembers = () => {
     let data = { conversation, members }
     data['requestType'] = "add member"
-    App.cable.subscriptions.subscriptions[1].editConversation(data)
+    App.cable.subscriptions.subscriptions[0].editConversation(data)
     closeModal()
   } 
 

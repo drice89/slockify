@@ -7,7 +7,6 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const Members = ({users, activeTab, openModal, conversation}) => {
-  debugger
   return (
     <div className={activeTab === "members" || activeTab === "group" ? "" : "hidden"}>
       { conversation.memberIds.map(id => (
