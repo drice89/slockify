@@ -2,7 +2,8 @@ import React from "react";
 
 const SearchBar = (props) => (
   <div className="inner-search">
-    <input className="search-bar" placeholder="Search"/>
+    <img className="logo" src={window.logoUrl} alt="Slockify" />
+    {/* <input className="search-bar" placeholder="Search"/> */}
   </div>
 ) 
 

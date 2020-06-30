@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 260px auto;
+  grid-template-columns: 400px auto;
   grid-template-rows: 38px auto;
   grid-template-areas: 
     "header header"
@@ -27,17 +27,69 @@
   display: flex;
   flex-direction: column;
   background-color: #1DB954;
+}
 
+.username-display:hover {
+  background-color: #189745;
 }
 
 .conversation-container {
   grid-area: messages;
   width: auto;
 }
-/* channels */
-.conversation-section {
+
+.channels-container > div {
   box-shadow: 0 .5px 0 0 rgba(2,15,7,0.4);
+  color: #FFFFFF;
+  padding-bottom: 15px;
+}
+
+.channel-container {
+  text-shadow: 1px 1px rgba(2,15,7,0.25);
+}
+
+
+
+.conversation-section li {
+  padding: 1px 15px;
+}
+
+.conversation-section lh {
+  padding: 15px 15px;
+}
+
+.conversation-section li:hover {
+  /* box-shadow: 0 .5px 0 0 rgba(2,15,7,0.4); */
+  background-color: #189745;
+}
+
+.username-display {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  align-items: center;
+  padding: 15px;
   
+}
+
+.username-display div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.username-display div:first-child > div {
+  padding: 5px 0;
+}
+
+.username-display h3{
+  font-weight: 900;
+  font-size: 20px;
+}
+
+lh {
+  font-size: 20px;
 }
 
 /* search section */
@@ -48,15 +100,6 @@
 
 /* conversation/message */
 
-.conversation-wrapper-grid-with-side-bar {
-  display: grid;
-  grid-template-columns: auto 480px;
-  grid-template-rows: calc(100vh - 158px) 120px;
-  grid-template-areas: 
-    "messages-container sidebar"
-    "message-form sidebar" ;
-   
-}
 
 .hide-side-bar {
   display: none;
@@ -178,8 +221,9 @@
   color: #191414;
 }
 
-.direct-messages-header {
+.channels-section-header {
   display: flex;
   justify-content: space-between;
-  align-items: center
-};
+  align-items: center;
+}
+

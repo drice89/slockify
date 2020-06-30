@@ -15,7 +15,13 @@
     height: 35px;
 }
 
-button:hover {
+.main button:hover {
+  background-color: #137736;
+  transition: 0.5s;
+  border: .5px solid #1aa34a;
+}
+
+.main-nav button:hover {
   background-color: #137736;
   transition: 0.5s;
   border: .5px solid #1aa34a;
@@ -28,10 +34,46 @@ button:hover {
     border: 1px solid #1aa34a;
 }
 
-.add-channel-button {
+.add-channel-button{
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 15%;
+  background-color: transparent;
+  border-color: transparent;
+  text-shadow: 1px 1px rgba(2,15,7,0.25);
+}
+
+.add-channel-button:hover {
+  background-color: rgb(169,241,194);
+}
+
+.add-channel-button a {
+  color: white;
+}
+
+.new-message-button {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  position: relative;
+}
+
+.new-message-button > svg {
+  position: absolute;
   width: 25px;
   height: 25px;
-  background-color: #191414;
-  color: white;
-  border-radius: 50%; 
+  left: 17.5%;
+  top: 19%;
+}
+
+.conversation-button {
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  border: 0 solid white;
+  text-align: left;
+  color: #FFFFFF;
+  font-size: 16px;
+  text-shadow: 1px 1px rgba(2,15,7,0.25);
 }
