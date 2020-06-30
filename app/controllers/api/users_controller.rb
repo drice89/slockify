@@ -43,7 +43,11 @@ class Api::UsersController < ApplicationController
     login(@user)
     generalChannelId = Conversation.find_by(name: "General").id
     Membership.create(member_id: @user.id, conversation_id: generalChannelId)
-    redirect_to 'http://localhost:3000/#/client'
+    if ENV["RAILS_ENV"] == "production"
+      redirect_to 'https://slockify.herokuapp.com/#/client'
+    else
+      redirect_to 'http://localhost:3000/#/client'
+    end
   end
 
   private
