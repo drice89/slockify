@@ -92,6 +92,12 @@ lh {
   font-size: 20px;
 }
 
+.channels-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* search section */
 .search-bar {
   border-radius: 20px;
@@ -221,9 +227,8 @@ lh {
   color: #191414;
 }
 
-.channels-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.message-container:hover {
+  background-color: rgb(249,247,247);
 }
+
 
