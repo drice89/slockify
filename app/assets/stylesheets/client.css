@@ -231,4 +231,33 @@ lh {
   background-color: rgb(249,247,247);
 }
 
+.message-form-container {
+  margin: 20px 30px;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 3px;
+}
 
+.message-form-container form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.text-area-wrapper {
+  width: 100%;
+}
+
+.message-form-text-area {
+  outline: none;
+  resize: none;
+  border: none;
+  width: 100%;
+  height: 60px;
+  box-sizing: content-box;
+}
+
+.send-button svg {
+  width: 30px;
+  height: 30px;
+}

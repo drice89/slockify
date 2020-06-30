@@ -77,3 +77,11 @@
   font-size: 16px;
   text-shadow: 1px 1px rgba(2,15,7,0.25);
 }
+
+.send-button {
+  height: 60px;
+  width: 60px;
+  background-color: transparent;
+  border: transparent;
+  border-left: 1px solid black;
+}
