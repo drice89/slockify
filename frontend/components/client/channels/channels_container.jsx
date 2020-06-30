@@ -116,7 +116,7 @@ class ChannelsContainer extends React.Component {
             </lh>
             {
               channels.map((channel) => {
-                return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button className="conversation-button">{`#${this.limitConvoLength(channel.name)}`}</button></Link></li>
+                return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button className="conversation-button">{`# ${this.limitConvoLength(channel.name)}`}</button></Link></li>
               })
             }
           </ul>

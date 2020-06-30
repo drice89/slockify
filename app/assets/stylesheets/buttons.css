@@ -37,7 +37,7 @@
 .add-channel-button{
   width: 30px;
   height: 30px;
-  color: white;
+  color: rgb(179, 179, 179);
   border-radius: 15%;
   background-color: transparent;
   border-color: transparent;
@@ -45,20 +45,22 @@
 }
 
 .add-channel-button:hover {
-  background-color: rgb(169,241,194);
+  background-color: rgba(179, 179, 179, .5);
+  color: #ffffff;
 }
 
 .add-channel-button a {
-  color: white;
+  color: rgb(179, 179, 179);
 }
 
 .new-message-button {
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  background-color: white;
+  background-color: rgb(179, 179, 179);
   position: relative;
 }
+
 
 .new-message-button > svg {
   position: absolute;
@@ -69,13 +71,19 @@
 }
 
 .conversation-button {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   width: 100%;
-  border: 0 solid white;
+  border: transparent;
   text-align: left;
-  color: #FFFFFF;
+  color: rgb(179, 179, 179);
   font-size: 16px;
-  text-shadow: 1px 1px rgba(2,15,7,0.25);
+  padding: 3px 0;
+  /* text-shadow: 0px 2px rgba(2,15,7,0.1), 2px 0px rgba(2,15,7,0.1), -2px 0px rgba(2,15,7,0.1), 0px -2px rgba(2,15,7,0.1); */
+
+}
+
+.conversation-button:hover {
+  color: #ffffff;
 }
 
 .send-button {
@@ -84,4 +92,22 @@
   background-color: transparent;
   border: transparent;
   border-left: 1px solid black;
+}
+
+.toggle-sidebar-button {
+  background: transparent;
+  height: 30px;
+  width: 30px;
+  box-shadow: none;
+  border: none;
+  background-color: rgb(179, 179, 179);
+  border-radius: 50%;
+  position: relative;
+}
+
+.toggle-sidebar-button svg {
+  width: 25px;
+  height: 25px;
+  transform: translate(-13.5%, 7.5%);
+ 
 }
