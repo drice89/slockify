@@ -1,4 +1,3 @@
-require 'RSpotify'
 class MasterChannel < ApplicationCable::Channel
 
   def subscribed
