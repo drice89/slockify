@@ -36,7 +36,7 @@ const SignupStepTwo = (props) => {
       </div>
       
       <div>
-        <a href="http://localhost:3000/auth/spotify" rel="noopener noreferrer" target="_blank"><button className="cta-button" onClick={props.handleSubmit}>Log In</button></a>
+        <button className="cta-button" onClick={props.handleSubmit}>Log In</button>
       </div>
     </div>
 )}

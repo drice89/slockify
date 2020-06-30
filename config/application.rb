@@ -1,6 +1,6 @@
 require_relative 'boot'
 require_relative "../app/middlewares/snake_case_parameters"
-require_relative "./spotify_credentials_dev"
+require_relative "./spotify_credentials_dev" unless ENV['RAILS_ENV'] == "production"
 
 require 'rails/all'
 
@@ -8,7 +8,11 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-RSpotify::authenticate(SpotifyCredentialsDev::CLIENT_ID, SpotifyCredentialsDev::CLIENT_SECRET)
+if ENV["RAILS_ENV"] == "production"
+  RSpotify::authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
+else
+  RSpotify::authenticate(SpotifyCredentialsDev::CLIENT_ID, SpotifyCredentialsDev::CLIENT_SECRET)
+end
 module Slockify
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
