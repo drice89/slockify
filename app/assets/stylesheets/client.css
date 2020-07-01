@@ -300,6 +300,11 @@ lh {
 .sidebar-header svg {
   width: 20px;
   height: 20px;
-  background-color: rgba(179, 179, 179, 1);
-  border-radius: 50%;
+  fill: rgba(179, 179, 179, 1);
+}
+
+.playlist {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }

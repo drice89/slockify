@@ -11,7 +11,7 @@ const About = ({description, activeTab}) => {
 
   const processedDescription = processDescription()
   return (
-    <div className={activeTab === "about" || activeTab === "direct" ? "" : "hidden"}>
+    <div className={activeTab === "about" ? "" : "hidden"}>
       {
         Object.keys(processedDescription).map(k => {
           return (
