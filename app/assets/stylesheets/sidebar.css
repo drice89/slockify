@@ -1,3 +1,13 @@
 .hidden {
   display: none;
 }
+
+.sidebar-main > ul > li {
+  border-bottom: 1px solid rgb(179, 179, 179);
+  padding: 25px 10px;
+  margin: 0 auto;
+}
+
+
+
+

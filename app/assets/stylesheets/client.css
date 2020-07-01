@@ -285,3 +285,21 @@ lh {
     background-color: transparent;
 }
 
+/* sidebar */
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rotate svg{
+  transform: rotate(90deg);
+
+}
+
+.sidebar-header svg {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(179, 179, 179, 1);
+  border-radius: 50%;
+}
