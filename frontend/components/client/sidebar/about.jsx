@@ -15,9 +15,11 @@ const About = ({description, activeTab}) => {
       {
         Object.keys(processedDescription).map(k => {
           return (
-            <div key={k}>
-              <span>{k}</span><span>{processedDescription[k]}</span>
-              {processedDescription["Channel Name"] ? (<button>Edit Channel</button>): ""}
+            <div key={k} className="about-section">
+              <div>
+                <span>{`${k}: `}</span><span>{processedDescription[k]}</span>
+              </div>
+              {processedDescription["Channel Name"] ? (<button><i class="fa fa-pencil" aria-hidden="true"></i></button>): ""}
             </div>
           )
         })

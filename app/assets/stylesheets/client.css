@@ -308,3 +308,46 @@ lh {
   justify-content: center;
   margin: 20px 0;
 }
+
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.about-section:hover {
+  color: white;
+}
+
+.about-section span {
+  font-size: 15px;
+}
+
+.about-section span:first-child {
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.about-section button {
+  border-radius: 15%;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  box-shadow: transparent;
+  border: transparent;
+}
+
+.about-section i {
+  color: rgb(179, 179, 179);
+}
+
+.about-section:hover i {
+  color: #ffffff;
+}
+
+.about-section button:hover {
+  background-color: rgba(179, 179, 179, .5);
+  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  border: rgba(255, 255, 255, 0.5);
+}
