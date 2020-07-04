@@ -108,6 +108,27 @@
 .toggle-sidebar-button svg {
   width: 25px;
   height: 25px;
-  transform: translate(-13.5%, 7.5%);
- 
+  transform: translate(-13.5%, 7.5%); 
+}
+
+.members-section button {
+  border: 1px solid rgb(179, 179, 179);
+  background-color: transparent;
+  border-radius: 7px;
+  color: rgb(179, 179, 179);
+  height: 32px;
+}
+
+.members-section button:hover {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.about-section button {
+  border-radius: 15%;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  box-shadow: transparent;
+  border: transparent;
 }

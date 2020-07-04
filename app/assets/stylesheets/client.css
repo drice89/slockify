@@ -133,7 +133,7 @@ lh {
 }
 
 .messages-window-grid-area:hover::-webkit-scrollbar-thumb {
-  border-radius: 6px;
+  border-radius: 15%;
   background-color: rgba(253, 251, 251, 0.5);
 }
 
@@ -175,7 +175,7 @@ lh {
   width: 40px;
   height: 40px;
   border: 2px solid #191414;
-  border-radius: 7px;
+  border-radius: 15%;
 
 }
 
@@ -219,7 +219,7 @@ lh {
   border: 3px solid black;
   background-color: #191414;
   color: white;
-  border-radius: 5px;
+  border-radius: 15%;
   font-family: 'Prompt', sans-serif;
   font-size: small;
   z-index: 10;
@@ -329,15 +329,6 @@ lh {
   font-size: 15px;
 }
 
-.about-section button {
-  border-radius: 15%;
-  height: 30px;
-  width: 30px;
-  background-color: transparent;
-  box-shadow: transparent;
-  border: transparent;
-}
-
 .about-section i {
   color: rgb(179, 179, 179);
 }
@@ -351,3 +342,19 @@ lh {
   box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
   border: rgba(255, 255, 255, 0.5);
 }
+
+.members-section > div {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.members-section img { 
+  width: 20px;
+  height: 20px;
+}
+
+.members-section span {
+  padding: 0 10px;
+}
+
