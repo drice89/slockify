@@ -59,12 +59,14 @@ const AddMembers = ({users, conversation, closeModal}) => {
   } 
 
   return (
-    <div>
-      <div><h2>Add People</h2></div>
-      <div>{conversation.name}</div>
+    <div className="add-users-modal">
+      <div>
+        <h1>Add People</h1>
+        <h5>{`# ${conversation.name}`}</h5>
+      </div>
       <div>{ selectedUsers }</div>
       <div>
-        <input placeholder="name or username" value={user} onChange={e => handleChange(e)} />
+        <input type="text" placeholder="name or username" value={user} onChange={e => handleChange(e)} />
         <ul className={"select-members-dropdown"}>
           {
             Object.values(filteredUsers).map(user => (
@@ -78,7 +80,7 @@ const AddMembers = ({users, conversation, closeModal}) => {
           }
         </ul>
       </div>
-      <div>
+      <div className="modal-button-container">
         <button onClick={() => addNewMembers()}>Add</button>
       </div>
     </div>

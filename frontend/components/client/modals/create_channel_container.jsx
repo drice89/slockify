@@ -67,19 +67,20 @@ const CreateChannelModal = ({channels, closeModal, currentUser}) => {
 
   const transformedChannels = transformChannels()
   return (
-    <div className="modal-body">
+    <div className="create-channel-modal">
       <div><h2>Create a channel</h2></div>
       <div><span>Channels are where your team communicates. They’re best when organized around a topic — #marketing, for example.</span></div>
       <ul>
         <li> Name <span>{warning}</span> </li>
         <li>
-          <div><input type="text" placeholder="# e.g. heavy-metal" onChange={(e) => handleChange(e)} value={channelName} /></div>
-          <div><button>Go</button></div>
+          <div className="modal-input-container"><input type="text" placeholder="# e.g. heavy-metal" onChange={(e) => handleChange(e)} value={channelName} /></div>
         </li>
         <li> Description <span>(optional)</span> </li>
         <li>
-          <div><input type="text" value={channelDescription} onChange={(e) => setDescription(e.currentTarget.value)}/></div>
-          <div><span>What's this channel about?</span></div>
+          <div className="modal-input-container">
+            <input type="text" value={channelDescription} onChange={(e) => setDescription(e.currentTarget.value)}/>
+            <h5>What's this channel about?</h5>
+          </div>
         </li>
         <li>
           <div>
@@ -89,7 +90,7 @@ const CreateChannelModal = ({channels, closeModal, currentUser}) => {
           <div>
             <input type="checkbox" onChange={() => togglePrivate()} />
           </div>
-          <div>
+          <div className="modal-button-container">
             <button onClick={handleClick}>Create</button>
           </div>
         </li>

@@ -132,3 +132,19 @@
   box-shadow: transparent;
   border: transparent;
 }
+
+.modal-component-container button {
+  width: 83px;
+  height: 38px;
+  border-radius: 7px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 20px;
+}
+
+.modal-component-container button:hover {
+  background-color: #1aa34a;
+}

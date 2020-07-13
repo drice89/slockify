@@ -100,15 +100,16 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       <div>
         <ul className="modal-user-search">
           <li>
-            <div>
+            <div className="user-search-header">
               <ul>
                 { renderSelectedUsers }
               </ul>
-              <input placeholder="Find or start a conversation" 
-              onChange={(e) => setName(e.currentTarget.value)} 
-              value={channelName}
-              size="52" >
-              </input>
+              <div className="modal-input-container">
+                <input type="text" placeholder="Find or start a conversation" 
+                onChange={(e) => setName(e.currentTarget.value)} 
+                value={channelName}
+                size="52" ></input>
+              </div>
             </div>
           </li>
           <li>
