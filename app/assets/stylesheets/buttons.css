@@ -144,8 +144,8 @@
   line-height: 20px;
 }
 
-.channels-list button {
-  background-color: rgba(179, 179, 179, .5);
+#create-new-channel-button, .channel-list-item button {
+  background-color: rgba(179, 179, 179, 1);
   width: 130px;
 }
 

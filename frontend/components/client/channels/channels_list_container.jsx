@@ -43,7 +43,7 @@ class ChannelList extends React.Component {
         <Modal/>
         <div className="message-header">
           <h3>Channels</h3>
-          <button onClick={() => this.props.openModal("channel")}>Create Channel</button>
+          <button id="create-new-channel-button" onClick={() => this.props.openModal("channel")}>Create Channel</button>
         </div>
         <ul>
           {
