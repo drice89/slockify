@@ -26,8 +26,10 @@ class ChannelList extends React.Component {
   }
 
   //this is causing receive channels to fire continuously
-  componentDidUpdate() {
-    this.props.getAllChannels()
+  componentDidUpdate(prevProps) {
+    if (Object.keys(prevProps.channels).length !== Object.keys(this.props.channels).length) {
+      this.props.getAllChannels()
+    }
   }
 
   joinChannel(conversation, member) {
