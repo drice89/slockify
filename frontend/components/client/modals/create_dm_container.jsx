@@ -16,23 +16,25 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
-  const [channelName, setName] = useState("")
+  const [userName, setName] = useState("")
   const [selectedUsers, selectUsers] = useState({})
   const [displayConversations, setDisplayConversations] = useState({})
 
   useEffect(() => {
     setDisplayConversations(displayedConvos())
-  }, [setName, selectedUsers])
+  }, [userName, selectedUsers])
 
   const displayedConvos = () => {
     let temp = {}
     Object.keys(conversations).forEach((convo) => {
-      temp[convo.toString()] = conversations[convo]
+      if (convo.toLowerCase().includes(userName.toLowerCase()) || !userName) {
+        temp[convo.toString()] = conversations[convo]
+      }
     })
 
     Object.values(users).forEach((user) => {
       const name = user.displayName || user.fullName
-      if (!temp[name]) {
+      if (!temp[name] && user.id !== currentUser.id && name.toLowerCase().includes(userName.toLowerCase())) {
         temp[name] = user
       }
     })
@@ -78,18 +80,17 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       <span key={user.id} className="selected-user-box">
        {`${user.displayName || user.fullName} `}
         <span onClick={() => removeUser(user.id)}>
-          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+          <i className="fa fa-times-circle-o" aria-hidden="true"></i>
         </span>
       </span>
       
     )
   });
 
-  const createNewConversation = (channelName, selectedUsers) => {
+  const createNewConversation = (selectedUsers) => {
     const members = {...selectedUsers}
     members[currentUser.id] = currentUser
     const conversation = {
-      name: channelName, 
       ownerId: currentUser.id, 
       convoType: Object.keys(selectedUsers).length > 2 ? "group" : "direct",
       "isPrivate?": true,
@@ -102,7 +103,7 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
   return (
     <div className="modal-body">
       <div>
-        <h1>Direct Messages</h1>
+        <h2>Direct Messages</h2>
       </div>
       <div>
         <ul className="modal-user-search">
@@ -111,11 +112,11 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
             <span> 
               <input type="text" 
               onChange={(e) => setName(e.currentTarget.value)} 
-              value={channelName}></input>
+              value={userName}></input>
             </span>
           </li>
           <li>
-            <button onClick={() => createNewConversation(channelName, selectedUsers)}>
+            <button onClick={() => createNewConversation(selectedUsers)}>
               Go
             </button>
           </li>

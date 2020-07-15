@@ -19,7 +19,7 @@
 .modal-body {
   width: 600px;
   height: 600px;
-  border: 1px solid black;
+  border: 1px solid rgb(40,40,40, .25);
   border-radius: 2%;
   background: rgb(179,179,179);
   display: flex;
@@ -71,7 +71,8 @@
   background-color: #ffffff;
   color: rgb(40,40,40);
   width: 459px;
-  top: 135px;
+  top: 36px;
+  left: 0;
 }
 
 .select-members-dropdown li {
@@ -88,13 +89,19 @@
 } 
 
 .select-members-dropdown span {
-  width: 33%;
-  border-right: 1px dashed rgba(40,40,40, .5);
+  width: auto;
+  font-size: 12px;
   padding-left: 8px;
+  color: rgb(40,40,40, .5);
 }
 
-.select-members-dropdown span:last-child {
-  border-right: none;
+.select-members-dropdown li:hover span {
+  color: #ffffff;
+}
+
+.select-members-dropdown span:first-child {
+  font-size: 16px;
+  color: rgb(40,40,40);
 }
 
 .add-users-modal {
@@ -103,8 +110,8 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border-radius: 7px;
-  border: 1px solid black;
+  border-radius: 4px;
+  border: 1px solid rgb(40,40,40, .5);
   background: rgb(179,179,179);
   display: flex;
   flex-direction: column;
@@ -138,13 +145,13 @@
   min-width: 459px;
   width: 99%;
   border: 1px solid black;
-  border-radius: 7px;
+  border-radius: 4px;
 }
 
 .create-channel-modal {
   width: 520px;
   height: 500px;
-  border: 1px solid black;
+  border: 1px solid rgb(40,40,40, .25);
   border-radius: 2%;
   background: rgb(179,179,179);
   display: flex;
@@ -155,11 +162,19 @@
   color: rgb(40,40,40)
 }
 
-.create-channel-modal h2 {
+.modal-component-container h2 {
   font-size: 28px;
   text-align: left;
   padding-bottom: 8px;
   font-weight: 900;
+}
+
+.modal-body ul {
+  width: auto;
+  padding: 8px 0px;
+}
+.modal-body h3 {
+ padding-bottom: 8px;
 }
 
 .create-channel-modal div, ul, li {
@@ -186,7 +201,7 @@
   width: 440px;
   height: auto;
   background-color: #ffffff;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid black
 }
 
@@ -199,7 +214,6 @@
   border: transparent;
   width: auto;
 }
-
 
 .modal-input-container h5 {
   padding-top: 8px;
@@ -221,5 +235,19 @@
 
 .selected-user-box > span > span {
   width: 12px;
+  text-align: center;
 }
 
+#add-users-input {
+  position: relative;
+}
+
+.private-channel-option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.private-channel-option input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+}

@@ -35,7 +35,7 @@ const CreateChannelModal = ({channels, closeModal, currentUser}) => {
       name: channelName, 
       ownerId: currentUser.id, 
       convoType: "channel",
-      "isPrivate?": setPrivate,
+      "isPrivate?": isPrivate,
       description: channelDescription
     }
 
@@ -83,13 +83,11 @@ const CreateChannelModal = ({channels, closeModal, currentUser}) => {
           </div>
         </li>
         <li>
-          <div>
-            <div><h3>Make channel private?</h3></div>
-            <div>When a channel is set to private, it can only be viewed or joined by invitation.</div>
-          </div>
-          <div>
+          <div className="private-channel-option">
+            <h3>Make channel private?</h3>
             <input type="checkbox" onChange={() => togglePrivate()} />
           </div>
+          <div>When a channel is set to private, it can only be viewed or joined by invitation.</div>
           <div className="modal-button-container">
             <button onClick={handleClick}>Create</button>
           </div>

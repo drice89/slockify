@@ -358,3 +358,16 @@ lh {
   padding: 0 10px;
 }
 
+.channel-list-item {
+  border-bottom: 1px solid rgba(179, 179, 179, .5);
+  width: auto;
+}
+
+.channels-list .message-header, .channel-list-item {
+   padding: 16px 25px;
+   width: auto;
+}
+
+
+
+

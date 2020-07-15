@@ -31,14 +31,22 @@ const AddMembers = ({users, conversation, closeModal}) => {
         searchedUserCollector[user.id] = user
       }
     setFilteredUsers(searchedUserCollector)
-    })
-    
+    }) 
+  }
+
+  const removeUser = (memberId) => {
+    const nextState = members
+    delete nextState[memberId]
+    setMembers({...nextState})
   }
 
   const selectedUsers = Object.values(members).map((member) => {
       return (
-        <span key={member.displayName}>
+        <span className="selected-user-box" key={member.displayName}>
           {member.displayName || member.fullName}
+          <span onClick={ () => removeUser(member.id)}>
+            <i className="fa fa-times-circle-o" aria-hidden="true"></i>
+          </span>
         </span>
       )
     })
@@ -64,21 +72,21 @@ const AddMembers = ({users, conversation, closeModal}) => {
         <h1>Add People</h1>
         <h5>{`# ${conversation.name}`}</h5>
       </div>
-      <div>{ selectedUsers }</div>
-      <div>
-        <input type="text" placeholder="name or username" value={user} onChange={e => handleChange(e)} />
-        <ul className={"select-members-dropdown"}>
-          {
-            Object.values(filteredUsers).map(user => (
-                <li key={`${user.id}filtered`} onClick={ () => handleClick(user)}>
-                  <span>{user.fullName}</span>
-                  <span>{user.displayName}</span>
-                  <span>{conversation.memberIds.includes(user.id) ? "Already in channel" : ""}</span>
-                </li>
-              )
-            )
-          }
-        </ul>
+      <div id="add-users-input" className="modal-user-select-input">
+        { selectedUsers }
+        <input type="text" value={user} onChange={e => handleChange(e)} />
+          <ul className={"select-members-dropdown"}>
+              {
+                Object.values(filteredUsers).map(user => (
+                    <li key={`${user.id}filtered`} onClick={ () => handleClick(user)}>
+                      <span>{user.fullName}</span>
+                      <span>{user.displayName}</span>
+                      <span>{conversation.memberIds.includes(user.id) ? "Already in channel" : ""}</span>
+                    </li>
+                  )
+                )
+              }
+          </ul>
       </div>
       <div className="modal-button-container">
         <button onClick={() => addNewMembers()}>Add</button>

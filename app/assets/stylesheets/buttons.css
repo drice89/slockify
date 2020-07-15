@@ -61,7 +61,6 @@
   position: relative;
 }
 
-
 .new-message-button > svg {
   position: absolute;
   width: 25px;
@@ -133,7 +132,7 @@
   border: transparent;
 }
 
-.modal-component-container button {
+.modal-component-container button, .channels-list button {
   width: 83px;
   height: 38px;
   border-radius: 7px;
@@ -145,6 +144,16 @@
   line-height: 20px;
 }
 
-.modal-component-container button:hover {
+.channels-list button {
+  background-color: rgba(179, 179, 179, .5);
+  width: auto;
+}
+
+.modal-component-container button:hover, .channels-list button:hover {
   background-color: #1aa34a;
+}
+
+.channels-list button:hover {
+  color: #ffffff;
+  
 }

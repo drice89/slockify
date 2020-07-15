@@ -27,19 +27,17 @@ class ChannelList extends React.Component {
   render() {
     const allChannels = Object.values(this.props.channels)
     return (
-      <div>
+      <div className="channels-list">
         <Modal/>
-        <div>
-          Channels
-        </div>
-        <div>
-          <button onClick={() => this.props.openModal("channel")}>Create</button>
+        <div className="message-header">
+          <h3>Channels</h3>
+          <button onClick={() => this.props.openModal("channel")}>Create Channel</button>
         </div>
         <ul>
           {
             allChannels.map((channel) => {
               return (
-                <li key={channel.name}>
+                <li className="channel-list-item" key={channel.name}>
                   {channel.name}
                 </li>
               )
