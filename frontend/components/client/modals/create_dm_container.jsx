@@ -122,7 +122,7 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
           </li>
         </ul>
       </div>
-      <div className = "modal-user-list">
+      <div className="modal-user-list">
         <h3>Users</h3>
         { list }
       </div>

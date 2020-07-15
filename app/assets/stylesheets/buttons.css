@@ -146,7 +146,7 @@
 
 .channels-list button {
   background-color: rgba(179, 179, 179, .5);
-  width: auto;
+  width: 130px;
 }
 
 .modal-component-container button:hover, .channels-list button:hover {

@@ -361,6 +361,23 @@ lh {
 .channel-list-item {
   border-bottom: 1px solid rgba(179, 179, 179, .5);
   width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.channel-list-item > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-direction: column;
+}
+
+.channel-list-item span {
+  color: rgba(40,40,40, 0.5);
+  font-size: 12px;
+  padding: 8px 8px 8px 0px ;
 }
 
 .channels-list .message-header, .channel-list-item {
