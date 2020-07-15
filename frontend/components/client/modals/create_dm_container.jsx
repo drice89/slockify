@@ -57,6 +57,14 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
     }
   }
 
+  const removeUser = (id) => {
+    if (selectedUsers[id]) {
+      const nextState = selectedUsers
+      delete nextState[id]
+      selectUsers({...nextState})
+    }
+  }
+
   const list = Object.keys(displayConversations).map((convo) => {
     return (
       <li key={`${convo}`}>
@@ -67,9 +75,13 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
 
   const renderSelectedUsers = Object.values(selectedUsers).map((user) => {
     return (
-      <span key={user.id}>
+      <span key={user.id} className="selected-user-box">
        {`${user.displayName || user.fullName} `}
+        <span onClick={() => removeUser(user.id)}>
+          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </span>
       </span>
+      
     )
   });
 
@@ -81,36 +93,26 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       ownerId: currentUser.id, 
       convoType: Object.keys(selectedUsers).length > 2 ? "group" : "direct",
       "isPrivate?": true,
-      
-
     }
 
     App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
     closeModal(); 
   }
 
-  
-
-  
   return (
     <div className="modal-body">
       <div>
-        <h2>Direct Messages</h2>
+        <h1>Direct Messages</h1>
       </div>
       <div>
         <ul className="modal-user-search">
-          <li>
-            <div className="user-search-header">
-              <ul>
-                { renderSelectedUsers }
-              </ul>
-              <div className="modal-input-container">
-                <input type="text" placeholder="Find or start a conversation" 
-                onChange={(e) => setName(e.currentTarget.value)} 
-                value={channelName}
-                size="52" ></input>
-              </div>
-            </div>
+          <li className="modal-user-select-input"> 
+            { renderSelectedUsers }
+            <span> 
+              <input type="text" 
+              onChange={(e) => setName(e.currentTarget.value)} 
+              value={channelName}></input>
+            </span>
           </li>
           <li>
             <button onClick={() => createNewConversation(channelName, selectedUsers)}>
