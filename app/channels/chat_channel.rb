@@ -7,10 +7,25 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    data.deep_transform_keys! { |key| key.underscore }
-    message = Message.create(data["message"])
-    socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
-    ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
+      data.deep_transform_keys! { |key| key.underscore }
+      unless data["message"]["body"].starts_with?("/add_song")
+        message = Message.create(data["message"])
+        socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
+        ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
+      else
+        debugger
+        @credentials = User.find_by(id: data["message"].author_id).spotify_user_info
+        @track = data["message"].split("/add_song")[1].trim
+        if @credentials
+          @spotify_user = RSpotify::User.new(JSON.parse(@credentials))
+          @playlist = RSpotify::Playlist.find_by_id(data["playlistUrl"])
+          @playlist.add_tracks!(data["message"]["body"].split("/add_song")[1].strip) if @playlist
+          ChatChannel.broadcast_to(find_convo(message.recipient_id), {action: "add song", user: data["message"]["author_id"]})
+        else
+          throw "You must login to spotify"
+          ChatChannel.broadcast_to(find_convo(message.recipient_id), {action: "error", user: data["message"]["author_id"], error: "You must login to spotify"})
+        end
+      end
   end
   
   def update(data)

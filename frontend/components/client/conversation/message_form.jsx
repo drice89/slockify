@@ -9,7 +9,7 @@ class MessageForm extends React.Component {
     this.state = {
       body: "",
       authorId: this.props.currentUserId,
-      recipientId: this.props.conversationId
+      recipientId: this.props.conversationId,
     };
   }
   update(field) {
@@ -29,7 +29,7 @@ class MessageForm extends React.Component {
      //the first subscription is to master and that DOES NOT have the speak function
      //so we index into the second subscription and it makes things work.
      //this may need to be refactored when we have the subscriptions on demand
-    App.cable.subscriptions.subscriptions[1].speak({ message: this.state });
+    App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
     this.setState({ body: "" });
   }
 

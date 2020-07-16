@@ -128,6 +128,7 @@ class Conversation extends React.Component {
           <MessageForm
             currentUserId={this.props.currentUserId}
             conversationId={this.props.conversation.id}
+            playlistUrl={this.props.playlistUrl || null}
           />
         </div>
       </div>
