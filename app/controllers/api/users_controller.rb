@@ -28,9 +28,7 @@ class Api::UsersController < ApplicationController
         full_name: spotify_user.display_name, 
         avatar_url: spotify_user.images[0].url, 
         spotify_user_info: hash,
-#### MUST BE MODIFIED PRIOR TO PRODUCTION ###
         password: client_secret
-        ############################################
       }
       @user = User.new(user_data)
       save = @user.save
@@ -38,12 +36,13 @@ class Api::UsersController < ApplicationController
         render json: @user.errors.full_messages, status: 421
         return
       end
+      generalChannelId = Conversation.find_by(name: "General").id
+      Membership.create(member_id: @user.id, conversation_id: generalChannelId)
     else
-        @user.spotify_user_info = hash
+      debugger
+      @user.update(avatar_url: spotify_user.images[0].url, spotify_user_info: hash)
     end
     login(@user)
-    generalChannelId = Conversation.find_by(name: "General").id
-    Membership.create(member_id: @user.id, conversation_id: generalChannelId)
     if ENV["RAILS_ENV"] == "production"
       redirect_to 'https://slockify.herokuapp.com/#/client'
     else

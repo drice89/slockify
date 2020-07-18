@@ -13,17 +13,19 @@ class ChatChannel < ApplicationCable::Channel
         socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
         ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
       else
-        debugger
-        @credentials = User.find_by(id: data["message"].author_id).spotify_user_info
-        @track = data["message"].split("/add_song")[1].trim
-        if @credentials
+        @credentials = User.find_by(id: data["message"]["author_id"]).spotify_user_info
+        begin
+          track = RSpotify::Track.find(data["message"]["body"].split("/add_song")[1].strip)
+        rescue
+          return ChatChannel.broadcast_to(find_convo(data["message"]["recipient_id"]), {action: "error", user: data["message"]["author_id"], error: "track ID not found"})
+        end
+        if @credentials && track
           @spotify_user = RSpotify::User.new(JSON.parse(@credentials))
-          @playlist = RSpotify::Playlist.find_by_id(data["playlistUrl"])
-          @playlist.add_tracks!(data["message"]["body"].split("/add_song")[1].strip) if @playlist
-          ChatChannel.broadcast_to(find_convo(message.recipient_id), {action: "add song", user: data["message"]["author_id"]})
+          @playlist = RSpotify::Playlist.find_by_id(data["playlist_url"])
+          @playlist.add_tracks!([track]) if @playlist
+          ChatChannel.broadcast_to(find_convo(data["message"]["recipient_id"]), {action: "add song", user: data["message"]["author_id"]})
         else
-          throw "You must login to spotify"
-          ChatChannel.broadcast_to(find_convo(message.recipient_id), {action: "error", user: data["message"]["author_id"], error: "You must login to spotify"})
+          ChatChannel.broadcast_to(find_convo(data["message"]["recipient_id"]), {action: "error", user: data["message"]["author_id"], error: "You must login with Spotify to access that feature"})
         end
       end
   end
@@ -38,7 +40,7 @@ class ChatChannel < ApplicationCable::Channel
     if message
       socket = data 
     else
-      socket = { message: "update was not saved", action: "error"}
+      socket = { error: "update was not saved", action: "error"}
     end
     ChatChannel.broadcast_to(find_convo(data["message"]["recipientId"]), socket)
   end
