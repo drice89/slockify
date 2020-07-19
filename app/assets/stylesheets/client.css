@@ -170,6 +170,7 @@ lh {
   flex-direction: column;
   border-bottom: .5px solid rgba(179,179,179,.5);
   box-shadow: 0 .5px 0 0 rgba(2,15,7,0.4);
+  position: relative;
 }
 
 .avatar-img {
@@ -207,35 +208,46 @@ lh {
   opacity: 100%;
 }
 
-#message-options-button:hover > .message-options{
-  display: block;
-  right: 2px;
+.message-container:hover > .message-and-options-container .message-options{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .message-options {
   position: absolute;
   display: none;
-  width: 135px;
-  height: 99px;
-  border: 3px solid black;
+  width: 88px;
+  height: auto;
+  top: 4px;
+  left: 94%;
   background-color: #191414;
   color: white;
-  border-radius: 15%;
+  border-radius: 7px;
   font-family: 'Prompt', sans-serif;
-  font-size: small;
   z-index: 10;
 }
 
-.message-options li {
-  height: 23px;
-  width: auto;
-  text-align: left;
-  padding: 5px;
+.message-options i {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  align-self: center;
+  padding: 8px 0;
 }
 
-.message-options li:hover {
+.message-options > span {
+  height: 100%;
+  width: 100%;
+}
+
+.message-options > i:hover {
   background-color: white;
   color: #191414;
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+  position: relative;
 }
 
 .message-container:hover {
@@ -322,9 +334,6 @@ lh {
   border: 1px solid rgba(179, 179, 179, .2);
   background-color: rgba(24, 24, 24, .2);
   padding: 8px;
-}
-
-.playlist span {
 }
 
 .playlist p > span {

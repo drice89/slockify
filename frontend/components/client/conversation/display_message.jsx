@@ -12,13 +12,13 @@ const DisplayMessage = ({message, edit, remove, currentUserId}) => (
         ? 
           (
             <div className="options">
-              <i id="message-options-button" className="fa fa-cog">
-                <ul className="message-options">
-                  <li>MESSAGE OPTIONS</li>
-                  <li><button onClick={() => edit()}>EDIT</button></li>
-                  <li><button onClick={() => remove()}>DELETE</button></li>
-                </ul>
-              </i>
+              {/* <i id="message-options-button" className="fa fa-cog"> */}
+                <div className="message-options">
+                  <span><i className="fa fa-cog"></i></span>
+                  <i onClick={() => edit()} className="fa fa-edit"></i>
+                  <i onClick={() => remove()} className="fa fa-trash"></i>
+                </div>
+              {/* </i> */}
             </div>
           ) 
         : 

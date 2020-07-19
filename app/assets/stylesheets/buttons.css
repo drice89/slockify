@@ -154,6 +154,11 @@
 }
 
 .channels-list button:hover {
-  color: #ffffff;
-  
+  color: #ffffff; 
+}
+
+.message-options > li > i {
+  background-color: transparent;
+  border: none;
+  color: rgb(179, 179, 179);
 }
