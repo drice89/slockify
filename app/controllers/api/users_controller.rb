@@ -39,7 +39,6 @@ class Api::UsersController < ApplicationController
       generalChannelId = Conversation.find_by(name: "General").id
       Membership.create(member_id: @user.id, conversation_id: generalChannelId)
     else
-      debugger
       @user.update(avatar_url: spotify_user.images[0].url, spotify_user_info: hash)
     end
     login(@user)
