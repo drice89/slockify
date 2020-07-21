@@ -219,8 +219,8 @@ lh {
   display: none;
   width: 88px;
   height: auto;
-  top: 4px;
-  left: 94%;
+  top: 12px;
+  right: 32px;
   background-color: #191414;
   color: white;
   border-radius: 7px;
@@ -419,6 +419,26 @@ lh {
 .channels-list .message-header, .channel-list-item {
    padding: 16px 25px;
    width: auto;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: auto;
+  background-color: rgb(18, 18, 18);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  top: -62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Prompt', sans-serif;
+}
+
+.message-options > i:hover > .tooltip {
+  visibility: visible;
 }
 
 
