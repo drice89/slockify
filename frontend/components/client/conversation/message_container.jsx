@@ -24,7 +24,7 @@ class MessageContainer extends React.Component {
   }
 
   edit() {
-    this.setState({ edit: true});
+    this.setState({ edit: !this.state.edit});
   }
 
   submitEdit() {
@@ -60,7 +60,7 @@ class MessageContainer extends React.Component {
         {
           this.state.edit 
           ? 
-            <EditMessage update={this.update.bind(this)} submitEdit={this.submitEdit} messageText={this.state.body} /> 
+            <EditMessage edit={this.edit} update={this.update.bind(this)} submitEdit={this.submitEdit} messageText={this.state.body} /> 
           :
             <DisplayMessage edit={this.edit} remove={this.remove} message={this.props.message} currentUserId={this.props.currentUserId} />
           }

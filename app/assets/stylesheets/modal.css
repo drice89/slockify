@@ -26,7 +26,7 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  padding: 15px;
+  padding: 20px;
   color: rgb(40,40,40)
 }
 
@@ -50,12 +50,20 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  padding: 2px;
+  padding: 8px 4px 0 4px;
   border-top: 1px solid black;
 }
 
 .user-list-item img {
   height: 60px;
+}
+
+.user-list-item > div {
+  padding-left: 8px;
+}
+
+.user-list-item > div > div {
+  padding-bottom: 8px;
 }
 
 .modal-user-list {
@@ -64,6 +72,9 @@
   height: 500px;
 }
 
+.modal-user-list > li:hover {
+  background-color: #ffffff;
+}
 .select-members-dropdown {
   display: block;
   position: absolute;

@@ -86,7 +86,7 @@
 }
 
 .send-button {
-  height: 60px;
+  height: 40px;
   width: 60px;
   background-color: transparent;
   border: transparent;
@@ -150,13 +150,18 @@
   border:1px solid rgba(179, 179, 179, .5);
 }
 
-.modal-component-container button:hover, .channels-list button:hover {
+.channels-list button:hover {
   background-color: rgb(179, 179, 179);
   color: #ffffff;
 }
 
+.modal-component-container button:hover {
+  background-color: rgb(227, 227, 227)
+}
+
 .channels-list button:hover {
-  color: #ffffff; 
+  color: #ffffff;
+  color: rgb(18,18,18); 
 }
 
 .message-options > li > i {

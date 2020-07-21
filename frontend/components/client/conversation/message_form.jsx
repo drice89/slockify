@@ -3,9 +3,6 @@ import React from "react";
 class MessageForm extends React.Component {
   constructor(props) {
     super(props);
-    //DO NOT LEAVE HARD CODED!!!!!!!!!!!
-    //!!!!!!!
-    //IM MR MEESEEKS LOOK AT ME 
     this.state = {
       body: "",
       authorId: this.props.currentUserId,
@@ -23,19 +20,31 @@ class MessageForm extends React.Component {
     }
   }
 
+  invalidRequest() {
+    return this.state.body.indexOf("/add_song") === 0 && this.props.spotifyIntegration === "false"
+  }
+
   handleSubmit(e) {
     e.preventDefault();
      //look at subscriptions array when there are multiple subscriptions
      //the first subscription is to master and that DOES NOT have the speak function
      //so we index into the second subscription and it makes things work.
      //this may need to be refactored when we have the subscriptions on demand
-    App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
-    this.setState({ body: "" });
+    
+    if (!this.invalidRequest()) {
+      App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
+      this.setState({ body: "" });
+    }
   }
 
   render() {
     return (
       <div className="message-form-container">
+        <div className="no-spotify-login-warning">
+          {
+            this.invalidRequest() ? (<div>You must login with your spotify account to add songs</div>) : null
+          }
+        </div>
         <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="text-area-wrapper">
           <textarea

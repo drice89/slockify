@@ -18,6 +18,7 @@ json.set! "users" do
   end
   json.set! user.id do
     json.extract! user, :id, :email, :full_name, :display_name, :status, :avatar_url, :title, :description, :conversation_ids
+    json.spotify_integration user.spotify_user_info.blank? ? "false" : "true"
   end
 end
 

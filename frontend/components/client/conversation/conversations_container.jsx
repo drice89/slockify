@@ -75,6 +75,10 @@ class Conversation extends React.Component {
           }
         });
 
+        if (this.props.conversation.convoType === "channel" && this.props.sidebar === false) {
+          this.props.toggleSidebar()
+        }
+
   }
 
    componentWillUnmount() {
@@ -133,6 +137,7 @@ class Conversation extends React.Component {
             currentUserId={this.props.currentUserId}
             conversationId={this.props.conversation.id}
             playlistUrl={this.props.conversation.playlistUrl || null}
+            spotifyIntegration={this.props.users[this.props.currentUserId].spotifyIntegration} 
           />
         </div>
       </div>

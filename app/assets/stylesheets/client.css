@@ -145,6 +145,7 @@ lh {
 .message-form-grid-area {
   grid-area: message-form;
   z-index: 6;
+  border-top: 1px solid #ffffff;
 }
 
 .message-header {
@@ -260,6 +261,8 @@ lh {
 
 .message-form-container {
   margin: 10px;
+  height: 90%;
+  padding-bottom: 8px;
 }
 
 .message-form-container form {
@@ -276,6 +279,7 @@ lh {
 .text-area-wrapper {
   width: 100%;
   background-color: transparent;
+  height: 100%;
 }
 
 .message-form-text-area {
@@ -292,8 +296,8 @@ lh {
 }
 
 .send-button svg {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 ::-webkit-scrollbar {
@@ -445,6 +449,40 @@ lh {
   visibility: visible;
 }
 
+.no-spotify-login-warning {
+  width: 100%;
+  height: 25%;
+}
 
+.no-spotify-login-warning > div {
+  width: 600px;
+  margin: 4px auto;
+  border-radius: 7px;
+  text-align: center;
+  color: rgba(255, 0, 0, 0.8);
+  padding: 4px;
+  background-color: rgb(18, 18, 18);
+  font-weight: 400;
+}
 
+.edit-message-container {
+  padding: 4px 8px;
+}
 
+.edit-message-container > .text-area-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #121212; 
+  border-radius: 7px;
+  height: 52px;
+  margin-bottom: 8px;
+}
+
+.edit-message-container textarea {
+  margin-left: 4px;
+}
+
+textarea  
+{  
+   font-family: 'Prompt', sans-serif; 
+   font-size: 24px;   
+}
