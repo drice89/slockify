@@ -57,8 +57,8 @@ class ChannelList extends React.Component {
                       <h3>{channel.name}</h3>
                     </div>
                     <div>
-                      <span>{`${channel.memberIds.length} members`}</span>
-                      <span>{channel.descrption || null}</span>
+                      {channel.memberIds.length === 1 ? (<span>1 member</span>) : (<span>{channel.memberIds.length} members</span>) }
+                      {channel.description ? (<span>&nbsp;&nbsp;·&nbsp;&nbsp;{channel.description}</span> ) : null }
                     </div>
                   </div>
                   <div>

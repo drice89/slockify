@@ -177,8 +177,11 @@ lh {
   width: 40px;
   height: 40px;
   border: 2px solid #191414;
-  border-radius: 15%;
+  border-radius: 7px;
+}
 
+.avatar-span {
+  margin: 0px 8px 8px 0px;
 }
 
 .message-container span {
@@ -413,8 +416,9 @@ lh {
 .channel-list-item span {
   color: rgba(40,40,40, 0.5);
   font-size: 12px;
-  padding: 8px 8px 8px 0px ;
+  padding: 8px 0px ;
 }
+
 
 .channels-list .message-header, .channel-list-item {
    padding: 16px 25px;

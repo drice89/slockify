@@ -145,12 +145,14 @@
 }
 
 #create-new-channel-button, .channel-list-item button {
-  background-color: rgba(179, 179, 179, 1);
-  width: 130px;
+  /* background-color: rgba(179, 179, 179, 1); */
+  width: 132px;
+  border:1px solid rgba(179, 179, 179, .5);
 }
 
 .modal-component-container button:hover, .channels-list button:hover {
-  background-color: #1aa34a;
+  background-color: rgb(179, 179, 179);
+  color: #ffffff;
 }
 
 .channels-list button:hover {
