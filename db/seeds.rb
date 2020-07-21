@@ -23,7 +23,7 @@ Membership.create(member_id: user2.id, conversation_id: conversation1.id, is_adm
 Message.create(body: "Wow this is so cool", author_id: demoUser.id, recipient_id: conversation1.id)
 Message.create(body: "yea bro totally", author_id: user2.id, recipient_id: conversation1.id)
 Message.create(body: "Did you hear this track by DJ Fresh", author_id: demoUser.id, recipient_id: conversation1.id)
-Message.create(body: "Bruh its so lit", author_id: user2.id, recipient_id: conversation1.id)
+Message.create(body: "its so lit!", author_id: user2.id, recipient_id: conversation1.id)
 axl = User.create(email: "arose@slockify.io" , password: "password123!", full_name: "Axl Rose", display_name: "Axl")
 beck = User.create(email: "user1@slockify.io" , password: "password123!", full_name: "Jeff Beck", display_name: "Beck")
 kanye = User.create(email: "user2@slockify.io" , password: "password123!", full_name: "Kanye West", display_name: "Yeezus")
@@ -35,7 +35,7 @@ axlDemoDm = Conversation.create(name: generate_name([demoUser.id, axl.id]), desc
 kanyeDemoDm = Conversation.create(name: generate_name([demoUser.id, kanye.id]), description: "Something something", owner_id: kanye.id, is_private?: true, convo_type: "direct")
 demoCardiDm = Conversation.create(name: generate_name([demoUser.id, cardi.id]), description: "Something something", owner_id: demoUser.id, is_private?: true, convo_type: "direct")
 paulDemoDm = Conversation.create(name: generate_name([demoUser.id, paul.id]), description: "Something something", owner_id: paul.id, is_private?: true, convo_type: "direct")
-general = Conversation.create(name: "General", description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "channel")
+general = Conversation.create(name: "General", description: "Something something", owner_id: user1.id, is_private?: false, convo_type: "channel", playlist_url: "7gTmFj8jC34XlXewe3n4nj")
 
 Membership.create(member_id: demoUser.id , conversation_id: axlDemoDm.id)
 Membership.create(member_id: axl.id , conversation_id: axlDemoDm.id)
