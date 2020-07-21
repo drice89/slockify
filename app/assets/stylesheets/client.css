@@ -146,6 +146,7 @@ lh {
   grid-area: message-form;
   z-index: 6;
   border-top: 1px solid #ffffff;
+  height: fit-content;
 }
 
 .message-header {
