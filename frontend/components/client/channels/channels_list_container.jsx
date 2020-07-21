@@ -42,7 +42,6 @@ class ChannelList extends React.Component {
     
     return (
       <div className="channels-list">
-        <Modal/>
         <div className="message-header">
           <h3>Channels</h3>
           <button id="create-new-channel-button" onClick={() => this.props.openModal("channel")}>Create Channel</button>
