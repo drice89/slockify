@@ -156,7 +156,8 @@
 }
 
 .modal-component-container button:hover {
-  background-color: rgb(227, 227, 227)
+  background-color: #1DB954;
+  color: #ffffff;
 }
 
 .channels-list button:hover {
@@ -169,4 +170,34 @@
   border: none;
   color: rgb(179, 179, 179);
 }
+
+.edit-message-container button {
+  height: 36px;
+  text-align: center;
+  padding: 8px;
+  margin-right: 8px;
+  border-radius: 7px;
+}
+
+.edit-message-container button:first-child {
+  background-color: transparent;
+  border: 1px solid rgb(179, 179, 179);
+  color: #ffffff;
+}
+
+.edit-message-container button:first-child:hover {
+  background-color: rgb(179, 179, 179);
+}
+
+.edit-message-container button:last-child {
+  border: none;
+  background-color: #1DB954;
+
+}
+
+.edit-message-container button:last-child:hover {
+  background-color: #1aa34a;
+  color: white;
+}
+
 
