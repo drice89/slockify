@@ -5,10 +5,8 @@ import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
 import { withRouter } from "react-router-dom";
 import ChannelsListContainer from "./channels/channels_list_container"
-
-
-
 import ConversationsContainer from "./conversation/conversations_container.jsx";
+import { logout } from "../../actions/session_actions"
 
 
 const mapStateToProps = (state) => {
@@ -16,6 +14,10 @@ const mapStateToProps = (state) => {
     sessionId: state.session.id,
   };
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout())
+})
 
 
 
@@ -47,7 +49,7 @@ class Client extends React.Component {
     return( 
       <div className="client-container">
         <div className="search-bar-container">
-          <SearchBarContianer />
+          <SearchBarContianer logout={this.props.logout}/>
         </div>
         <div className="channel-container">
           <ChannelContainer />
@@ -62,4 +64,4 @@ class Client extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Client)
+export default connect(mapStateToProps, mapDispatchToProps)(Client)

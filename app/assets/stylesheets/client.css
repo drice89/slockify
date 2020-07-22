@@ -491,3 +491,19 @@ textarea {
 .sidebar-header:hover {
   cursor: pointer;
 }
+
+.inner-search {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.inner-search .logo {
+  position: absolute;
+  right: 50%;
+  top: -20%;
+  transform: translate(88%, -50%);
+}

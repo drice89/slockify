@@ -199,3 +199,17 @@
   background-color: #1aa34a;
   color: white;
 }
+
+.inner-search button {
+  background-color: transparent;
+  border: 1px solid rgba(179, 179, 179, .5);
+  color: rgb(179, 179, 179);
+  border-radius: 7px;
+  align-self: flex-end;
+  height: 24px;
+}
+
+.inner-search button:hover {
+  background-color: rgb(179, 179, 179);
+  color: #ffffff;
+}
