@@ -111,6 +111,7 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
             { renderSelectedUsers }
             <span> 
               <input type="text" 
+              placeholder="Search or add users"
               onChange={(e) => setName(e.currentTarget.value)} 
               value={userName}></input>
             </span>
