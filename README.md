@@ -12,7 +12,6 @@ The app runs on a pub/sub pattern where the users will subscribe to conversation
 
 ![Slockify dataflow](https://i.imgur.com/eKRUWpr.png)
 
-Currently, all user data (including messages for all subscribed channels) is pushed to the user on login. The user is subsequently subscribed to all channels when they initialize the client. This negates the need for additional AJAX requests because all changes are pushed through the subscribed channels. This presents a problem with scalability, especially where the messages are concerned so there is a planned refactor to pull messages on demand (when the user clicks on a conversation) vs on login. 
 
 
 ## Technology used by this project:
@@ -29,12 +28,12 @@ Currently, all user data (including messages for all subscribed channels) is pus
 * redux-thunk
 * webpack
 * webpack-cli
-
 * jquery
 * Postgresql
 * redis - for production through heroku
-* This project also uses the spotify api
-
+* RSpotify
+* Spotify Api
+* Font Awesome
 
 ## Deployment Instructions
 
