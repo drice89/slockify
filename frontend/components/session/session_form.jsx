@@ -29,13 +29,13 @@ class SessionForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  loginToSpotify() {
-    if (this.props.path === 'signup') {
-      spotifyLogin().then((res) => {
-        console.log(res)
-      })
-    } 
-  }
+  // loginToSpotify() {
+  //   if (this.props.path === 'signup') {
+  //     spotifyLogin().then((res) => {
+  //       console.log(res)
+  //     })
+  //   } 
+  // }
 
   handleSubmit() {
     this.props.action(this.state)

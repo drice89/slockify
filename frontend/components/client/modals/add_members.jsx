@@ -72,7 +72,6 @@ const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
       return `# ${conversation.name}`
     } else {
       const nameArray = conversation.memberIds
-      debugger
       return nameArray.map((id) => {
         if (id !== currentUserId) {
           return users[id].displayName || users[id].fullName

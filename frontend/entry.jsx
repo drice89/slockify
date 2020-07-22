@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   let store;
   if (window.currentUser) {
-    console.log(window.currentUser)
     const preloadedState = {
       entities: { conversations: window.currentUser.conversations, users: window.currentUser.users },
       session: {id: window.currentUser.session.id }
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   ReactDOM.render(<Root store={store} />, root);
 });

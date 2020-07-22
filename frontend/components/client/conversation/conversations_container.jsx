@@ -58,8 +58,6 @@ class Conversation extends React.Component {
                 return this.props.editMessage(data.message);
               case "remove":
                 return this.props.deleteMessage(data.message);
-              case "add song":
-                return console.log(`${this.props.users[data.user].fullName} added a song`);
               case "error":
                 return console.log(data.error);
             }

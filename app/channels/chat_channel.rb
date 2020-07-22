@@ -22,8 +22,14 @@ class ChatChannel < ApplicationCable::Channel
         if @credentials && track
           @spotify_user = RSpotify::User.new(JSON.parse(@credentials))
           @playlist = RSpotify::Playlist.find_by_id(data["playlist_url"])
-          @playlist.add_tracks!([track]) if @playlist
-          ChatChannel.broadcast_to(find_convo(data["message"]["recipient_id"]), {action: "add song", user: data["message"]["author_id"]})
+          if @playlist
+            @playlist.add_tracks!([track]) 
+            message = Message.create(data["message"])
+            display_message = "Added #{track.name} by #{track.artists[0].name}"
+            message.update(body: display_message)
+            socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
+            ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
+          end
         else
           ChatChannel.broadcast_to(find_convo(data["message"]["recipient_id"]), {action: "error", user: data["message"]["author_id"], error: "You must login with Spotify to access that feature"})
         end
