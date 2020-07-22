@@ -70,7 +70,7 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
   const list = Object.keys(displayConversations).map((convo) => {
     return (
       <li key={`${convo}`}>
-        <UserListItem conversation={displayConversations[convo]} users={users} name={convo} addUser={addUser} key={`${convo}userItem`}/>
+        <UserListItem conversation={displayConversations[convo]} currentUserId={currentUser.id} users={users} name={convo} addUser={addUser} key={`${convo}userItem`}/>
       </li>
     )
   });
