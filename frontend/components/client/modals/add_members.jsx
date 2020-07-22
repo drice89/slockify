@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom"
 
 const mapStateToProps = (state, ownProps) => {
   return {
+  currentUserId: state.session.id,
   users: state.entities.users,
   conversation: state.entities.conversations[ownProps.match.params.conversationId]
   }
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-const AddMembers = ({users, conversation, closeModal}) => {
+const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
   const [members, setMembers] = useState({})
   const [user, setUser] = useState("")
   const [filteredUsers, setFilteredUsers] = useState({})
@@ -66,11 +67,29 @@ const AddMembers = ({users, conversation, closeModal}) => {
     closeModal()
   } 
 
+  const conversationName = () => {
+    if (conversation.convoType === "channel") {
+      return `# ${conversation.name}`
+    } else {
+      const nameArray = conversation.memberIds
+      debugger
+      return nameArray.map((id) => {
+        if (id !== currentUserId) {
+          return users[id].displayName || users[id].fullName
+          }
+          return " "
+        })
+        .join(", ")
+        .replace(/\s,\s/ig, "")
+        .trim()
+    }
+  }
+
   return (
     <div className="add-users-modal">
       <div>
         <h1>Add People</h1>
-        <h5>{`# ${conversation.name}`}</h5>
+        <h5>{conversationName()}</h5>
       </div>
       <div id="add-users-input" className="modal-user-select-input">
         { selectedUsers }

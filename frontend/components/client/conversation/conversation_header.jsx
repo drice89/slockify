@@ -14,10 +14,10 @@ const ConversationHeader = ({conversation, users, currentUserId, toggleSidebar})
               if (id !== currentUserId) {
                 return users[id].displayName || users[id].fullName
               }
-              return ""
+              return " "
             })
             .join(", ")
-            .replace(/,\s*$/, "")
+            .replace(/\s,\s/ig, "")
             .trim()
           }
         </h3>

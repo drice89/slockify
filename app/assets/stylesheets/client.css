@@ -253,6 +253,7 @@ lh {
   width: 100%;
   border-radius: 7px;
   position: relative;
+  cursor: pointer;
 }
 
 .message-container:hover {
@@ -482,8 +483,11 @@ lh {
   margin-left: 4px;
 }
 
-textarea  
-{  
+textarea {  
    font-family: 'Prompt', sans-serif; 
    font-size: 24px;   
+}
+
+.sidebar-header:hover {
+  cursor: pointer;
 }
