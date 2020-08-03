@@ -1,8 +1,6 @@
-# README
-
-
-
 ## [Slockify](https://slockify.herokuapp.com/#/)
+
+![Screen Capture](https://media2.giphy.com/media/Ke2HDUYBNi5LA7KyE9/giphy.gif)
 
 Slockify is a clone of slack with styling and branding inspiraction from spotify. It's core features are live chat and the ability to support direct messages, group messages, and channels. This "flavor" of slack has one very special feature - each channel comes with its own playlist allowing users to collaborate and listen together. Users can add songs directly to the playlist by typing `/add_song {songId}` into their chat box.
 
