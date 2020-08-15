@@ -16,7 +16,7 @@ const EmailForm = (props) => {
       <div>
         <input type="email" 
           placeholder="email@yourawesomedomain.io" 
-          size="40"
+          size="38"
           onChange={props.update("email")} 
           value={props.email} 
         />

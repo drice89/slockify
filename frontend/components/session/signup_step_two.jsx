@@ -17,7 +17,7 @@ const SignupStepTwo = (props) => {
 
       <div>
         <input 
-          size="40" 
+          size="38" 
           type="password" 
           placeholder="Password" 
           onChange={props.update("password")} 
@@ -27,7 +27,7 @@ const SignupStepTwo = (props) => {
 
       <div>
         <input 
-          size="40" 
+          size="38" 
           type="text" 
           placeholder="Enter your full name here" 
           onChange={props.update("fullName")} 

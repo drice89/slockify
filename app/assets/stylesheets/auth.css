@@ -52,3 +52,15 @@
 .extra-spacing {
   margin-top: 90px;
 }
+
+.login-type{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.login-type a:link {
+  color: white;
+  text-decoration: underline;
+}

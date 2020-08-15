@@ -2,13 +2,11 @@
 //formType and also be a reference to ownProps
 
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Logo from "../headers/logo";
 import EmailForm from "./email_form";
 import SignupStepTwo from "./signup_step_two";
 import LoginStepTwo from "./login_step_two";
-import LogoutContainer from "./logout_container";
-
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -29,14 +27,6 @@ class SessionForm extends React.Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  // loginToSpotify() {
-  //   if (this.props.path === 'signup') {
-  //     spotifyLogin().then((res) => {
-  //       console.log(res)
-  //     })
-  //   } 
-  // }
-
   handleSubmit() {
     this.props.action(this.state)
   }
@@ -50,10 +40,20 @@ class SessionForm extends React.Component {
     this.props.formType === "Sign Up" ? this.props.demo(demoUser) : this.props.action(demoUser);
   }
 
+  changeLoginType(path) {
+    if (path === "login") {
+      return (<div>New to Slockify? <Link to="/signup">Sign Up</Link></div>)
+    } else {
+      return (<div>Already have an account? <Link to="/login">Log in</Link></div>)
+    }
+
+
+  }
+
   componentWillUnmount () {
     this.props.clearErrors();
   }
-
+  
 
   render() {
     return (
@@ -61,9 +61,6 @@ class SessionForm extends React.Component {
         <div className="">
           <Logo />
         </div>
-        {
-    
-        }
         <div>
           <Route exact path={`/${this.props.path}`} render={
             (props) => 
@@ -94,13 +91,15 @@ class SessionForm extends React.Component {
                 clearErrors={this.props.clearErrors} 
               />
           }/>
+          <div className="login-type">
+            {
+              this.changeLoginType(this.props.path)
+            }
+          </div>
         </div>
-        <ul>
           {
             this.props.errors.length >= 1 ? this.showErrors() : ""
           }
-        </ul>
-        <LogoutContainer />
       </div>
     )
   }

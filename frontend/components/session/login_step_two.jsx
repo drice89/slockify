@@ -14,7 +14,7 @@ const LoginStepTwo = (props) => {
       
       <div>
         <input 
-          size="40"
+          size="38"
           type="password" 
           placeholder="Password" 
           onChange={props.update("password")} 
