@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const CallToAction = () => (
   <section className="cta-section">
-    <div className="description-container">
+    <div className="description-container cta-container">
       <div className="container-large">
         <div><h1>Choose a better way to share music</h1></div>
         <div>
