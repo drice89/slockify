@@ -1,4 +1,4 @@
-A middleware that underscores the keys of any incoming (to the rails server) params
+# A middleware that underscores the keys of any incoming (to the rails server) params
 class SnakeCaseParameters
   # def initialize(app)
   #   @app = app
