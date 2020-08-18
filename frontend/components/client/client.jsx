@@ -36,10 +36,6 @@ class Client extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
 
   //right side panel rendered in conversations container
   render () {
