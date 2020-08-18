@@ -35,6 +35,8 @@ class ChannelsContainer extends React.Component {
         user: this.props.sessionId
       },
       {
+        connected: () => { console.log('connected to master') },
+        disconnected: () => { console.log('disconnected from master')},
         received: data => {
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
@@ -75,6 +77,7 @@ class ChannelsContainer extends React.Component {
 
   componentWillUnmount() {
      App.cable.subscriptions.remove(App.cable.subscriptions.subscriptions[0])
+     console.log("channels unmounted")
   }
 
   limitConvoLength(string) {
