@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   end
   get '/auth/spotify/callback', to: 'api/users#spotify'
+  get '/auth/failure', to: 'api/users#failure'
   mount ActionCable.server, at: '/cable'
 
   

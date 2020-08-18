@@ -49,6 +49,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def failure
+    if ENV["RAILS_ENV"] == "production"
+      redirect_to 'https://slockify.herokuapp.com/#/login'
+    else
+      redirect_to 'http://localhost:3000/#/login'
+    end 
+  end
+
   private
   def create_user_params
     params.require(:user).permit(:email, :password, :full_name, :display_name, :spotify_user_info)

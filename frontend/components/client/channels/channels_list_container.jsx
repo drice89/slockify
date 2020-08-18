@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Modal from "../modals/modal";
 import { openModal } from "../../../actions/ui_actions";
 import { getAllChannels } from "../../../actions/conversation_actions";
 

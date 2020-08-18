@@ -11,7 +11,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute path="/client/:userId/:conversationId" component={Client} />
       <ProtectedRoute path ="/client/:userId/channels" component={Client} />
-      <ProtectedRoute path ="/client" component={Client} />
+      <Route exact path ="/client" component={Client}><Redirect to="/login" /></Route>
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
       <Route exact path="/" component={SplashMain} />
