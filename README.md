@@ -10,28 +10,127 @@ The app runs on a pub/sub pattern where the users will subscribe to conversation
 
 ![Slockify dataflow](https://i.imgur.com/eKRUWpr.png)
 
+This interaction is illustrated by the workflow that drives the message creation process.
+
+What happens when you type a message here and then hit the "enter" button?
+
+![message form](https://i.imgur.com/B2D95uf.png)
+
+The message is sent via the handleSubmit function in message_form.jsx. It checks to make sure the message is valid and then access the "App" object that is passed down from rails.
+
+```message_form.jsx
+
+  handleSubmit(e) {
+    e.preventDefault();
+    
+    if (!this.invalidRequest()) {
+     // The App object has multiple subscriptions at this point.
+     // The user is subscribed to both the master channel that controls all of the user's channel subscriptions, and the chat 
+     // channel which controls the messages for the conversation. 
+     // We index into the second subscription, which represents the current conversation, and call the channel's speak
+     // function, passing in the the message object (which includes the user and conversation ids), and the playlistUrl in case 
+     // the message is intended to modify the playlist.
+      App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
+      this.setState({ body: "" });
+    }
+  }
+```
+
+When our conversation mounted, we set up the conversation subscription. The first parameter tells the server the name of the subscription, the second parameter sets up the actions.
+
+```conversations_container.jsx
+      App.cable.subscriptions.create(
+        { 
+          channel: `ChatChannel`, 
+          room: this.props.conversation.id 
+        },
+        {
+        // Dispatch an action when data is recieved back from the socket 
+          received: data => {
+            switch(data.action) {
+              case "new":
+                return this.props.editMessage(data.message);
+              case "update": 
+                return this.props.editMessage(data.message);
+              case "remove":
+                return this.props.deleteMessage(data.message);
+              case "error":
+                return console.log(data.error);
+            }
+          },
+         // The below actions are defined serverside and handle incoming data
+          speak: function (data) {
+            return this.perform("speak", data);
+          },
+          update: function(data) {
+            return this.perform("update", data);
+          },
+          remove: function (data) {
+            return this.perform("remove", data);
+          }
+        });
+```
+
+So by indexing into the correct subscription and calling the speak function, we can send data to the server via the cable.
+
+On the server side, the chat channel's speak function handles the incoming message. It recieves it, saves it to the database, and sends it back out to everyone who is subscribed to the channel.
+
+```chat_channel.rb
+def speak(data)
+      # first we must transform the keys to ensure the correct casing in ruby
+      data.deep_transform_keys! { |key| key.underscore }
+      
+      # check to see if the user is just sending a message or trying to add a song to a playlist
+      unless data["message"]["body"].starts_with?("/add_song")
+        # Create the message and store it to the database
+        message = Message.create(data["message"])
+        # transform
+        socket = { message: message.attributes.deep_transform_keys! { |key| key.camelize(:lower) }, action: "new" }
+        ChatChannel.broadcast_to(find_convo(message.recipient_id), socket)
+      ...
+  end
+```
+
+The message is recieved by all users who are currently subscribed to that conversation. 
+
+```
+      received: data => {
+        switch(data.action) {
+          case "new":
+            return this.props.editMessage(data.message)
+```
+The editMessage action is dispatched to our store
+
+
+
+## Features
+
+ - Real time chat
+ - Direct messages and group chat with other users
+ - Shared user channels
+ - Single sign on through Spotify
+ - Create and build collaborative playlists with user created channels
 
 
 ## Technology used by this project:
-* Ruby v2.5.1p57
-* Rails vRails 5.2.4.2
-* babel
-* babel-loader
-* react
-* redux
-* react-dom
-* react-redux
-* react-router-dom
-* redux-logger
-* redux-thunk
-* webpack
-* webpack-cli
-* jquery
-* Postgresql
-* redis - for production through heroku
-* RSpotify
-* Spotify Api
-* Font Awesome
+
+- ReactJs
+- Redux
+- Ruby on Rails
+- PostgreSQL
+- Rails action cables
+- Spotify Api
+- Ruby
+- Babel
+- Webpack
+- Redux Thunk
+- React Router Dom
+- JQuery
+- Heroku
+- Redis
+- Font Awesome
+- Rspotify
+- Omniauth
 
 ## Deployment Instructions
 
