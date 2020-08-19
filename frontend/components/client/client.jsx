@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 import ChannelsListContainer from "./channels/channels_list_container"
 import ConversationsContainer from "./conversation/conversations_container.jsx";
 import { logout } from "../../actions/session_actions"
+import Modal from "./modals/modal"; 
 
 
 const mapStateToProps = (state) => {
@@ -44,6 +45,7 @@ class Client extends React.Component {
     const ChannelContainer = withRouter(ChannelsContainer)
     return( 
       <div className="client-container">
+         <Modal />
         <div className="search-bar-container">
           <SearchBarContianer logout={this.props.logout}/>
         </div>

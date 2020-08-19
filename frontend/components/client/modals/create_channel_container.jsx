@@ -41,7 +41,7 @@ const CreateChannelModal = ({channels, closeModal, currentUser}) => {
 
      const members = { [currentUser.id]: currentUser}
 
-    App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
+    App.cable.subscriptions.subscriptions[0].createConversation({conversation, members, currentUser: currentUser.id});
     closeModal(); 
   }
 

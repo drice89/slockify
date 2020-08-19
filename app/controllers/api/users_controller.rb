@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:spotify]
   #users index view has not yet been created 
   def index
     @users = User.all

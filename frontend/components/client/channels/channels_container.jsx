@@ -41,13 +41,13 @@ class ChannelsContainer extends React.Component {
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
               case "new":
-                  if (!data.error) {
-                    this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
-                  }
-                  if (data.conversation.ownerId === this.props.sessionId) {
-                    this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
-                  }
-                  break
+                if(!data.error) {
+                  this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
+                }
+                if (data.requestingUser === this.props.sessionId) {
+                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                }
+                break
               case "edit":
                 return this.props.receiveEditedConversation(data.conversation);
               //weve got two here
@@ -95,7 +95,6 @@ class ChannelsContainer extends React.Component {
     const direct = directConversationsSort(conversationsArray, this.props.users, this.props.sessionId);
     return (
       <div className="channels-container">
-        <Modal />
         <div className="username-display">
           <div>
             <div>

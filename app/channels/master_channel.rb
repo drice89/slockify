@@ -37,7 +37,7 @@ class MasterChannel < ApplicationCable::Channel
       MasterChannel.broadcast_to("master", socket)
 
     elsif existing_id
-      socket = { error: "conversation already exists", conversation: { id: existing_id.id, memberIds: [conversation.owner_id] }, action: "new"}
+      socket = { error: "conversation already exists", conversation: { id: existing_id.id, memberIds: [conversation.owner_id] }, action: "new", requestingUser: data["current_user"]}
       MasterChannel.broadcast_to("master", socket)
 
     else

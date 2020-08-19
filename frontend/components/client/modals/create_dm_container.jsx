@@ -96,7 +96,7 @@ const CreateDmContainer = ({closeModal, users, currentUser, conversations}) => {
       "isPrivate?": true,
     }
 
-    App.cable.subscriptions.subscriptions[0].createConversation({conversation, members});
+    App.cable.subscriptions.subscriptions[0].createConversation({conversation, members, currentUser: currentUser.id});
     closeModal(); 
   }
 
