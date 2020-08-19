@@ -19,7 +19,7 @@ const About = ({description, activeTab}) => {
               <div>
                 <span>{`${k}: `}</span><span>{processedDescription[k]}</span>
               </div>
-              {processedDescription["Channel Name"] ? (<button><i className="fa fa-pencil" aria-hidden="true"></i></button>): ""}
+              {/* {processedDescription["Channel Name"] ? (<button><i className="fa fa-pencil" aria-hidden="true"></i></button>): ""} */}
             </div>
           )
         })
