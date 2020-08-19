@@ -33,7 +33,7 @@ class MasterChannel < ApplicationCable::Channel
       conversation = conversation.attributes.deep_transform_keys! { |key| key.camelize(:lower) }
       conversation["memberIds"] = members
 
-      socket = { conversation: conversation, action: "new" }
+      socket = { conversation: conversation, action: "new", requestingUser: data["current_user"] }
       MasterChannel.broadcast_to("master", socket)
 
     elsif existing_id
