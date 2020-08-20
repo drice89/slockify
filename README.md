@@ -18,62 +18,57 @@ What happens when you type a message here and then hit the "enter" button?
 
 The message is sent via the handleSubmit function in message_form.jsx. It checks to make sure the message is valid and then access the "App" object that is passed down from rails.
 
+The App object has multiple subscriptions at this point. The user is subscribed to both the master channel that controls all of the user's channel subscriptions, and the chat channel which controls the messages for the conversation. We index into the second subscription, which represents the current conversation, and call the channel's speak function, passing in the the message object (which includes the user and conversation ids), and the playlistUrl in case the message is intended to modify the playlist.
+
 ```message_form.jsx
 
-  handleSubmit(e) {
-    e.preventDefault();
+handleSubmit(e) {
+  e.preventDefault();
     
-    if (!this.invalidRequest()) {
-     // The App object has multiple subscriptions at this point.
-     // The user is subscribed to both the master channel that controls all of the user's channel subscriptions, and the chat 
-     // channel which controls the messages for the conversation. 
-     // We index into the second subscription, which represents the current conversation, and call the channel's speak
-     // function, passing in the the message object (which includes the user and conversation ids), and the playlistUrl in case 
-     // the message is intended to modify the playlist.
-      App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
-      this.setState({ body: "" });
-    }
+  if (!this.invalidRequest()) {
+    App.cable.subscriptions.subscriptions[1].speak({ message: this.state, playlistUrl: this.props.playlistUrl });
+    this.setState({ body: "" });
   }
+}
 ```
 
 When our conversation mounted, we set up the conversation subscription. The first parameter tells the server the name of the subscription, the second parameter sets up the actions.
 
 ```conversations_container.jsx
-      App.cable.subscriptions.create(
-        { 
-          channel: `ChatChannel`, 
-          room: this.props.conversation.id 
-        },
-        {
-        // Dispatch an action when data is recieved back from the socket 
-          received: data => {
-            switch(data.action) {
-              case "new":
-                return this.props.editMessage(data.message);
-              case "update": 
-                return this.props.editMessage(data.message);
-              case "remove":
-                return this.props.deleteMessage(data.message);
-              case "error":
-                return console.log(data.error);
-            }
-          },
-         // The below actions are defined serverside and handle incoming data
-          speak: function (data) {
-            return this.perform("speak", data);
-          },
-          update: function(data) {
-            return this.perform("update", data);
-          },
-          remove: function (data) {
-            return this.perform("remove", data);
-          }
-        });
+App.cable.subscriptions.create(
+  { 
+    channel: `ChatChannel`, 
+    room: this.props.conversation.id 
+  },{
+    // Dispatch an action when data is recieved back from the socket 
+    received: data => {
+      switch(data.action) {
+        case "new":
+          return this.props.editMessage(data.message);
+        case "update": 
+          return this.props.editMessage(data.message);
+        case "remove":
+          return this.props.deleteMessage(data.message);
+        case "error":
+          return console.log(data.error);
+      }
+    },
+   // The below actions are defined serverside and handle incoming data
+    speak: function (data) {
+      return this.perform("speak", data);
+    },
+    update: function(data) {
+      return this.perform("update", data);
+    },
+    remove: function (data) {
+      return this.perform("remove", data);
+    }
+   });
 ```
 
 So by indexing into the correct subscription and calling the speak function, we can send data to the server via the cable.
 
-On the server side, the chat channel's speak function handles the incoming message. It recieves it, saves it to the database, and sends it back out to everyone who is subscribed to the channel.
+On the server side, the chat channel's speak function handles the incoming message. It recieves the action, saves the message to the database, and sends it back out to everyone who is subscribed to the channel.
 
 ```chat_channel.rb
 def speak(data)
@@ -126,7 +121,6 @@ The message body, along with the id of the sender and the conversation, get stor
  - Shared user channels
  - Single sign on through Spotify
  - Create and build collaborative playlists with user created channels
-
 
 ## Technology used by this project:
 
