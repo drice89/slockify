@@ -99,7 +99,23 @@ The message is recieved by all users who are currently subscribed to that conver
           case "new":
             return this.props.editMessage(data.message)
 ```
-The editMessage action is dispatched to our store
+The editMessage function is called which dispatches the recieveMessage action to our store:
+
+```messages_reducer.jsx
+
+const messagesReducer = (state = {}, action) => {
+  Object.freeze(state);
+  let nextState = Object.assign({}, state );
+  
+  switch(action.type) {
+  ...
+    case RECEIVE_MESSAGE:
+      nextState[action.message.id] = action.message;
+      return nextState;
+  ...
+```
+
+The message body, along with the id of the sender and the conversation, get stored in global state. The edit and delete message functions work the same way. Adding new conversations also work this way. Once the user is logged in, most of the updates are handled by action cables. We do hit the /api/conversations/:conversation_id/messages enpoint when we change the conversation or the channel, but the rest of the updates to the application are handled by action cables.
 
 
 
