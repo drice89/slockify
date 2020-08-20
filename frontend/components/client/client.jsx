@@ -25,18 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 class Client extends React.Component {
   constructor(props) {
     super(props);
-    this.enforceLocation();
   }
-
-  enforceLocation() {
-    //this is pushing the correct url but match.params is returning empty
-    const urlSessionId = this.props.match.userId;
-    const sessionId = this.props.sessionId;     
-    if (urlSessionId !== sessionId) {
-      this.props.history.push(`/client/${sessionId}/6`);
-    }
-  }
-
 
   //right side panel rendered in conversations container
   render () {

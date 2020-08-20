@@ -81,7 +81,6 @@ class Conversation extends React.Component {
 
    componentWillUnmount() {
     for(let i =0; i < App.cable.subscriptions.subscriptions.length; i++) {
-      //if its always the second subscription why not just index into it and unsub?
       let roomId = JSON.parse(App.cable.subscriptions.subscriptions[i].identifier).room
       if (roomId === this.props.conversation.id) {
         App.cable.subscriptions.remove(App.cable.subscriptions.subscriptions[i])

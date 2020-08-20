@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { connect } from "react-redux";
 import { closeModal } from "../../../actions/ui_actions";
 import { withRouter } from "react-router-dom"
@@ -21,6 +21,7 @@ const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
   const [members, setMembers] = useState({})
   const [user, setUser] = useState("")
   const [filteredUsers, setFilteredUsers] = useState({})
+  const textInput = useRef(null);
   
   const handleChange = (e) => {
     const userName = e.currentTarget.value
@@ -60,6 +61,10 @@ const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
     setFilteredUsers({})
   }
 
+  const clickInput = () => {
+     textInput.current.focus();
+  }
+
   const addNewMembers = () => {
     let data = { conversation, members }
     data['requestType'] = "add member"
@@ -90,9 +95,9 @@ const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
         <h1>Add People</h1>
         <h5>{conversationName()}</h5>
       </div>
-      <div id="add-users-input" className="modal-user-select-input">
+      <div id="add-users-input" className="modal-user-select-input" onClick={clickInput}>
         { selectedUsers }
-        <input type="text" value={user} onChange={e => handleChange(e)} />
+        <input ref={textInput} type="text" value={user} onChange={e => handleChange(e)} />
           <ul className={"select-members-dropdown"}>
               {
                 Object.values(filteredUsers).map(user => (
