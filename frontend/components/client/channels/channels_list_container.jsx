@@ -32,7 +32,7 @@ class ChannelList extends React.Component {
   }
 
   joinChannel(conversation, member) {
-    const data = { conversation, members: { [member.id]: member}, requestType: "add member"}
+    const data = { conversation, members: { [member.id]: member}, requestType: "add member", requestingUser: this.props.currentUser.id}
     App.cable.subscriptions.subscriptions[0].editConversation(data)
   }
   

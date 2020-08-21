@@ -35,8 +35,8 @@ class ChannelsContainer extends React.Component {
         user: this.props.sessionId
       },
       {
-        connected: () => { console.log('connected to master') },
-        disconnected: () => { console.log('disconnected from master')},
+        // connected: () => { console.log('connected to master_channel') },
+        // disconnected: () => { console.log('disconnected from master_channel')},
         received: data => {
           if (data.action === "status" || data.conversation.memberIds.includes(this.props.sessionId)) {
             switch (data.action) {
@@ -49,8 +49,12 @@ class ChannelsContainer extends React.Component {
                 }
                 break
               case "edit":
-                return this.props.receiveEditedConversation(data.conversation);
-              //weve got two here
+                this.props.receiveEditedConversation(data.conversation);
+                if ((data.requestingUser === this.props.sessionId)) {
+                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                }
+                break;
+              //weve got two removes here
               case "remove":
                 return this.props.receiveEditedConversation(data.conversation);
               case "status":
@@ -77,7 +81,7 @@ class ChannelsContainer extends React.Component {
 
   componentWillUnmount() {
      App.cable.subscriptions.remove(App.cable.subscriptions.subscriptions[0])
-     console.log("channels unmounted")
+     //console.log("channels unmounted")
   }
 
   limitConvoLength(string) {

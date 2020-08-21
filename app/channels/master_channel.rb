@@ -74,7 +74,9 @@ class MasterChannel < ApplicationCable::Channel
         did_update = delete_membership(member_id, conversation_id)
         action = "remove"
     end
-   MasterChannel.broadcast_to("master", create_socket(conversation_id, action) )
+    socket = create_socket(conversation_id, action)
+    socket["requestingUser"] = data["requesting_user"] if data["requesting_user"]
+   MasterChannel.broadcast_to("master", socket )
   end
     
   def unsubscribed
