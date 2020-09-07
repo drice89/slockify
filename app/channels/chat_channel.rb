@@ -54,11 +54,6 @@ class ChatChannel < ApplicationCable::Channel
   def remove(data)
     target_message = find_message(data["message"]["id"]) 
     target_message.destroy
-    #you had to change the structure of remove message to take the entire message
-    #this was done because there is a selector that pushes the messages out of the store on a per conversation basis
-    #this selector iterates through the messages Id array in the conversation object pushes the corresponding messages into
-    #an array. In order to remove an object from that array we need to know which conversation its from and then which message
-    #to delete
     ChatChannel.broadcast_to(find_convo(data["message"]["recipientId"]), data)
   end
 

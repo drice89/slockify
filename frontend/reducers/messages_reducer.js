@@ -6,9 +6,6 @@ const messagesReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state );
   
   switch(action.type) {
-    // case RECEIVE_CURRENT_USER:
-    //   return action.user.messages;
-//I tried to have "RECEIVE_MESSAGE || RECEIVE_EDIT" and it wasnt hitting the RECEIVE_EDIT CONDITION so I broke it out
     case RECEIVE_MESSAGES:
       return action.messages;
     case RECEIVE_MESSAGE:
