@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigationType } from "react-router-dom";
 import { channelConversationsSort, directConversationsSort } from "../../../reducers/selector";
 import { receiveConversation, receiveEditedConversation, removeConversation} from "../../../actions/conversation_actions";
 import { changeUserStatus } from "../../../actions/user_actions";
 import { connect } from "react-redux";
 import Modal from "../modals/modal";
 import { openModal } from "../../../actions/ui_actions";
+import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -29,6 +30,8 @@ const mapDispatchToProps = (dispatch) => {
 class ChannelsContainer extends React.Component {
 
   componentDidMount() {
+    const navigate = useNavigate()
+
     App.cable.subscriptions.create(
       {
         channel: `MasterChannel`, 
@@ -45,13 +48,13 @@ class ChannelsContainer extends React.Component {
                   this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
                 }
                 if (data.requestingUser === this.props.sessionId) {
-                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  navigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
                 }
                 break
               case "edit":
                 this.props.receiveEditedConversation(data.conversation);
                 if ((data.requestingUser === this.props.sessionId)) {
-                  this.props.history.push(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  navigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
                 }
                 break;
               //weve got two removes here

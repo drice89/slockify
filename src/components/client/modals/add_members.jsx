@@ -1,14 +1,16 @@
 import React, {useState, useRef} from "react";
 import { connect } from "react-redux";
 import { closeModal } from "../../../actions/ui_actions";
-import { withRouter } from "react-router-dom"
+import { useParams } from "react-router-dom";
 
 
 const mapStateToProps = (state, ownProps) => {
+  const { conversationId } = useParams()
+
   return {
   currentUserId: state.session.id,
   users: state.entities.users,
-  conversation: state.entities.conversations[ownProps.match.params.conversationId]
+  conversation: state.entities.conversations[conversationId]
   }
 }
 
@@ -118,4 +120,4 @@ const AddMembers = ({users, conversation, closeModal, currentUserId}) => {
   )
 } 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddMembers))
+export default connect(mapStateToProps, mapDispatchToProps)(AddMembers)

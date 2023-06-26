@@ -7,11 +7,11 @@ import MessageContainer from "./message_container";
 import { receiveMessage, removeMessage, getMessages } from "../../../actions/message_actions";
 import { toggleSidebar } from "../../../actions/ui_actions";
 import Sidebar from "../sidebar/sidebar"
+import { useParams } from "react-router-dom";
 
 
 const mapStateToProps = (state, ownProps) => {
-  const historyLocation = ownProps.history.location.pathname.split("/");
-  const conversationId = ownProps.match.params.conversationId || historyLocation[historyLocation.length-1];
+  const { conversationId } = useParams()
 
   return {
     users: state.entities.users,
