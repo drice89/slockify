@@ -143,8 +143,12 @@ The message body, along with the id of the sender and the conversation, get stor
 - Omniauth
 
 ## Deployment Instructions
+Ensure you have Ruby installed along with the 'rails' and 'bundler' gems
 
 Make sure you have postgresql installed and running and then clone the repository.
+`brew install libpq`
+`brew install postgresql`
+`brew services start postgresql`
 
 In the root directory, run
 `npm install`
@@ -164,7 +168,10 @@ Run
 In a new terminal window, run
 `npm start`
 
-Navigate to localhost:3000 in your browswer
+Navigate to localhost:3000 in your browser
+
+You can also create a docker image for the back end by navigating to the root directory in your terminal and typing
+`docker build -t slockify .`
 
 
 # slockify

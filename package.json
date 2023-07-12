@@ -11,6 +11,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "6.13.0",
+    "react-tooltip": "^5.18.0",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
@@ -37,7 +38,7 @@
     "eslint-plugin-react": "^7.19.0"
   },
   "engines": {
-    "node": "16.20.0",
-    "npm": "8.10.0"
+    "node": "v16.20.0",
+    "npm": "8.19.4"
   }
 }

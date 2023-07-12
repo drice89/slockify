@@ -1,6 +1,7 @@
 
 
 .auth-container {
+  margin: auto 0;
   display : flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,7 @@
 }
 
 .auth-form {
-  width: 0, auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -35,7 +36,7 @@
 }
 
 .auth-form button {
-  width: 329px;
+  width: 210px;
   border-radius: 15px;
   height: 45px; 
 }
@@ -50,7 +51,27 @@
 }
 
 .extra-spacing {
-  margin-top: 90px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.extra-spacing > div {
+  padding: 0;
+}
+
+.extra-spacing > div > a {
+  padding: 0;
+}
+
+.extra-spacing > div > a > button {
+  margin: 0;
+  margin-right: 4px;
+}
+
+.extra-spacing > div > button {
+  margin: 0;
+  margin-left: 4px;
 }
 
 .login-type{
@@ -63,4 +84,8 @@
 .login-type a:link {
   color: white;
   text-decoration: underline;
+}
+
+.logo-wrapper {
+  margin-top: 32px;
 }

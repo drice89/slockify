@@ -1,12 +1,13 @@
 //NOTES FOR FUTURE DILLON - most important component is client.jsx go there
 
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import configureStore from "./store/store";
 import Root from "./components/root";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root");
+  const container = document.getElementById("root");
+  const rootContainer = createRoot(container)
   let store;
   if (window.currentUser) {
     const preloadedState = {
@@ -21,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // window.getState = store.getState;
   // window.dispatch = store.dispatch;
-  ReactDOM.render(<Root store={store} />, root);
+  rootContainer.render(<Root store={store} />);
 });

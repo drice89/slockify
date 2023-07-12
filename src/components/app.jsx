@@ -9,13 +9,13 @@ import Client from "./client/client";
 const App = () => (
   <div>
     <Routes>
-      <ProtectedRoute path="/client/:userId/:conversationId" component={Client} />
-      <ProtectedRoute path ="/client/:userId/channels" component={Client} />
-      <Route exact path ="/client" component={Client}><Navigate to="/login" /></Route>
-      <AuthRoute path="/signup" component={SignupFormContainer} />
-      <AuthRoute path="/login" component={LoginFormContainer} />
-      <Route exact path="/" component={SplashMain} />
-      <Navigate to="/" />
+      <Route path="/client/:userId/:conversationId" element={<ProtectedRoute component={Client} />} />
+      <Route path ="/client/:userId/channels" element={<ProtectedRoute component={Client} />} />
+      <Route exact path ="/client" element={<Client />} />
+      <Route path="/signup" element={<AuthRoute component={SignupFormContainer} /> }/>
+      <Route path="/login" element={<AuthRoute component={LoginFormContainer} />} />
+      <Route exact path="/" element={<SplashMain />} />
+      {/* <Navigate to="/" /> */}
     </Routes>
   </div>
 )

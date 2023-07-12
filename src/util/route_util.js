@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Auth = ({ component: Component, path, userId, exact }) => {

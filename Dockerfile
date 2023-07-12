@@ -8,28 +8,33 @@ RUN apk update && apk add build-base postgresql-dev
 RUN apk add --update nodejs npm gcompat
 
 
-# Set working directory
-
 RUN mkdir /app
 WORKDIR /app
 
-# Copy Gemfile and package.json to the container
-
-# Install dependencies
-COPY . .
+RUN gem install bundler
+COPY Gemfile ./
 RUN bundle install
-RUN npm install
 
-# Copy the rest of the application files to the container
 COPY . .
 
-# # Create and seed the database
+CMD puma -C config/puma.rb
+
+# Set working directory
+
+# RUN mkdir /app
+# WORKDIR /app
+# COPY Gemfile .
+
+# # Copy Gemfile and package.json to the container
+
+# # Install dependencies
+# RUN bundle install
+
+# # Copy the rest of the application files to the container
+# EXPOSE 3000
+# COPY . .
 
 # # Expose the port used by the Rails application
-EXPOSE 3000
 
-# # Start the Rails server and the Node.js server
-CMD rails s & npm start
-
-RUN rails db:create
-RUN rails db:seed
+# # Start the Rails server
+# CMD rails s -b 0.0.0.0
