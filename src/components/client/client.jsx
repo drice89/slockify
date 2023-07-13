@@ -34,7 +34,7 @@ const Client = ({ logout }) => {
         {conversationId === "channels" ? (
           <ChannelsListContainer />
         ) : (
-          <ConversationsContainer />
+          <ConversationsContainer conversationId={conversationId}/>
         )}
       </div>
     </div>

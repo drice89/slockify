@@ -25,7 +25,7 @@ end
 json.set! "conversations" do
   user.conversations.each do |conversation|
     json.set! conversation.id do
-      json.partial! "api/conversations/conversation.json.jbuilder", conversation: conversation
+      json.partial! "/api/conversations/conversation", conversation: conversation
     end
   end
 end

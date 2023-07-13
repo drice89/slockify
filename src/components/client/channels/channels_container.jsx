@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, useNavigationType } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { channelConversationsSort, directConversationsSort } from "../../../reducers/selector";
 import { receiveConversation, receiveEditedConversation, removeConversation} from "../../../actions/conversation_actions";
 import { changeUserStatus } from "../../../actions/user_actions";
 import { connect } from "react-redux";
 import Modal from "../modals/modal";
 import { openModal } from "../../../actions/ui_actions";
-import { useNavigate } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -30,8 +29,6 @@ const mapDispatchToProps = (dispatch) => {
 class ChannelsContainer extends React.Component {
 
   componentDidMount() {
-    const navigate = useNavigate()
-
     App.cable.subscriptions.create(
       {
         channel: `MasterChannel`, 
@@ -48,13 +45,13 @@ class ChannelsContainer extends React.Component {
                   this.props.receiveConversation({ conversation: data.conversation, sessionId: this.props.sessionId});
                 }
                 if (data.requestingUser === this.props.sessionId) {
-                  navigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  useNavigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
                 }
                 break
               case "edit":
                 this.props.receiveEditedConversation(data.conversation);
                 if ((data.requestingUser === this.props.sessionId)) {
-                  navigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
+                  useNavigate(`/client/${this.props.sessionId}/${data.conversation.id}`)
                 }
                 break;
               //weve got two removes here
@@ -119,10 +116,10 @@ class ChannelsContainer extends React.Component {
         </div>
         <div className="conversation-section">
           <ul>
-            <lh className="channels-section-header">
+            <li className="channels-section-header">
               <h4>Channels</h4>
               <button className="add-channel-button"><Link to="channels">+</Link></button>
-            </lh>
+            </li>
             {
               channels.map((channel) => {
                 return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button className="conversation-button">{`# ${this.limitConvoLength(channel.name)}`}</button></Link></li>
@@ -132,10 +129,10 @@ class ChannelsContainer extends React.Component {
         </div>
         <div className="conversation-section">
           <ul>
-            <lh className="channels-section-header">
+            <li className="channels-section-header">
               <h4>Direct Messages</h4>
               <button className="add-channel-button" onClick={() => this.props.openModal("dm")}>+</button>
-            </lh>
+            </li>
              
             {
               direct.map((direct) => {

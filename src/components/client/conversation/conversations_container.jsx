@@ -1,5 +1,4 @@
 import React from "react"
-//import { messageSelector } from "../../../reducers/selector";
 import { connect } from "react-redux";
 import MessageForm from "./message_form";
 import ConversationHeader from "./conversation_header";
@@ -7,11 +6,9 @@ import MessageContainer from "./message_container";
 import { receiveMessage, removeMessage, getMessages } from "../../../actions/message_actions";
 import { toggleSidebar } from "../../../actions/ui_actions";
 import Sidebar from "../sidebar/sidebar"
-import { useParams } from "react-router-dom";
-
 
 const mapStateToProps = (state, ownProps) => {
-  const { conversationId } = useParams()
+  let { conversationId } = ownProps
 
   return {
     users: state.entities.users,
