@@ -11,11 +11,10 @@ const App = () => (
     <Routes>
       <Route path="/client/:userId/:conversationId" element={<ProtectedRoute component={Client} />} />
       <Route path ="/client/:userId/channels" element={<ProtectedRoute component={Client} />} />
-      <Route exact path ="/client" element={<Client />} />
+      <Route exact path ="/client" element={<ProtectedRoute component={Client} />} />
       <Route path="/signup" element={<AuthRoute component={SignupFormContainer} /> }/>
       <Route path="/login" element={<AuthRoute component={LoginFormContainer} />} />
-      <Route exact path="/" element={<SplashMain />} />
-      {/* <Navigate to="/" /> */}
+      <Route exact path="/*" element={<SplashMain />} />
     </Routes>
   </div>
 )

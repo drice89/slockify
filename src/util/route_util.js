@@ -17,7 +17,6 @@ const Auth = ({ component: Component, path, userId, exact }) => {
 
 const Protected = ({ component: Component, path, userId, exact }) => {
   const navigate = useNavigate();
-
   if (userId) {
     return <Component />;
   } else {

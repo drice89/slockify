@@ -7,9 +7,8 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
-
-# RSpotify::authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
+Dotenv::Railtie.load
+RSpotify::authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
 
 module Slockify
   class Application < Rails::Application

@@ -33,8 +33,12 @@ export const receiveMessages = (messages) => ({
   messages
 })
 
-export const getMessages = (conversationId) => dispatch => (
-  MessageAPIUtil.getMessages(conversationId)
-    .then( messages => dispatch(receiveMessages(messages)))
-    .fail(errors => dispatch(receiveMessageErrors(errors)))
-)
+export const getMessages = (conversationId) => dispatch => {
+  return (
+    MessageAPIUtil.getMessages(conversationId)
+      .then(( messages )=> {
+        dispatch(receiveMessages(messages)
+      )})
+      .fail(errors => dispatch(receiveMessageErrors(errors)))
+  )
+}

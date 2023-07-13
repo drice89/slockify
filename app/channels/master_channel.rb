@@ -16,7 +16,7 @@ class MasterChannel < ApplicationCable::Channel
 
     if conversation.valid?
       if conversation.convo_type == "channel"
-        playlist = create_playlist(data["conversation"])
+        playlist = Api::ConversationsHelper.create_playlist(data["conversation"])
         conversation.playlist_url = playlist.id 
       end
       conversation.save
@@ -128,13 +128,6 @@ class MasterChannel < ApplicationCable::Channel
       ids << value["id"]
     end
     ids.sort
-  end
-
-  def create_playlist(conversation)
-    @credentials = User.find(1).spotify_user_info
-    @master_spotify_user = RSpotify::User.new(JSON.parse(@credentials))
-    #create_playlist_with_options! is monkey patched in config/initializers/overrides.rb
-    @master_spotify_user.create_playlist_two!(conversation["name"], conversation["description"])
   end
 end
 

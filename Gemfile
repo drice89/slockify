@@ -31,6 +31,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
 gem 'rspotify', '~> 2.11', '>= 2.11.1'
 gem 'omniauth', '~> 2.1', '>= 2.1.1'
 gem 'tzinfo-data', '~> 1.2023', '>= 1.2023.3'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 
 # group :development, :test do
@@ -39,8 +40,8 @@ gem 'tzinfo-data', '~> 1.2023', '>= 1.2023.3'
  group :development do
   gem 'listen', '~> 3.1', '>= 3.1.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 1.7', '>= 1.7.2'
-  gem 'spring-watcher-listen', '~> 2.0'
+  gem 'spring', '~> 3.0'
+  # gem 'spring-watcher-listen', '~> 2.0'
   gem 'pry-rails', '~> 0.3.9'
 end
 

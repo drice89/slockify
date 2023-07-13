@@ -1,6 +1,7 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import SearchBarContianer from "./search_bar/search_bar_container";
 import ChannelsContainer from "./channels/channels_container";
 import ChannelsListContainer from "./channels/channels_list_container";
@@ -18,9 +19,26 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
 });
 
-const Client = ({ logout }) => {
+const Client = ({ logout, sessionId }) => {
+  const [initialized, setInitialized] = useState(false);
+  const { pathname } = useLocation()
+  const isChannelPath = pathname.match(/channels$/i)
+  const navigate = useNavigate();
   const { conversationId } = useParams();
+  
+  useEffect(() => {
+    if (pathname === "/client" || pathname === "/client/") {
+      navigate(`/client/${sessionId}/6`);
+    } else {
+      setInitialized(true)
+    }
+  }, [navigate, pathname, sessionId, conversationId]);
 
+  if (!initialized) {
+    // Return a loading state or placeholder component
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div className="client-container">
       <Modal />
@@ -31,7 +49,7 @@ const Client = ({ logout }) => {
         <ChannelsContainer />
       </div>
       <div className="conversation-container">
-        {conversationId === "channels" ? (
+        {isChannelPath ? (
           <ChannelsListContainer />
         ) : (
           <ConversationsContainer conversationId={conversationId}/>

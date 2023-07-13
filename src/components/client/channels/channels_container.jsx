@@ -1,17 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { channelConversationsSort, directConversationsSort } from "../../../reducers/selector";
 import { receiveConversation, receiveEditedConversation, removeConversation} from "../../../actions/conversation_actions";
 import { changeUserStatus } from "../../../actions/user_actions";
 import { connect } from "react-redux";
-import Modal from "../modals/modal";
 import { openModal } from "../../../actions/ui_actions";
+import { get } from "lodash"
 
 const mapStateToProps = (state) => {
   return {
     sessionId: state.session.id,
     conversations: state.entities.conversations,
-    users: state.entities.users
+    users: state.entities.users,
   };
 };
 
@@ -27,7 +27,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class ChannelsContainer extends React.Component {
-
   componentDidMount() {
     App.cable.subscriptions.create(
       {
@@ -118,11 +117,11 @@ class ChannelsContainer extends React.Component {
           <ul>
             <li className="channels-section-header">
               <h4>Channels</h4>
-              <button className="add-channel-button"><Link to="channels">+</Link></button>
+              <button className="add-channel-button"><Link to={`/client/${get(this.props, "sessionId")}/channels`}>+</Link></button>
             </li>
             {
               channels.map((channel) => {
-                return <li key={`${channel.id}convo`}><Link to={`${channel.id}`}><button className="conversation-button">{`# ${this.limitConvoLength(channel.name)}`}</button></Link></li>
+                return <li key={`${channel.id}convo`}><Link to={`/client/${get(this.props, "sessionId")}/${channel.id}`}><button className="conversation-button">{`# ${this.limitConvoLength(channel.name)}`}</button></Link></li>
               })
             }
           </ul>
@@ -136,7 +135,13 @@ class ChannelsContainer extends React.Component {
              
             {
               direct.map((direct) => {
-                return <li key={`${direct.id}convo`}><Link to={`${direct.id}`}><button className="conversation-button">{this.limitConvoLength(direct.displayName)}</button></Link></li>
+                return (
+                  <li key={`${direct.id}convo`}>
+                    <Link to={`/client/${get(this.props, "sessionId")}/${direct.id}`}>
+                      <button className="conversation-button">{this.limitConvoLength(direct.displayName)}</button>
+                    </Link>
+                  </li>
+                )
               })
             }
           </ul>

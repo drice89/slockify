@@ -23,7 +23,7 @@ export const logout = () => (
 
 export const spotifyLogin = () => (
   $.ajax({
-    method: "GET",
+    method: "POST",
     url: "auth/spotify/"
   })
 )

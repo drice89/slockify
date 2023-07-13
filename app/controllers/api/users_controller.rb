@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(email: spotify_user.email)
     hash = spotify_user.to_json
     if !@user
-      client_secret = ENV["RAILS_ENV"] == "production" ? ENV["CLIENT_SECRET"] : SpotifyCredentialsDev::CLIENT_SECRET
+      client_secret = ENV["CLIENT_SECRET"] 
       user_data = { 
         email: spotify_user.email, 
         full_name: spotify_user.display_name, 

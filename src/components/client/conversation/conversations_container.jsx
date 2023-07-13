@@ -6,6 +6,7 @@ import MessageContainer from "./message_container";
 import { receiveMessage, removeMessage, getMessages } from "../../../actions/message_actions";
 import { toggleSidebar } from "../../../actions/ui_actions";
 import Sidebar from "../sidebar/sidebar"
+import { get } from "lodash"
 
 const mapStateToProps = (state, ownProps) => {
   let { conversationId } = ownProps
@@ -33,13 +34,13 @@ class Conversation extends React.Component {
     this.bottom = React.createRef();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
    if (this.bottom.current) this.bottom.current.scrollIntoView();
+   if(get(prevProps.conversation, "id") !== get(this.props, "conversation.id")) this.props.getMessages(this.props.conversation.id)
   }
 
   componentDidMount() {
     this.props.getMessages(this.props.conversation.id)
-
       App.cable.subscriptions.create(
         { 
           channel: `ChatChannel`, 

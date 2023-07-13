@@ -7,7 +7,9 @@ Rails.application.config.to_prepare do
   OmniAuth::Strategies::Spotify.include SpotifyOmniauthExtension
 end 
 
-
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :spotify, client_id, client_secret, scope: 'user-read-email playlist-modify-public playlist-modify-private user-library-read user-library-modify'
+  provider :spotify, "#{client_id}", "#{client_secret}", scope: 'user-read-email playlist-modify-public playlist-modify-private user-library-read user-library-modify'
 end
+
+
+OmniAuth.config.allowed_request_methods = [:post, :get]
