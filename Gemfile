@@ -12,8 +12,6 @@ gem 'pg', '~> 1.5', '>= 1.5.3'
 gem 'puma', '~> 6.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
