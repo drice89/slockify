@@ -244,6 +244,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    terser (1.1.17)
+      execjs (>= 0.3.0, < 3)
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.4.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   rspotify (~> 2.11, >= 2.11.1)
   sass-rails (~> 6.0)
   spring (~> 3.0)
+  terser (~> 1.1, >= 1.1.1)
   tzinfo-data (~> 1.2023, >= 1.2023.3)
 
 RUBY VERSION

@@ -14,7 +14,7 @@ gem 'puma', '~> 6.3'
 gem 'sass-rails', '~> 6.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
+gem 'terser', '~> 1.1', '>= 1.1.1'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
