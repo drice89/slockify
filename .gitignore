@@ -25,4 +25,4 @@ bundle.js*
 npm-debug.log
 /config/spotify_credentials_dev.rb
 /log/development.log
-Gemfile.lock
+# Gemfile.lock
